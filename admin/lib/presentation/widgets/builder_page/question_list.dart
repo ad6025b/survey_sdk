@@ -73,6 +73,10 @@ class _QuestionListState extends State<QuestionList> {
                     ),
                   ),
                 );
+
+                //alex101 return if just cancel add screen
+                if (surveyData == null) return;
+
                 widget.onDataUpdate(surveyData);
               },
               isEditingCommonTheme: widget.selectedIndex == -1,
