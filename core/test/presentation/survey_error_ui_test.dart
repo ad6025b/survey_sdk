@@ -5,10 +5,10 @@ import 'package:mocktail/mocktail.dart';
 import 'package:survey_sdk/src/data/data_sources/filesystem_data_source_impl.dart';
 import 'package:survey_sdk/src/data/repositories/survey_data_repository_impl.dart';
 import 'package:survey_sdk/src/presentation/localization/survey_localizations_ext.dart';
-import 'package:survey_sdk/src/presentation/survey/survey_cubit.dart';
 import 'package:survey_sdk/src/presentation/survey/survey_state.dart';
 import 'package:survey_sdk/src/presentation/survey_error/survey_error.dart';
 import 'package:survey_sdk/src/presentation/utils/survey_error_state.dart';
+import 'package:survey_sdk/survey_sdk.dart';
 
 import 'widget/app_tester.dart';
 
@@ -262,7 +262,7 @@ void main() async {
       );
       testWidgets(
         'should pop scope from details page correctly',
-            (tester) async {
+        (tester) async {
           emitForIncorrectPath();
 
           await tester.pumpWidget(widgetWithIncorrectPath);
