@@ -4,6 +4,8 @@ import 'package:survey_sdk/src/data/repositories/survey_data_repository_impl.dar
 import 'package:survey_sdk/src/presentation/survey/survey_state.dart';
 import 'package:survey_sdk/survey_sdk.dart';
 
+import '../../../lib/src/presentation/survey/survey_cubit.dart';
+
 // ignore: prefer-match-file-name
 class MockSurveyDataRepository extends Mock
     implements SurveyDataRepositoryImpl {}
