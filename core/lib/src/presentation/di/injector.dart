@@ -8,7 +8,7 @@ class Injector {
   late SurveyCubit surveyCubit;
   static final Injector _singleton = Injector._internal();
   late FilesystemDataSource _filesystemDataSource;
-  late SurveyDataRepository _surveyDataRepository;
+  late SurveyDataRepository surveyDataRepository;
 
   factory Injector() {
     return _singleton;
@@ -19,8 +19,8 @@ class Injector {
   void init() {
     _filesystemDataSource = FilesystemDataSourceImpl();
 
-    _surveyDataRepository = SurveyDataRepositoryImpl(_filesystemDataSource);
+    surveyDataRepository = SurveyDataRepositoryImpl(_filesystemDataSource);
 
-    surveyCubit = SurveyCubit(_surveyDataRepository);
+    surveyCubit = SurveyCubit(surveyDataRepository);
   }
 }
