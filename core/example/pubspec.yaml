@@ -12,9 +12,6 @@ dependencies:
     sdk: flutter
   survey_sdk:
     path: ../../core
-  hooks_riverpod: ^2.5.1
-  flutter_hooks: ^0.20.5
-  flutter_riverpod: ^2.4.0
 
   cupertino_icons: ^1.0.2
 

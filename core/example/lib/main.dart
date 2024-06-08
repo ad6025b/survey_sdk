@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:survey_sdk/survey_sdk.dart';
 
 // void main() {
@@ -7,11 +6,7 @@ import 'package:survey_sdk/survey_sdk.dart';
 // }
 
 void main() {
-  runApp(
-    const ProviderScope(
-      child: MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
