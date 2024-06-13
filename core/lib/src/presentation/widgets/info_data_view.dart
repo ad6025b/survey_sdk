@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:survey_sdk/src/presentation/widgets/question_content.dart';
 import 'package:survey_sdk/src/presentation/widgets/question_title.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class InfoDataView extends StatelessWidget {
   final InfoQuestionData data;
@@ -28,7 +28,7 @@ class InfoDataView extends StatelessWidget {
         if (data.subtitle.isNotEmpty)
           Padding(
             padding: const EdgeInsets.only(
-              top: SurveyDimensions.marginS,
+              top: ActivityDimensions.marginS,
             ),
             child: QuestionContent(
               content: data.subtitle,

@@ -1,16 +1,16 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:survey_sdk/src/data/mappers/actions/finish_survey_action/finish_survey_action_mapper.dart';
-import 'package:survey_sdk/src/domain/entities/actions/finish_survey_action.dart';
-import 'package:survey_sdk/src/domain/entities/actions/survey_action.dart';
+import 'package:survey_sdk/src/data/mappers/actions/finish_activity_action/finish_activity_action_mapper.dart';
+import 'package:survey_sdk/src/domain/entities/actions/finish_activity_action.dart';
+import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
 
 void main() {
   group(
     'GoNextActionMapper tests',
     () {
-      final mapper = FinishSurveyActionMapper();
-      const object = FinishSurveyAction();
+      final mapper = FinishActivityActionMapper();
+      const object = FinishActivityAction();
       final receivedJson = {
-        'type': 'FinishSurvey',
+        'type': 'FinishActivity',
       };
 
       test(
@@ -34,9 +34,9 @@ void main() {
       test(
         'fromType',
         () {
-          final action = SurveyAction.fromJson(receivedJson);
+          final action = ActivityAction.fromJson(receivedJson);
 
-          expect(action.runtimeType, FinishSurveyAction);
+          expect(action.runtimeType, FinishActivityAction);
           expect(action, equals(object));
         },
       );
@@ -44,7 +44,7 @@ void main() {
       test(
         'toJsonByType',
         () {
-          final json = SurveyAction.toJson(object);
+          final json = ActivityAction.toJson(object);
 
           expect(json, equals(receivedJson));
         },

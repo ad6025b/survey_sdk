@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class SwitchCustomizationItem extends StatelessWidget {
   final String title;
@@ -62,27 +62,27 @@ class _CustomSwitchState extends State<_CustomSwitch> {
         widget.onChanged?.call(_isToggled);
       },
       child: AnimatedContainer(
-        height: SurveyDimensions.switchHeight,
-        width: SurveyDimensions.switchWidth,
+        height: ActivityDimensions.switchHeight,
+        width: ActivityDimensions.switchWidth,
         decoration: BoxDecoration(
           color: _isToggled
-              ? SurveyColors.switchBackgroundActive
-              : SurveyColors.switchBackgroundInactive,
+              ? ActivityColors.switchBackgroundActive
+              : ActivityColors.switchBackgroundInactive,
           borderRadius: const BorderRadius.all(
-            Radius.circular(SurveyDimensions.circularRadiusS),
+            Radius.circular(ActivityDimensions.circularRadiusS),
           ),
         ),
-        duration: SurveyDurations.customizationItemDuration,
+        duration: ActivityDurations.customizationItemDuration,
         child: AnimatedAlign(
           alignment: _isToggled ? Alignment.centerRight : Alignment.centerLeft,
-          duration: SurveyDurations.customizationItemDuration,
+          duration: ActivityDurations.customizationItemDuration,
           child: Container(
-            margin: const EdgeInsets.all(SurveyDimensions.margin3XS),
-            width: SurveyDimensions.switchIndicatorWidth,
+            margin: const EdgeInsets.all(ActivityDimensions.margin3XS),
+            width: ActivityDimensions.switchIndicatorWidth,
             decoration: const BoxDecoration(
-              color: SurveyColors.black,
+              color: ActivityColors.black,
               borderRadius: BorderRadius.all(
-                Radius.circular(SurveyDimensions.circularRadiusM),
+                Radius.circular(ActivityDimensions.circularRadiusM),
               ),
             ),
           ),

@@ -9,7 +9,7 @@ import 'package:survey_sdk/src/presentation/widgets/question_bottom_button.dart'
 import 'package:survey_sdk/src/presentation/widgets/question_content.dart';
 import 'package:survey_sdk/src/presentation/widgets/question_title.dart';
 
-const _radius = SurveyDimensions.circularRadiusXS;
+const _radius = ActivityDimensions.circularRadiusXS;
 
 /// The question page with an input field for the
 /// user to enter a response. It includes a question, question description,
@@ -29,10 +29,10 @@ class InputQuestionPage extends StatefulWidget {
 
   /// Callback that is called after pressing bottom button if input data is
   /// valid or when the question can be skipped.
-  final SurveyCallback onPrimaryButtonTap;
+  final ActivityCallback onPrimaryButtonTap;
 
   /// Optional callback that is called when the secondary button is tapped.
-  final SurveyCallback? onSecondaryButtonTap;
+  final ActivityCallback? onSecondaryButtonTap;
 
   const InputQuestionPage({
     required this.data,
@@ -125,10 +125,10 @@ class _InputQuestionPageState extends State<InputQuestionPage> {
             hasScrollBody: false,
             child: Padding(
               padding: const EdgeInsets.only(
-                left: SurveyDimensions.margin2XL,
-                right: SurveyDimensions.margin2XL,
-                top: SurveyDimensions.margin3XL,
-                bottom: SurveyDimensions.marginXL,
+                left: ActivityDimensions.margin2XL,
+                right: ActivityDimensions.margin2XL,
+                top: ActivityDimensions.margin3XL,
+                bottom: ActivityDimensions.marginXL,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,7 +142,7 @@ class _InputQuestionPageState extends State<InputQuestionPage> {
                   if (widget.data.subtitle.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.only(
-                        top: SurveyDimensions.marginS,
+                        top: ActivityDimensions.marginS,
                       ),
                       child: QuestionContent(
                         content: widget.data.subtitle,
@@ -154,7 +154,7 @@ class _InputQuestionPageState extends State<InputQuestionPage> {
                   //  (date,number,string and etc).
                   Padding(
                     padding: EdgeInsets.only(
-                      top: SurveyDimensions.marginM + theme.verticalPadding,
+                      top: ActivityDimensions.marginM + theme.verticalPadding,
                       bottom: theme.verticalPadding,
                     ),
                     child: isDateType
@@ -190,7 +190,7 @@ class _InputQuestionPageState extends State<InputQuestionPage> {
                   const Spacer(),
                   Padding(
                     padding:
-                        const EdgeInsets.only(top: SurveyDimensions.marginS),
+                        const EdgeInsets.only(top: ActivityDimensions.marginS),
                     child: Row(
                       children: [
                         if (widget.data.isSkip)

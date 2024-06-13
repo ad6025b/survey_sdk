@@ -10,7 +10,7 @@ import 'package:survey_admin/presentation/widgets/customization_items/multiline_
 import 'package:survey_admin/presentation/widgets/customization_items/padding_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/text_style_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_panel/constants/customization_panel_dimensions.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class InputCustomizationTab extends CustomizationTab {
   final ValueChanged<QuestionData> onChange;
@@ -160,7 +160,7 @@ class InputCustomizationTab extends CustomizationTab {
           // key: UniqueKey(),
           title: context.localization.inputType,
           itemsPadding: const EdgeInsets.only(
-            bottom: SurveyDimensions.marginM,
+            bottom: ActivityDimensions.marginM,
           ),
           children: [
             DropdownCustomizationButton<InputType>(
@@ -193,7 +193,7 @@ class InputCustomizationTab extends CustomizationTab {
           children: [
             CustomizationMultilineTextField(
               value: theme.errorText,
-              maxHeight: SurveyDimensions.sizeXL,
+              maxHeight: ActivityDimensions.sizeXL,
               onChanged: (text) => onChange(
                 editable.copyWith(
                   theme: theme.copyWith(

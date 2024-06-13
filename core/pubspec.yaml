@@ -34,7 +34,7 @@ flutter:
   generate: true
 
   assets:
-    - test/assets/test_survey_data.json
+    - test/assets/test_activity_data.json
 
   fonts:
     - family: Inter

@@ -3,23 +3,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:survey_sdk/src/data/data_sources/filesystem_data_source_impl.dart';
-import 'package:survey_sdk/src/data/repositories/survey_data_repository_impl.dart';
-import 'package:survey_sdk/src/presentation/localization/survey_localizations_ext.dart';
-import 'package:survey_sdk/src/presentation/survey/survey_state.dart';
-import 'package:survey_sdk/src/presentation/survey_error/survey_error.dart';
-import 'package:survey_sdk/src/presentation/utils/survey_error_state.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/src/data/repositories/activity_data_repository_impl.dart';
+import 'package:survey_sdk/src/presentation/localization/activity_localizations_ext.dart';
+import 'package:survey_sdk/src/presentation/activity/activity_state.dart';
+import 'package:survey_sdk/src/presentation/activity_error/activity_error.dart';
+import 'package:survey_sdk/src/presentation/utils/activity_error_state.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
-import '../../lib/src/presentation/survey/survey_cubit.dart';
+import '../../lib/src/presentation/activity/activity_cubit.dart';
 import 'widget/app_tester.dart';
 
 // ignore_for_file: unused_element
 
 // ignore: prefer-match-file-name
-class MockSurveyDataRepository extends Mock
-    implements SurveyDataRepositoryImpl {}
+class MockActivityDataRepository extends Mock
+    implements ActivityDataRepositoryImpl {}
 
-late String _surveyLoadError;
+late String _activityLoadError;
 late String _showDetails;
 late String _closeDetails;
 late String _damagedJson;
@@ -28,7 +28,7 @@ late String _textField;
 late String _skip;
 
 void _initializeLocalizations(BuildContext context) {
-  _surveyLoadError = context.localization.surveyLoadError;
+  _activityLoadError = context.localization.activityLoadError;
   _showDetails = context.localization.showErrorDetails;
   _closeDetails = context.localization.hideErrorDetails;
   _damagedJson = context.localization.damagedJson;
@@ -38,33 +38,33 @@ void _initializeLocalizations(BuildContext context) {
 }
 
 void main() async {
-  const filePathToIncorrectJson = 'test/assets/test_survey_incorrect_data.json';
+  const filePathToIncorrectJson = 'test/assets/test_activity_incorrect_data.json';
 
-  final mockSurveyDataRepository = MockSurveyDataRepository();
+  final mockActivityDataRepository = MockActivityDataRepository();
 
-  final surveyDataSource = FilesystemDataSourceImpl();
+  final activityDataSource = FilesystemDataSourceImpl();
 
-  final dataWithIncorrectJson = await surveyDataSource.getSurveyData(
+  final dataWithIncorrectJson = await activityDataSource.getActivityData(
     filePathToIncorrectJson,
   );
-  final dataWithIncorrectPath = await surveyDataSource.getSurveyData(
+  final dataWithIncorrectPath = await activityDataSource.getActivityData(
     'incorrect_path',
   );
   final errorsWithIncorrectJson = dataWithIncorrectJson.$2;
   final errorsWithIncorrectPath = dataWithIncorrectPath.$2;
 
   group(
-    'survey error for incorrect JSON',
+    'activity error for incorrect JSON',
     () {
       late final Widget widgetWithIncorrectJson;
 
-      final cubitWithIncorrectJson = SurveyCubit(mockSurveyDataRepository);
+      final cubitWithIncorrectJson = ActivityCubit(mockActivityDataRepository);
 
       void emitForIncorrectJson() {
         cubitWithIncorrectJson.emit(
-          SurveyErrorLoadState(
+          ActivityErrorLoadState(
             providedErrors: errorsWithIncorrectJson,
-            errorState: SurveyErrorState.collapsed,
+            errorState: ActivityErrorState.collapsed,
           ),
         );
       }
@@ -72,15 +72,15 @@ void main() async {
       setUpAll(
         () {
           widgetWithIncorrectJson = AppTester(
-            child: BlocBuilder<SurveyCubit, SurveyState>(
+            child: BlocBuilder<ActivityCubit, ActivityState>(
               bloc: cubitWithIncorrectJson,
               builder: (context, state) {
                 _initializeLocalizations(context);
 
-                return SurveyError(
+                return ActivityError(
                   providedErrors: errorsWithIncorrectJson,
                   onDetailsTap: cubitWithIncorrectJson.detailedError,
-                  errorState: (state as SurveyErrorLoadState).errorState,
+                  errorState: (state as ActivityErrorLoadState).errorState,
                 );
               },
             ),
@@ -94,7 +94,7 @@ void main() async {
           emitForIncorrectJson();
           await tester.pumpWidget(widgetWithIncorrectJson);
 
-          expect(find.text(_surveyLoadError), findsOneWidget);
+          expect(find.text(_activityLoadError), findsOneWidget);
           expect(find.text(_showDetails), findsOneWidget);
         },
       );
@@ -121,7 +121,7 @@ void main() async {
         'should show damaged JSON on details page',
         (tester) async {
           emitForIncorrectJson();
-          final state = cubitWithIncorrectJson.state as SurveyErrorLoadState;
+          final state = cubitWithIncorrectJson.state as ActivityErrorLoadState;
 
           tester.binding.platformDispatcher.textScaleFactorTestValue = 0.5;
           await tester.pumpWidget(widgetWithIncorrectJson);
@@ -149,16 +149,16 @@ void main() async {
           await tester.pumpWidget(widgetWithIncorrectJson);
 
           expect(
-            (cubitWithIncorrectJson.state as SurveyErrorLoadState).errorState,
-            SurveyErrorState.collapsed,
+            (cubitWithIncorrectJson.state as ActivityErrorLoadState).errorState,
+            ActivityErrorState.collapsed,
           );
 
           await tester.tap(find.text(_showDetails));
           await tester.pumpAndSettle();
 
           expect(
-            (cubitWithIncorrectJson.state as SurveyErrorLoadState).errorState,
-            SurveyErrorState.stacktrace,
+            (cubitWithIncorrectJson.state as ActivityErrorLoadState).errorState,
+            ActivityErrorState.stacktrace,
           );
 
           final popScopeFinder = find.byType(WillPopScope);
@@ -167,8 +167,8 @@ void main() async {
 
           await popScopeWidget.onWillPop?.call();
           expect(
-            (cubitWithIncorrectJson.state as SurveyErrorLoadState).errorState,
-            SurveyErrorState.collapsed,
+            (cubitWithIncorrectJson.state as ActivityErrorLoadState).errorState,
+            ActivityErrorState.collapsed,
           );
         },
       );
@@ -176,16 +176,16 @@ void main() async {
   );
 
   group(
-    'survey error for incorrect filePath',
+    'activity error for incorrect filePath',
     () {
       late final Widget widgetWithIncorrectPath;
-      final cubitWithIncorrectPath = SurveyCubit(mockSurveyDataRepository);
+      final cubitWithIncorrectPath = ActivityCubit(mockActivityDataRepository);
 
       void emitForIncorrectPath() {
         cubitWithIncorrectPath.emit(
-          SurveyErrorLoadState(
+          ActivityErrorLoadState(
             providedErrors: errorsWithIncorrectPath,
-            errorState: SurveyErrorState.collapsed,
+            errorState: ActivityErrorState.collapsed,
           ),
         );
       }
@@ -193,15 +193,15 @@ void main() async {
       setUpAll(
         () {
           widgetWithIncorrectPath = AppTester(
-            child: BlocBuilder<SurveyCubit, SurveyState>(
+            child: BlocBuilder<ActivityCubit, ActivityState>(
               bloc: cubitWithIncorrectPath,
               builder: (context, state) {
                 _initializeLocalizations(context);
 
-                return SurveyError(
+                return ActivityError(
                   providedErrors: errorsWithIncorrectPath,
                   onDetailsTap: cubitWithIncorrectPath.detailedError,
-                  errorState: (state as SurveyErrorLoadState).errorState,
+                  errorState: (state as ActivityErrorLoadState).errorState,
                 );
               },
             ),
@@ -215,7 +215,7 @@ void main() async {
           emitForIncorrectPath();
           await tester.pumpWidget(widgetWithIncorrectPath);
 
-          expect(find.text(_surveyLoadError), findsOneWidget);
+          expect(find.text(_activityLoadError), findsOneWidget);
           expect(find.text(_showDetails), findsOneWidget);
         },
       );
@@ -232,7 +232,7 @@ void main() async {
           expect(find.text(_showDetails), findsNothing);
           expect(
             find.text(
-              (cubitWithIncorrectPath.state as SurveyErrorLoadState)
+              (cubitWithIncorrectPath.state as ActivityErrorLoadState)
                   .providedErrors
                   .first,
             ),
@@ -241,7 +241,7 @@ void main() async {
           expect(find.text(_damagedJson), findsOneWidget);
           expect(
             find.text(
-              (cubitWithIncorrectPath.state as SurveyErrorLoadState)
+              (cubitWithIncorrectPath.state as ActivityErrorLoadState)
                   .providedErrors
                   .last,
             ),
@@ -251,7 +251,7 @@ void main() async {
           await tester.pumpAndSettle();
           expect(
             find.text(
-              (cubitWithIncorrectPath.state as SurveyErrorLoadState)
+              (cubitWithIncorrectPath.state as ActivityErrorLoadState)
                   .providedErrors
                   .last,
             ),
@@ -269,16 +269,16 @@ void main() async {
           await tester.pumpWidget(widgetWithIncorrectPath);
 
           expect(
-            (cubitWithIncorrectPath.state as SurveyErrorLoadState).errorState,
-            SurveyErrorState.collapsed,
+            (cubitWithIncorrectPath.state as ActivityErrorLoadState).errorState,
+            ActivityErrorState.collapsed,
           );
 
           await tester.tap(find.text(_showDetails));
           await tester.pumpAndSettle();
 
           expect(
-            (cubitWithIncorrectPath.state as SurveyErrorLoadState).errorState,
-            SurveyErrorState.stacktrace,
+            (cubitWithIncorrectPath.state as ActivityErrorLoadState).errorState,
+            ActivityErrorState.stacktrace,
           );
 
           final popScopeFinder = find.byType(WillPopScope);
@@ -287,8 +287,8 @@ void main() async {
 
           await popScopeWidget.onWillPop?.call();
           expect(
-            (cubitWithIncorrectPath.state as SurveyErrorLoadState).errorState,
-            SurveyErrorState.collapsed,
+            (cubitWithIncorrectPath.state as ActivityErrorLoadState).errorState,
+            ActivityErrorState.collapsed,
           );
         },
       );

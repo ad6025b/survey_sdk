@@ -5,7 +5,7 @@ import 'package:survey_admin/presentation/widgets/customization_items/actions_cu
 import 'package:survey_admin/presentation/widgets/customization_items/customization_items_container.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_multiline_text_field.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/secondary_button_customization_item.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class InputContentCustomizationTab extends CustomizationTab {
   final ValueChanged<QuestionData> onChange;
@@ -30,7 +30,7 @@ class InputContentCustomizationTab extends CustomizationTab {
           children: [
             CustomizationMultilineTextField(
               value: editable.title,
-              maxHeight: SurveyDimensions.maxTextFieldHeight,
+              maxHeight: ActivityDimensions.maxTextFieldHeight,
               onChanged: (title) => onChange(
                 editable.copyWith(title: title),
               ),
@@ -42,7 +42,7 @@ class InputContentCustomizationTab extends CustomizationTab {
           children: [
             CustomizationMultilineTextField(
               value: editable.subtitle,
-              maxHeight: SurveyDimensions.maxTextFieldHeight,
+              maxHeight: ActivityDimensions.maxTextFieldHeight,
               onChanged: (subtitle) => onChange(
                 editable.copyWith(subtitle: subtitle),
               ),
@@ -54,7 +54,7 @@ class InputContentCustomizationTab extends CustomizationTab {
           children: [
             CustomizationMultilineTextField(
               value: editable.hintText ?? '',
-              maxHeight: SurveyDimensions.maxTextFieldHeight,
+              maxHeight: ActivityDimensions.maxTextFieldHeight,
               onChanged: (hint) => onChange(
                 editable.copyWith(hintText: hint),
               ),
@@ -66,7 +66,7 @@ class InputContentCustomizationTab extends CustomizationTab {
           children: [
             CustomizationMultilineTextField(
               value: editable.primaryButtonText,
-              maxHeight: SurveyDimensions.maxTextFieldHeight,
+              maxHeight: ActivityDimensions.maxTextFieldHeight,
               onChanged: (text) => onChange(
                 editable.copyWith(primaryButtonText: text),
               ),
@@ -75,7 +75,7 @@ class InputContentCustomizationTab extends CustomizationTab {
         ),
         CustomizationItemsContainer(
           itemsPadding: const EdgeInsets.all(
-            SurveyDimensions.marginM,
+            ActivityDimensions.marginM,
           ),
           children: [
             SecondaryButtonCustomizationItem(
@@ -99,7 +99,7 @@ class InputContentCustomizationTab extends CustomizationTab {
                     mainButtonAction: action,
                   ),
                 ),
-                surveyAction: editable.mainButtonAction,
+                activityAction: editable.mainButtonAction,
                 callbackType: CallbackType.primaryCallback,
                 questionsLength: questionsAmount!,
               ),
@@ -117,7 +117,7 @@ class InputContentCustomizationTab extends CustomizationTab {
                     secondaryButtonAction: action,
                   ),
                 ),
-                surveyAction: editable.secondaryButtonAction,
+                activityAction: editable.secondaryButtonAction,
                 callbackType: CallbackType.secondaryCallback,
                 questionsLength: questionsAmount!,
               ),

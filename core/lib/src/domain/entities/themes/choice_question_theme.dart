@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 const _titleSize = 16.0;
 const _subtitleSize = 12.0;
@@ -120,19 +120,19 @@ class ChoiceQuestionTheme extends ThemeExtension<ChoiceQuestionTheme>
   /// values.
   const ChoiceQuestionTheme.common()
       : this(
-          activeColor: SurveyColors.black,
-          inactiveColor: SurveyColors.grey,
-          fill: SurveyColors.white,
-          titleColor: SurveyColors.black,
+          activeColor: ActivityColors.black,
+          inactiveColor: ActivityColors.grey,
+          fill: ActivityColors.white,
+          titleColor: ActivityColors.black,
           titleSize: _titleSize,
-          subtitleColor: SurveyColors.black,
+          subtitleColor: ActivityColors.black,
           subtitleSize: _subtitleSize,
-          primaryButtonFill: SurveyColors.black,
-          primaryButtonTextColor: SurveyColors.white,
+          primaryButtonFill: ActivityColors.black,
+          primaryButtonTextColor: ActivityColors.white,
           primaryButtonTextSize: _buttonTextSize,
           primaryButtonRadius: _buttonRadius,
-          secondaryButtonFill: SurveyColors.black,
-          secondaryButtonTextColor: SurveyColors.white,
+          secondaryButtonFill: ActivityColors.black,
+          secondaryButtonTextColor: ActivityColors.white,
           secondaryButtonTextSize: _buttonTextSize,
           secondaryButtonRadius: _buttonRadius,
         );

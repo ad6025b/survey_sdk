@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class ColorPickerDialog extends StatelessWidget {
   final ValueChanged<Color> onColorPicked;
@@ -31,15 +31,15 @@ class ColorPickerDialog extends StatelessWidget {
             onColorChanged: (_) {},
           ),
           Padding(
-            padding: const EdgeInsets.only(top: SurveyDimensions.margin2XS),
+            padding: const EdgeInsets.only(top: ActivityDimensions.margin2XS),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(context.localization.hex),
-                const SizedBox(width: SurveyDimensions.marginXS),
+                const SizedBox(width: ActivityDimensions.marginXS),
                 SizedBox(
-                  width: SurveyDimensions.textFieldWidth,
+                  width: ActivityDimensions.textFieldWidth,
                   child: TextField(
                     controller: colorTextController,
                     inputFormatters: [
@@ -67,18 +67,18 @@ class ColorPickerDialog extends StatelessWidget {
           },
           child: Container(
             padding: const EdgeInsets.symmetric(
-              vertical: SurveyDimensions.sizeS,
-              horizontal: SurveyDimensions.sizeM,
+              vertical: ActivityDimensions.sizeS,
+              horizontal: ActivityDimensions.sizeM,
             ),
             decoration: const BoxDecoration(
-              color: SurveyColors.black,
+              color: ActivityColors.black,
               borderRadius: BorderRadius.all(
-                Radius.circular(SurveyDimensions.circularRadiusS),
+                Radius.circular(ActivityDimensions.circularRadiusS),
               ),
             ),
             child: Text(
               context.localization.ok,
-              style: const TextStyle(color: SurveyColors.white),
+              style: const TextStyle(color: ActivityColors.white),
             ),
           ),
         ),

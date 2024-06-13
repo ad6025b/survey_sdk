@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/src/presentation/utils/survey_colors.dart';
+import 'package:survey_sdk/src/presentation/utils/activity_colors.dart';
 
-class SurveyFonts {
+class ActivityFonts {
   static const FontWeight weightBold = FontWeight.w700;
   static const FontWeight weightSemiBold = FontWeight.w600;
   static const FontWeight weightMedium = FontWeight.w500;
@@ -25,21 +25,21 @@ extension AppTextThemeExt on BuildContext {
 
 extension CustomStyles on TextTheme {
   TextStyle get headLineMediumBold => const TextStyle(
-        fontSize: SurveyFonts.sizeL,
-        fontWeight: SurveyFonts.weightBold,
-        color: SurveyColors.black,
+        fontSize: ActivityFonts.sizeL,
+        fontWeight: ActivityFonts.weightBold,
+        color: ActivityColors.black,
       );
 
   TextStyle get buttonNameDark => const TextStyle(
-        fontSize: SurveyFonts.sizeM,
-        fontWeight: SurveyFonts.weightMedium,
-        color: SurveyColors.white,
+        fontSize: ActivityFonts.sizeM,
+        fontWeight: ActivityFonts.weightMedium,
+        color: ActivityColors.white,
         letterSpacing: 0.1,
       );
 
   TextStyle get buttonNameLight => const TextStyle(
-        fontSize: SurveyFonts.sizeM,
-        fontWeight: SurveyFonts.weightBold,
-        color: SurveyColors.black,
+        fontSize: ActivityFonts.sizeM,
+        fontWeight: ActivityFonts.weightBold,
+        color: ActivityColors.black,
       );
 }

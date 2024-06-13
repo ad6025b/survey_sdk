@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
 import 'package:survey_admin/presentation/utils/utils.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 enum NewQuestionTabs {
   info,
@@ -24,7 +24,7 @@ extension NewQuestionTabsExt on NewQuestionTabs {
     }
   }
 
-  QuestionData data(SurveyData data) {
+  QuestionData data(ActivityData data) {
     switch (this) {
       case NewQuestionTabs.info:
         return data.commonTheme.info;

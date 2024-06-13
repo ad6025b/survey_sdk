@@ -1,6 +1,6 @@
 import 'package:survey_sdk/src/domain/entities/actions/go_next_action.dart';
 import 'package:survey_sdk/src/domain/entities/actions/skip_question_action.dart';
-import 'package:survey_sdk/src/domain/entities/actions/survey_action.dart';
+import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
 import 'package:survey_sdk/src/domain/entities/constants/question_types.dart';
 import 'package:survey_sdk/src/domain/entities/question_types/question_data.dart';
 import 'package:survey_sdk/src/domain/entities/themes/choice_question_theme.dart';
@@ -135,8 +135,8 @@ class ChoiceQuestionData extends QuestionData<ChoiceQuestionTheme> {
     ChoiceQuestionTheme? theme,
     String? secondaryButtonText,
     String? primaryButtonText,
-    SurveyAction? mainButtonAction,
-    SurveyAction? secondaryButtonAction,
+    ActivityAction? mainButtonAction,
+    ActivityAction? secondaryButtonAction,
     bool clearSelectedByDefault = false,
     bool clearMainAction = false,
     bool clearSecondaryAction = false,

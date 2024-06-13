@@ -5,111 +5,111 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:survey_sdk/src/domain/entities/question_answer.dart';
-import 'package:survey_sdk/src/domain/repository_interfaces/survey_data_repository.dart';
+import 'package:survey_sdk/src/domain/repository_interfaces/activity_data_repository.dart';
 import 'package:survey_sdk/src/presentation/di/injector.dart';
-import 'package:survey_sdk/src/presentation/survey/survey_state.dart';
-import 'package:survey_sdk/src/presentation/survey_error/survey_error.dart';
+import 'package:survey_sdk/src/presentation/activity/activity_state.dart';
+import 'package:survey_sdk/src/presentation/activity_error/activity_error.dart';
 import 'package:survey_sdk/src/presentation/utils/on_finish_callback.dart';
-import 'package:survey_sdk/src/presentation/utils/survey_button_callback.dart';
+import 'package:survey_sdk/src/presentation/utils/activity_button_callback.dart';
 import 'package:survey_sdk/src/presentation/utils/utils.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
-import 'survey_cubit.dart';
+import 'activity_cubit.dart';
 
 // TODO(dev): Maybe create two classes, where one is for filePath and the other
-// TODO(dev): is for surveyData? The build method will be the same for both.
+// TODO(dev): is for activityData? The build method will be the same for both.
 
-/// A widget that renders a survey form.
+/// A widget that renders a activity form.
 ///
-/// The survey form is defined by either a [filePath] parameter
-/// or a [surveyData] parameter. The [filePath] is the path to a JSON file
-/// containing the survey data, while the [surveyData] parameter is the survey
+/// The activity form is defined by either a [filePath] parameter
+/// or a [activityData] parameter. The [filePath] is the path to a JSON file
+/// containing the activity data, while the [activityData] parameter is the activity
 /// data itself.
 ///
-/// The widget manages the state of the survey and renders the appropriate
-/// widgets based on the survey state.
+/// The widget manages the state of the activity and renders the appropriate
+/// widgets based on the activity state.
 ///
 /// See also:
 ///
-///  * [SurveyData] for survey data.
-///  * [SurveyController], where the logic behind a survey navigation is hosted.
-class Survey extends StatefulWidget {
-  /// The path to a JSON file containing the survey data.
+///  * [ActivityData] for activity data.
+///  * [ActivityController], where the logic behind a activity navigation is hosted.
+class Activity extends StatefulWidget {
+  /// The path to a JSON file containing the activity data.
   final String? filePath;
 
-  /// The survey data.
-  final SurveyData? surveyData;
+  /// The activity data.
+  final ActivityData? activityData;
 
-  /// The controller for navigating the survey and saving answers.
-  final SurveyController? controller;
+  /// The controller for navigating the activity and saving answers.
+  final ActivityController? controller;
 
-  /// Whether the survey should save user selected answers.
+  /// Whether the activity should save user selected answers.
   final bool saveAnswer;
 
-  /// Called after the survey is finished.
+  /// Called after the activity is finished.
   final OnFinishCallback? onFinish;
 
-  /// Either [filePath] or [surveyData] must pe provided. The [controller]
-  /// parameter is optional and can be used to provide a custom survey
+  /// Either [filePath] or [activityData] must pe provided. The [controller]
+  /// parameter is optional and can be used to provide a custom activity
   /// controller.
-  const Survey({
+  const Activity({
     this.filePath,
-    this.surveyData,
+    this.activityData,
     this.controller,
     this.onFinish,
     this.saveAnswer = true,
     super.key,
   }) : assert(
-          (filePath != null || surveyData != null) &&
-              (filePath == null || surveyData == null),
+          (filePath != null || activityData != null) &&
+              (filePath == null || activityData == null),
           'Only one of the parameters must be not-null',
         );
 
   @override
-  State<Survey> createState() => _SurveyState();
+  State<Activity> createState() => _ActivityState();
 }
 
-/// The private state class for the [Survey] widget.
-class _SurveyState extends State<Survey> {
-  /// Instance of the [SurveyCubit] used for managing the survey state.
-  late final SurveyCubit _cubit;
+/// The private state class for the [Activity] widget.
+class _ActivityState extends State<Activity> {
+  /// Instance of the [ActivityCubit] used for managing the activity state.
+  late final ActivityCubit _cubit;
 
-  /// Instance of the [SurveyController] used for controlling the survey flow.
-  late final SurveyController _surveyController;
+  /// Instance of the [ActivityController] used for controlling the activity flow.
+  late final ActivityController _activityController;
 
-  /// Initializes an instance of [_SurveyState] and its dependencies.
+  /// Initializes an instance of [_ActivityState] and its dependencies.
   ///
-  /// The method initializes an instance of [SurveyCubit] and [SurveyController]
+  /// The method initializes an instance of [ActivityCubit] and [ActivityController]
   /// using a dependency injection pattern. It then calls the initData method
-  /// of [SurveyCubit] with the survey data provided.
+  /// of [ActivityCubit] with the activity data provided.
   @override
   void initState() {
     super.initState();
     Injector().init();
-    _cubit = Injector().surveyCubit;
-    _surveyController = widget.controller ?? SurveyController();
-    _reloadSurveyData();
+    _cubit = Injector().activityCubit;
+    _activityController = widget.controller ?? ActivityController();
+    _reloadActivityData();
   }
 
-  /// Builds the survey form using a PageView widget.
+  /// Builds the activity form using a PageView widget.
   ///
   /// The questions are mapped to widgets using the
   /// [DataToWidgetUtil.createWidget] method, which is passed to the
   /// BlocBuilder widget as a callback function. The BlocBuilder is responsible
-  /// for managing the state of the survey and rendering the appropriate widgets
-  /// based on the survey state.
+  /// for managing the state of the activity and rendering the appropriate widgets
+  /// based on the activity state.
   ///
-  /// If the survey is not yet loaded, a circular progress indicator is
+  /// If the activity is not yet loaded, a circular progress indicator is
   /// displayed. If the user attempts to navigate back from the first page,
-  /// the onBack of the [SurveyController] is called.
+  /// the onBack of the [ActivityController] is called.
 
-  void _surveyCallback({
+  void _activityCallback({
     required int index,
     required QuestionAnswer? answer,
     required CallbackType callbackType,
   }) {
     _cubit.processCallback(
-      _surveyController,
+      _activityController,
       index,
       answer,
       callbackType,
@@ -118,26 +118,26 @@ class _SurveyState extends State<Survey> {
     );
   }
 
-  void _reloadSurveyData() {
-    widget.surveyData == null
+  void _reloadActivityData() {
+    widget.activityData == null
         ? _cubit.initData(widget.filePath)
-        : _cubit.setSurveyData(widget.surveyData, []);
+        : _cubit.setActivityData(widget.activityData, []);
   }
 
   @override
-  void didUpdateWidget(covariant Survey oldWidget) {
+  void didUpdateWidget(covariant Activity oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    _reloadSurveyData();
+    _reloadActivityData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SurveyCubit, SurveyState>(
+    return BlocBuilder<ActivityCubit, ActivityState>(
       bloc: _cubit,
       builder: (_, state) {
-        if (state is SurveyLoadedState) {
-          final data = widget.surveyData ?? state.surveyData;
+        if (state is ActivityLoadedState) {
+          final data = widget.activityData ?? state.activityData;
           final commonTheme = data.commonTheme;
           return Theme(
             data: ThemeData(
@@ -150,11 +150,11 @@ class _SurveyState extends State<Survey> {
             ),
             child: WillPopScope(
               onWillPop: () async {
-                _surveyController.onBack();
+                _activityController.onBack();
                 return false;
               },
               child: PageView(
-                controller: _surveyController.pageController,
+                controller: _activityController.pageController,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   ...data.questions.map<Widget>(
@@ -165,7 +165,7 @@ class _SurveyState extends State<Survey> {
                         required index,
                         required answer,
                       }) {
-                        _surveyCallback(
+                        _activityCallback(
                           index: index,
                           answer: answer,
                           callbackType: CallbackType.primaryCallback,
@@ -175,13 +175,13 @@ class _SurveyState extends State<Survey> {
                         required index,
                         required answer,
                       }) {
-                        _surveyCallback(
+                        _activityCallback(
                           index: index,
                           answer: answer,
                           callbackType: CallbackType.secondaryCallback,
                         );
                       },
-                      onGoNext: _surveyController.onNext,
+                      onGoNext: _activityController.onNext,
                     ),
                   ),
                 ],
@@ -189,8 +189,8 @@ class _SurveyState extends State<Survey> {
             ),
           );
         }
-        if (state is SurveyErrorLoadState) {
-          return SurveyError(
+        if (state is ActivityErrorLoadState) {
+          return ActivityError(
             providedErrors: state.providedErrors,
             onDetailsTap: _cubit.detailedError,
             errorState: state.errorState,
@@ -198,7 +198,7 @@ class _SurveyState extends State<Survey> {
         }
         return const Center(
           child: CircularProgressIndicator(
-            color: SurveyColors.black,
+            color: ActivityColors.black,
           ),
         );
       },

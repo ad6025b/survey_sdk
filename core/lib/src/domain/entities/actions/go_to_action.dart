@@ -1,7 +1,7 @@
-import 'package:survey_sdk/src/domain/entities/actions/survey_action.dart';
+import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
 import 'package:survey_sdk/src/domain/entities/constants/action_types.dart';
 
-class GoToAction extends SurveyAction {
+class GoToAction extends ActivityAction {
   final int questionIndex;
 
   @override

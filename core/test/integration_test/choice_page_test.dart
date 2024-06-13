@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:survey_sdk/src/presentation/di/injector.dart';
-import 'package:survey_sdk/src/presentation/survey/survey_state.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/src/presentation/activity/activity_state.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 import '../presentation/widget/app_tester.dart';
 import '../utils/mocked_entities.dart';
@@ -15,8 +15,8 @@ void main() {
     () {
       Widget app(List<QuestionData> questions) {
         return AppTester(
-          child: Survey(
-            surveyData: MockedEntities.data2.copyWith(questions: questions),
+          child: Activity(
+            activityData: MockedEntities.data2.copyWith(questions: questions),
           ),
         );
       }
@@ -25,9 +25,9 @@ void main() {
         'multiple choice with no answer without skip',
         (tester) async {
           await tester.pumpWidget(app([MockedEntities.choice4]));
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.isEmpty, true);
+          expect((cubit.state as ActivityLoadedState).answers.isEmpty, true);
         },
       );
 
@@ -35,13 +35,13 @@ void main() {
         'multiple choice with one answer without skip',
         (tester) async {
           await tester.pumpWidget(app([MockedEntities.choice4]));
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('option 1'));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.length, 1);
+          expect((cubit.state as ActivityLoadedState).answers.length, 1);
           expect(
-            (cubit.state as SurveyLoadedState).answers[0]?.answer,
+            (cubit.state as ActivityLoadedState).answers[0]?.answer,
             ['option 1'],
           );
         },
@@ -49,15 +49,15 @@ void main() {
 
       testWidgets('multiple choice with two answers', (tester) async {
         await tester.pumpWidget(app([MockedEntities.choice4]));
-        final cubit = Injector().surveyCubit;
+        final cubit = Injector().activityCubit;
         await tester.tap(find.text('option 1'));
         await tester.pump();
         await tester.tap(find.text('option 2'));
         await tester.pump();
         await tester.tap(find.text('NEXT'));
-        expect((cubit.state as SurveyLoadedState).answers.length, 1);
+        expect((cubit.state as ActivityLoadedState).answers.length, 1);
         expect(
-          (cubit.state as SurveyLoadedState).answers[0]?.answer,
+          (cubit.state as ActivityLoadedState).answers[0]?.answer,
           ['option 1', 'option 2'],
         );
       });
@@ -73,26 +73,26 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           final nextButton = find.text('NEXT');
 
           //click next without options
           await tester.tap(nextButton);
-          expect((cubit.state as SurveyLoadedState).answers.isEmpty, true);
+          expect((cubit.state as ActivityLoadedState).answers.isEmpty, true);
 
           //click next with one option
           await tester.tap(find.text('option 1'));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.isEmpty, true);
+          expect((cubit.state as ActivityLoadedState).answers.isEmpty, true);
 
           //click next with 2 options
           await tester.tap(find.text('option 2'));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.length, 1);
+          expect((cubit.state as ActivityLoadedState).answers.length, 1);
           expect(
-            (cubit.state as SurveyLoadedState).answers[0]?.answer,
+            (cubit.state as ActivityLoadedState).answers[0]?.answer,
             ['option 1', 'option 2'],
           );
         },
@@ -109,9 +109,9 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.isEmpty, true);
+          expect((cubit.state as ActivityLoadedState).answers.isEmpty, true);
         },
       );
 
@@ -126,13 +126,13 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('option 1'));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.length, 1);
+          expect((cubit.state as ActivityLoadedState).answers.length, 1);
           expect(
-            (cubit.state as SurveyLoadedState).answers[0]?.answer,
+            (cubit.state as ActivityLoadedState).answers[0]?.answer,
             ['option 1'],
           );
         },
@@ -149,13 +149,13 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('option 1'));
           await tester.pump();
           await tester.tap(find.text('option 2'));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.isEmpty, true);
+          expect((cubit.state as ActivityLoadedState).answers.isEmpty, true);
         },
       );
 
@@ -170,9 +170,9 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.isEmpty, true);
+          expect((cubit.state as ActivityLoadedState).answers.isEmpty, true);
         },
       );
 
@@ -187,15 +187,15 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
 
           const option = 'option 1';
           await tester.tap(find.text(option));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.length, 1);
+          expect((cubit.state as ActivityLoadedState).answers.length, 1);
           expect(
-            (cubit.state as SurveyLoadedState).answers[0]?.answer,
+            (cubit.state as ActivityLoadedState).answers[0]?.answer,
             [option],
           );
         },
@@ -212,15 +212,15 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('option 1'));
           await tester.pump();
           await tester.tap(find.text('option 2'));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.length, 1);
+          expect((cubit.state as ActivityLoadedState).answers.length, 1);
           expect(
-            (cubit.state as SurveyLoadedState).answers[0]?.answer,
+            (cubit.state as ActivityLoadedState).answers[0]?.answer,
             ['option 1', 'option 2'],
           );
         },
@@ -237,7 +237,7 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('option 1'));
           await tester.pump();
           await tester.tap(find.text('option 2'));
@@ -245,7 +245,7 @@ void main() {
           await tester.tap(find.text('option 3'));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.isEmpty, true);
+          expect((cubit.state as ActivityLoadedState).answers.isEmpty, true);
         },
       );
 
@@ -260,9 +260,9 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.isEmpty, true);
+          expect((cubit.state as ActivityLoadedState).answers.isEmpty, true);
         },
       );
 
@@ -277,11 +277,11 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('option 1'));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.isEmpty, true);
+          expect((cubit.state as ActivityLoadedState).answers.isEmpty, true);
         },
       );
 
@@ -296,15 +296,15 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('option 1'));
           await tester.pump();
           await tester.tap(find.text('option 2'));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.length, 1);
+          expect((cubit.state as ActivityLoadedState).answers.length, 1);
           expect(
-            (cubit.state as SurveyLoadedState).answers[0]?.answer,
+            (cubit.state as ActivityLoadedState).answers[0]?.answer,
             ['option 1', 'option 2'],
           );
         },
@@ -321,9 +321,9 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.isEmpty, true);
+          expect((cubit.state as ActivityLoadedState).answers.isEmpty, true);
         },
       );
 
@@ -338,13 +338,13 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('option 1'));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.length, 1);
+          expect((cubit.state as ActivityLoadedState).answers.length, 1);
           expect(
-            (cubit.state as SurveyLoadedState).answers[0]?.answer,
+            (cubit.state as ActivityLoadedState).answers[0]?.answer,
             ['option 1'],
           );
         },
@@ -361,15 +361,15 @@ void main() {
               ],
             ),
           );
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await tester.tap(find.text('option 1'));
           await tester.pump();
           await tester.tap(find.text('option 2'));
           await tester.pump();
           await tester.tap(find.text('NEXT'));
-          expect((cubit.state as SurveyLoadedState).answers.length, 1);
+          expect((cubit.state as ActivityLoadedState).answers.length, 1);
           expect(
-            (cubit.state as SurveyLoadedState).answers[0]?.answer,
+            (cubit.state as ActivityLoadedState).answers[0]?.answer,
             ['option 1', 'option 2'],
           );
         },

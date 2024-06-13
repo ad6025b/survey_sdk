@@ -1,7 +1,7 @@
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 abstract class SessionStorageRepository {
-  void saveSurveyData(SurveyData surveyData);
+  void saveActivityData(ActivityData activityData);
 
-  SurveyData? getSurveyData();
+  ActivityData? getActivityData();
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:survey_sdk/src/presentation/utils/utils.dart';
 
-/// Represents the content of a survey question.
+/// Represents the content of a activity question.
 class QuestionContent extends StatelessWidget {
   /// Text content of the question.
   final String content;
@@ -24,8 +24,8 @@ class QuestionContent extends StatelessWidget {
     return Text(
       content,
       style: TextStyle(
-        color: textColor ?? SurveyColors.black,
-        fontSize: textSize ?? SurveyFonts.sizeS,
+        color: textColor ?? ActivityColors.black,
+        fontSize: textSize ?? ActivityFonts.sizeS,
       ),
     );
   }

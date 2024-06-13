@@ -8,45 +8,45 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   final FilesystemDataSource dataSource = FilesystemDataSourceImpl();
 
-  group('getSurveyData method', () {
+  group('getActivityData method', () {
     test('Call with empty parameter', () {
       expect(
-        () => dataSource.getSurveyData(''),
+        () => dataSource.getActivityData(''),
         throwsAssertionError,
       );
     });
 
     test('Call with bad parameter', () async {
-      final receivedSurveyData = await dataSource.getSurveyData('bad asset');
+      final receivedActivityData = await dataSource.getActivityData('bad asset');
 
       expect(
-        receivedSurveyData.$1,
+        receivedActivityData.$1,
         isNull,
       );
     });
 
     test('Call with good parameter', () async {
-      const path = 'test/assets/test_survey_data.json';
-      final receivedSurveyData = await dataSource.getSurveyData(path);
+      const path = 'test/assets/test_activity_data.json';
+      final receivedActivityData = await dataSource.getActivityData(path);
 
       // ignore: lines_longer_than_80_chars
       // TODO(dev): we need to change the mock values to match the new json format.
       expect(
-        receivedSurveyData.$1,
-        receivedSurveyData.$1,
+        receivedActivityData.$1,
+        receivedActivityData.$1,
       );
     });
 
     test('Call with damaged JSON', () async {
-      const path = 'test/assets/test_survey_incorrect_data.json';
-      final receivedSurveyData = await dataSource.getSurveyData(path);
+      const path = 'test/assets/test_activity_incorrect_data.json';
+      final receivedActivityData = await dataSource.getActivityData(path);
 
       expect(
-        receivedSurveyData.$1,
+        receivedActivityData.$1,
         isNull,
       );
       expect(
-        receivedSurveyData.$2.length,
+        receivedActivityData.$2.length,
         equals(2),
       );
     });

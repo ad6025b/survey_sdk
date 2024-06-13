@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:survey_admin/presentation/pages/new_question_page/new_question_tabs.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class NewQuestionState extends Equatable {
   final NewQuestionTabs selectedTab;
-  final SurveyData data;
+  final ActivityData data;
 
   const NewQuestionState({
     required this.data,
@@ -19,7 +19,7 @@ class NewQuestionState extends Equatable {
 
   NewQuestionState copyWith({
     NewQuestionTabs? selectedTab,
-    SurveyData? data,
+    ActivityData? data,
   }) =>
       NewQuestionState(
         data: data ?? this.data,

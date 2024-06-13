@@ -1,4 +1,4 @@
-abstract class SurveyDimensions {
+abstract class ActivityDimensions {
   static const double margin3XS = 2;
   static const double margin2XS = 6;
   static const double marginXS = 12;
@@ -31,7 +31,7 @@ abstract class SurveyDimensions {
   static const double thinBorderWidth = 0.5;
   static const double defaultBorderWidth = 1;
 
-  static const double surveyContentBarWidth = 210;
+  static const double activityContentBarWidth = 210;
 
   static const double addButtonWidth = 150;
   static const double addButtonHeight = 34;
@@ -43,8 +43,8 @@ abstract class SurveyDimensions {
   static const double switchWidth = 34;
   static const double switchHeight = 18;
 
-  static const double surveyEditorBarWidth = 300;
-  static const double surveyEditorTabBarHeight = 37;
+  static const double activityEditorBarWidth = 300;
+  static const double activityEditorTabBarHeight = 37;
 
   static const double tabBarPadding = 126;
   static const double tabBarWidth = 500;

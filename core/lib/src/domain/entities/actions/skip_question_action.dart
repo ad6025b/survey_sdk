@@ -1,7 +1,7 @@
-import 'package:survey_sdk/src/domain/entities/actions/survey_action.dart';
+import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
 import 'package:survey_sdk/src/domain/entities/constants/action_types.dart';
 
-final class SkipQuestionAction extends SurveyAction {
+final class SkipQuestionAction extends ActivityAction {
   @override
   String get type => ActionTypes.skipQuestionAction;
 

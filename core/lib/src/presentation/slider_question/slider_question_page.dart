@@ -18,10 +18,10 @@ class SliderQuestionPage extends StatefulWidget {
   final QuestionAnswer<double>? answer;
 
   /// Callback that is called after pressing bottom button.
-  final SurveyCallback onPrimaryButtonTap;
+  final ActivityCallback onPrimaryButtonTap;
 
   /// Optional callback that is called when the secondary button is tapped.
-  final SurveyCallback? onSecondaryButtonTap;
+  final ActivityCallback? onSecondaryButtonTap;
 
   const SliderQuestionPage({
     required this.data,
@@ -68,10 +68,10 @@ class _SliderQuestionPageState extends State<SliderQuestionPage> {
             hasScrollBody: false,
             child: Padding(
               padding: const EdgeInsets.only(
-                left: SurveyDimensions.margin2XL,
-                right: SurveyDimensions.margin2XL,
-                top: SurveyDimensions.margin3XL,
-                bottom: SurveyDimensions.marginXL,
+                left: ActivityDimensions.margin2XL,
+                right: ActivityDimensions.margin2XL,
+                top: ActivityDimensions.margin3XL,
+                bottom: ActivityDimensions.marginXL,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +85,7 @@ class _SliderQuestionPageState extends State<SliderQuestionPage> {
                   if (widget.data.subtitle.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.only(
-                        top: SurveyDimensions.marginS,
+                        top: ActivityDimensions.marginS,
                       ),
                       child: QuestionContent(
                         content: widget.data.subtitle,
@@ -95,7 +95,7 @@ class _SliderQuestionPageState extends State<SliderQuestionPage> {
                     ),
                   Padding(
                     padding:
-                        const EdgeInsets.only(top: SurveyDimensions.marginM),
+                        const EdgeInsets.only(top: ActivityDimensions.marginM),
                     child: _QuestionSlider(
                       minValue: widget.data.minValue,
                       maxValue: widget.data.maxValue,
@@ -204,7 +204,7 @@ class _QuestionSliderState extends State<_QuestionSlider> {
   @override
   Widget build(BuildContext context) {
     final textStyle = context.theme.textTheme.bodyMedium?.copyWith(
-      fontFamily: SurveyFonts.inter,
+      fontFamily: ActivityFonts.inter,
     );
     _value = _value >= widget.minValue.toDouble() &&
             _value <= widget.maxValue.toDouble()
@@ -236,11 +236,11 @@ class _QuestionSliderState extends State<_QuestionSlider> {
               min: widget.minValue.toDouble(),
               max: widget.maxValue.toDouble(),
             ),
-            const SizedBox(height: SurveyDimensions.margin2XS),
+            const SizedBox(height: ActivityDimensions.margin2XS),
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: SurveyDimensions.sizeM),
+                  padding: const EdgeInsets.only(left: ActivityDimensions.sizeM),
                   child: Text(
                     widget.minValue.toString(),
                     style: textStyle,
@@ -248,7 +248,7 @@ class _QuestionSliderState extends State<_QuestionSlider> {
                 ),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(right: SurveyDimensions.sizeM),
+                  padding: const EdgeInsets.only(right: ActivityDimensions.sizeM),
                   child: Text(
                     widget.maxValue.toString(),
                     style: textStyle,

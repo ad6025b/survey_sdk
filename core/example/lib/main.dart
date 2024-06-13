@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(),
       localizationsDelegates: const [
-        SurveyLocalizations.delegate,
+        ActivityLocalizations.delegate,
       ],
     );
   }
@@ -36,11 +36,11 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Survey example'),
+        title: const Text('Activity example'),
       ),
-      // Add Survey to your widget tree with filePath parameter that accepts
-      // a json file with parsed survey data
-      body: const Survey(
+      // Add Activity to your widget tree with filePath parameter that accepts
+      // a json file with parsed activity data
+      body: const Activity(
         filePath: 'assets/questions.json',
         onFinish: print,
       ),

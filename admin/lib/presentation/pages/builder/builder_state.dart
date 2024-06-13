@@ -1,15 +1,15 @@
 import 'package:equatable/equatable.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 abstract class BuilderState extends Equatable {
-  final SurveyData surveyData;
+  final ActivityData activityData;
 
   const BuilderState({
-    required this.surveyData,
+    required this.activityData,
   });
 
   BuilderState copyWith({
-    SurveyData? surveyData,
+    ActivityData? activityData,
   });
 }
 
@@ -17,21 +17,21 @@ class EditQuestionBuilderState extends BuilderState {
   final int selectedIndex;
 
   @override
-  List<Object?> get props => [selectedIndex, surveyData];
+  List<Object?> get props => [selectedIndex, activityData];
 
   const EditQuestionBuilderState({
-    required super.surveyData,
+    required super.activityData,
     required this.selectedIndex,
   });
 
   @override
   BuilderState copyWith({
     int? selectedIndex,
-    SurveyData? surveyData,
+    ActivityData? activityData,
   }) {
     return EditQuestionBuilderState(
       selectedIndex: selectedIndex ?? this.selectedIndex,
-      surveyData: surveyData ?? this.surveyData,
+      activityData: activityData ?? this.activityData,
     );
   }
 }
@@ -40,58 +40,58 @@ class PreviewQuestionBuilderState extends BuilderState {
   final QuestionData? selectedQuestion;
 
   @override
-  List<Object?> get props => [selectedQuestion, surveyData];
+  List<Object?> get props => [selectedQuestion, activityData];
 
   const PreviewQuestionBuilderState({
-    required super.surveyData,
+    required super.activityData,
     required this.selectedQuestion,
   });
 
   @override
   BuilderState copyWith({
-    SurveyData? surveyData,
+    ActivityData? activityData,
     QuestionData? selectedQuestion,
   }) {
     return PreviewQuestionBuilderState(
-      surveyData: surveyData ?? this.surveyData,
+      activityData: activityData ?? this.activityData,
       selectedQuestion: selectedQuestion ?? this.selectedQuestion,
     );
   }
 
 }
 
-class ImportSuccessSurveyDataBuilderState extends BuilderState {
+class ImportSuccessActivityDataBuilderState extends BuilderState {
   @override
-  List<Object?> get props => [surveyData];
+  List<Object?> get props => [activityData];
 
-  const ImportSuccessSurveyDataBuilderState({
-    required super.surveyData,
+  const ImportSuccessActivityDataBuilderState({
+    required super.activityData,
   });
 
   @override
   BuilderState copyWith({
-    SurveyData? surveyData,
+    ActivityData? activityData,
   }) {
-    return ImportSuccessSurveyDataBuilderState(
-      surveyData: surveyData ?? this.surveyData,
+    return ImportSuccessActivityDataBuilderState(
+      activityData: activityData ?? this.activityData,
     );
   }
 }
 
-class ImportErrorSurveyDataBuilderState extends BuilderState {
+class ImportErrorActivityDataBuilderState extends BuilderState {
   @override
-  List<Object?> get props => [surveyData];
+  List<Object?> get props => [activityData];
 
-  const ImportErrorSurveyDataBuilderState({
-    required super.surveyData,
+  const ImportErrorActivityDataBuilderState({
+    required super.activityData,
   });
 
   @override
   BuilderState copyWith({
-    SurveyData? surveyData,
+    ActivityData? activityData,
   }) {
-    return ImportErrorSurveyDataBuilderState(
-      surveyData: surveyData ?? this.surveyData,
+    return ImportErrorActivityDataBuilderState(
+      activityData: activityData ?? this.activityData,
     );
   }
 }

@@ -37,34 +37,34 @@ class QuestionBottomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final buttonColor =
-        (color ?? SurveyColors.black).withOpacity(isEnabled ? 1.0 : 0.6);
+        (color ?? ActivityColors.black).withOpacity(isEnabled ? 1.0 : 0.6);
     final buttonTextColor =
-        (textColor ?? SurveyColors.white).withOpacity(isEnabled ? 1.0 : 0.6);
+        (textColor ?? ActivityColors.white).withOpacity(isEnabled ? 1.0 : 0.6);
     return SizedBox(
       width: double.infinity,
       child: InkWell(
         onTap: isEnabled ? onPressed : null,
         borderRadius: BorderRadius.circular(
-          radius ?? SurveyDimensions.circularRadiusXS,
+          radius ?? ActivityDimensions.circularRadiusXS,
         ),
         child: AnimatedContainer(
           decoration: BoxDecoration(
             color: buttonColor,
             borderRadius: BorderRadius.circular(
-              radius ?? SurveyDimensions.circularRadiusXS,
+              radius ?? ActivityDimensions.circularRadiusXS,
             ),
             border: Border.all(color: buttonColor),
           ),
-          duration: SurveyDurations.questionBottomButton,
+          duration: ActivityDurations.questionBottomButton,
           child: Padding(
-            padding: const EdgeInsets.all(SurveyDimensions.marginS),
+            padding: const EdgeInsets.all(ActivityDimensions.marginS),
             child: Center(
               child: Text(
                 text,
                 style: TextStyle(
                   color: buttonTextColor,
-                  fontWeight: SurveyFonts.weightBold,
-                  fontSize: textSize ?? SurveyFonts.sizeM,
+                  fontWeight: ActivityFonts.weightBold,
+                  fontSize: textSize ?? ActivityFonts.sizeM,
                 ),
                 textAlign: TextAlign.center,
               ),

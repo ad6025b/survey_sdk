@@ -5,7 +5,7 @@ import 'package:survey_admin/presentation/app/localization/app_localizations_ext
 import 'package:survey_admin/presentation/pages/new_question_page/new_question_page.dart';
 import 'package:survey_admin/presentation/utils/utils.dart';
 import 'package:survey_admin/presentation/widgets/builder_page/question_list_item.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class QuestionList extends StatefulWidget {
   final ValueChanged<QuestionData> onSelect;
@@ -13,8 +13,8 @@ class QuestionList extends StatefulWidget {
   final ValueChanged<QuestionData> onDelete;
   final ValueChanged<List<QuestionData>> onUpdate;
   final int? selectedIndex;
-  final SurveyData data;
-  final ValueChanged<SurveyData> onDataUpdate;
+  final ActivityData data;
+  final ValueChanged<ActivityData> onDataUpdate;
   final bool isEditMode;
 
   const QuestionList({
@@ -55,18 +55,18 @@ class _QuestionListState extends State<QuestionList> {
     final length = widget.data.questions.length;
 
     return AnimatedContainer(
-      duration: SurveyDurations.panelSwitchingDuration,
-      color: SurveyColors.white,
-      width: widget.isEditMode ? SurveyDimensions.surveyContentBarWidth : 0,
+      duration: ActivityDurations.panelSwitchingDuration,
+      color: ActivityColors.white,
+      width: widget.isEditMode ? ActivityDimensions.activityContentBarWidth : 0,
       child: OverflowBox(
-        maxWidth: SurveyDimensions.surveyContentBarWidth,
+        maxWidth: ActivityDimensions.activityContentBarWidth,
         child: Column(
           children: [
             const Divider(),
             _ListHeader(
               //ignore: avoid-passing-async-when-sync-expected
               onAddButtonTap: () async {
-                final surveyData = await Navigator.of(context).push(
+                final activityData = await Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => NewQuestionPage(
                       data: widget.data,
@@ -75,9 +75,9 @@ class _QuestionListState extends State<QuestionList> {
                 );
 
                 //alex101 return if just cancel add screen
-                if (surveyData == null) return;
+                if (activityData == null) return;
 
-                widget.onDataUpdate(surveyData);
+                widget.onDataUpdate(activityData);
               },
               isEditingCommonTheme: widget.selectedIndex == -1,
               questionList: widget.data.questions,
@@ -110,10 +110,10 @@ class _QuestionListState extends State<QuestionList> {
                 cardBuilder: (_, children) {
                   return DecoratedBox(
                     decoration: const BoxDecoration(
-                      color: SurveyColors.white,
+                      color: ActivityColors.white,
                       border: Border.fromBorderSide(BorderSide(width: 0.5)),
                       borderRadius: BorderRadius.all(
-                        Radius.circular(SurveyDimensions.circularRadiusXS),
+                        Radius.circular(ActivityDimensions.circularRadiusXS),
                       ),
                     ),
                     child: Column(children: children),
@@ -143,25 +143,25 @@ class _ListHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: SurveyDimensions.margin2XS,
-        horizontal: SurveyDimensions.marginXL,
+        vertical: ActivityDimensions.margin2XS,
+        horizontal: ActivityDimensions.marginXL,
       ),
       child: Row(
         children: [
           Text(
-            context.localization.survey,
+            context.localization.activity,
             style: context.theme.textTheme.titleMedium?.copyWith(
-              fontWeight: SurveyFonts.weightBold,
+              fontWeight: ActivityFonts.weightBold,
             ),
           ),
           const SizedBox(
-            width: SurveyDimensions.margin4XL,
+            width: ActivityDimensions.margin4XL,
           ),
           GestureDetector(
             onTap: onAddButtonTap,
             child: SizedBox(
-              height: SurveyDimensions.sizeL,
-              width: SurveyDimensions.sizeL,
+              height: ActivityDimensions.sizeL,
+              width: ActivityDimensions.sizeL,
               child: SvgPicture.asset(AppAssets.addCircleIcon),
             ),
           ),

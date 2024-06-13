@@ -1,9 +1,9 @@
-import 'package:survey_sdk/src/domain/entities/actions/survey_action.dart';
+import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
 import 'package:survey_sdk/src/domain/entities/constants/action_types.dart';
 
-class FinishSurveyAction extends SurveyAction {
+class FinishActivityAction extends ActivityAction {
   @override
-  String get type => ActionTypes.finishSurveyAction;
+  String get type => ActionTypes.finishActivityAction;
 
   @override
   int get hashCode => type.hashCode ^ super.hashCode;
@@ -11,7 +11,7 @@ class FinishSurveyAction extends SurveyAction {
   @override
   List<Object?> get props => [];
 
-  const FinishSurveyAction();
+  const FinishActivityAction();
 
   @override
   bool operator ==(Object other) => runtimeType == other.runtimeType;

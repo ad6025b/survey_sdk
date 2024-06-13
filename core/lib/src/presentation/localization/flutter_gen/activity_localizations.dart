@@ -5,23 +5,23 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
-import 'package:survey_sdk/src/presentation/localization/flutter_gen/survey_localizations_en.dart';
+import 'package:survey_sdk/src/presentation/localization/flutter_gen/activity_localizations_en.dart';
 
 // ignore_for_file: lines_longer_than_80_chars
 
-/// Callers can lookup localized strings with an instance of SurveyLocalizations
-/// returned by `SurveyLocalizations.of(context)`.
+/// Callers can lookup localized strings with an instance of ActivityLocalizations
+/// returned by `ActivityLocalizations.of(context)`.
 ///
-/// Applications need to include `SurveyLocalizations.delegate()` in their app's
+/// Applications need to include `ActivityLocalizations.delegate()` in their app's
 /// `localizationDelegates` list, and the locales they support in the app's
 /// `supportedLocales` list. For example:
 ///
 /// ```dart
-/// import 'flutter_gen/survey_localizations.dart';
+/// import 'flutter_gen/activity_localizations.dart';
 ///
 /// return MaterialApp(
-///   localizationsDelegates: SurveyLocalizations.localizationsDelegates,
-///   supportedLocales: SurveyLocalizations.supportedLocales,
+///   localizationsDelegates: ActivityLocalizations.localizationsDelegates,
+///   supportedLocales: ActivityLocalizations.supportedLocales,
 ///   home: MyApplicationHome(),
 /// );
 /// ```
@@ -58,13 +58,13 @@ import 'package:survey_sdk/src/presentation/localization/flutter_gen/survey_loca
 /// Select and expand the newly-created Localizations item then, for each
 /// locale your application supports, add a new item and select the locale
 /// you wish to add from the pop-up menu in the Value field. This list should
-/// be consistent with the languages listed in the SurveyLocalizations.supportedLocales
+/// be consistent with the languages listed in the ActivityLocalizations.supportedLocales
 /// property.
-abstract class SurveyLocalizations {
+abstract class ActivityLocalizations {
   final String localeName;
 
-  static const LocalizationsDelegate<SurveyLocalizations> delegate =
-      _SurveyLocalizationsDelegate();
+  static const LocalizationsDelegate<ActivityLocalizations> delegate =
+      _ActivityLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -117,11 +117,11 @@ abstract class SurveyLocalizations {
   /// **'SKIP'**
   String get skip;
 
-  /// No description provided for @surveyLoadError.
+  /// No description provided for @activityLoadError.
   ///
   /// In en, this message translates to:
-  /// **'Data is corrupted, survey has not been loaded'**
-  String get surveyLoadError;
+  /// **'Data is corrupted, activity has not been loaded'**
+  String get activityLoadError;
 
   /// No description provided for @textField.
   ///
@@ -129,22 +129,22 @@ abstract class SurveyLocalizations {
   /// **'Text field'**
   String get textField;
 
-  SurveyLocalizations(String locale)
+  ActivityLocalizations(String locale)
       : localeName = intl.Intl.canonicalizedLocale(locale);
 
-  static SurveyLocalizations of(BuildContext context) {
-    return Localizations.of<SurveyLocalizations>(context, SurveyLocalizations)!;
+  static ActivityLocalizations of(BuildContext context) {
+    return Localizations.of<ActivityLocalizations>(context, ActivityLocalizations)!;
   }
 }
 
-class _SurveyLocalizationsDelegate
-    extends LocalizationsDelegate<SurveyLocalizations> {
-  const _SurveyLocalizationsDelegate();
+class _ActivityLocalizationsDelegate
+    extends LocalizationsDelegate<ActivityLocalizations> {
+  const _ActivityLocalizationsDelegate();
 
   @override
-  Future<SurveyLocalizations> load(Locale locale) {
-    return SynchronousFuture<SurveyLocalizations>(
-      lookupSurveyLocalizations(locale),
+  Future<ActivityLocalizations> load(Locale locale) {
+    return SynchronousFuture<ActivityLocalizations>(
+      lookupActivityLocalizations(locale),
     );
   }
 
@@ -152,12 +152,12 @@ class _SurveyLocalizationsDelegate
   bool isSupported(Locale locale) => true;
 
   @override
-  bool shouldReload(_SurveyLocalizationsDelegate old) => false;
+  bool shouldReload(_ActivityLocalizationsDelegate old) => false;
 }
 
-SurveyLocalizations lookupSurveyLocalizations(Locale locale) =>
+ActivityLocalizations lookupActivityLocalizations(Locale locale) =>
     // Lookup logic when only language code is specified.
     switch (locale.languageCode) {
-      'en' => SurveyLocalizationsEn(),
-      _ => SurveyLocalizationsEn(),
+      'en' => ActivityLocalizationsEn(),
+      _ => ActivityLocalizationsEn(),
     };

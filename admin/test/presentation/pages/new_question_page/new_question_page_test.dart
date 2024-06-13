@@ -14,7 +14,7 @@ import 'package:survey_admin/presentation/pages/new_question_page/new_question_c
 import 'package:survey_admin/presentation/pages/new_question_page/new_question_page.dart';
 import 'package:survey_admin/presentation/utils/common_data.dart';
 import 'package:survey_admin/presentation/widgets/vector_image.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 import '../../../utils/shared_mocks.mocks.dart';
 import '../../widgets/app_tester.dart';
@@ -25,7 +25,7 @@ class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 void main() {
   group('Tests for NewQuestionPage', () {
     final getIt = GetIt.instance;
-    final mockSurveyData = MockSurveyData();
+    final mockActivityData = MockActivityData();
 
     final mockObserver = MockNavigatorObserver();
     final page = AppTester(
@@ -34,19 +34,19 @@ void main() {
         builder: (context) {
           final commonData = CommonData(context);
           when(
-            mockSurveyData.commonTheme,
+            mockActivityData.commonTheme,
           )
               .thenAnswer(
                 (_) => commonData.commonTheme,
           );
           when(
-            mockSurveyData.questions,
+            mockActivityData.questions,
           )
               .thenAnswer(
                 (_) => [commonData.info(index: 1)],
           );
-          _inject(getIt, context, mockSurveyData);
-          return NewQuestionPage(data: mockSurveyData);
+          _inject(getIt, context, mockActivityData);
+          return NewQuestionPage(data: mockActivityData);
         },
       ),
     );
@@ -114,7 +114,7 @@ void main() {
   });
 }
 
-Future<void> _inject(GetIt getIt, BuildContext context, SurveyData data) async {
+Future<void> _inject(GetIt getIt, BuildContext context, ActivityData data) async {
   if (getIt.isRegistered<CommonData>()) await getIt.reset();
 
   getIt
@@ -133,7 +133,7 @@ Future<void> _inject(GetIt getIt, BuildContext context, SurveyData data) async {
     ..registerSingleton<SessionStorageRepository>(
       SessionStorageRepositoryImpl(getIt.get()),
     )
-    ..registerFactoryParam<NewQuestionCubit, SurveyData, void>(
+    ..registerFactoryParam<NewQuestionCubit, ActivityData, void>(
           (data, _) => NewQuestionCubit(data),
     );
 }

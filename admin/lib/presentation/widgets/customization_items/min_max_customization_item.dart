@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_widgets/customization_text_field.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class MinMaxCustomizationItem extends StatefulWidget {
   final int initialMin;
@@ -114,7 +114,7 @@ class _MinMaxInputField extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(
-            right: SurveyDimensions.marginXS,
+            right: ActivityDimensions.marginXS,
           ),
           child: Text(
             prefix,

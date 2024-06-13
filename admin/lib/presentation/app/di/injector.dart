@@ -12,7 +12,7 @@ import 'package:survey_admin/domain/repository_interfaces/session_storage_reposi
 import 'package:survey_admin/presentation/pages/builder/builder_cubit.dart';
 import 'package:survey_admin/presentation/pages/new_question_page/new_question_cubit.dart';
 import 'package:survey_admin/presentation/utils/common_data.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 //ignore_for_file: prefer-static-class
 GetIt get i => GetIt.instance;
@@ -50,7 +50,7 @@ void _initRepositories() {
 void _initCubits() {
   i
     ..registerFactory<BuilderCubit>(() => BuilderCubit(i.get(), i.get()))
-    ..registerFactoryParam<NewQuestionCubit, SurveyData, void>(
+    ..registerFactoryParam<NewQuestionCubit, ActivityData, void>(
       (data, _) => NewQuestionCubit(data),
     );
 }

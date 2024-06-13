@@ -5,17 +5,17 @@ import 'package:survey_admin/presentation/utils/utils.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_widgets/customization_text_field.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/dropdown_customization_button.dart';
 import 'package:survey_admin/presentation/widgets/vector_image.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class ActionsCustomizationItem extends StatefulWidget {
-  final ValueChanged<SurveyAction?> onChanged;
-  final SurveyAction? surveyAction;
+  final ValueChanged<ActivityAction?> onChanged;
+  final ActivityAction? activityAction;
   final CallbackType callbackType;
   final int questionsLength;
 
   const ActionsCustomizationItem({
     required this.onChanged,
-    required this.surveyAction,
+    required this.activityAction,
     required this.callbackType,
     required this.questionsLength,
     super.key,
@@ -30,12 +30,12 @@ class _ActionsCustomizationItemState extends State<ActionsCustomizationItem> {
   late int _questionIndex;
 
   void _setQuestionIndex() {
-    _questionIndex = widget.surveyAction is GoToAction
-        ? (widget.surveyAction! as GoToAction).questionIndex
+    _questionIndex = widget.activityAction is GoToAction
+        ? (widget.activityAction! as GoToAction).questionIndex
         : 1;
   }
 
-  SurveyAction _defaultCallbackByType() => switch (widget.callbackType) {
+  ActivityAction _defaultCallbackByType() => switch (widget.callbackType) {
         CallbackType.primaryCallback => const GoNextAction(),
         CallbackType.secondaryCallback => const SkipQuestionAction(),
       };
@@ -49,28 +49,28 @@ class _ActionsCustomizationItemState extends State<ActionsCustomizationItem> {
         Row(
           children: [
             Expanded(
-              child: _SurveyActionDropdownButton(
-                surveyAction: widget.surveyAction,
+              child: _ActivityActionDropdownButton(
+                activityAction: widget.activityAction,
                 onChanged: widget.onChanged,
                 questionIndex: _questionIndex,
               ),
             ),
-            if (widget.surveyAction.runtimeType !=
+            if (widget.activityAction.runtimeType !=
                 _defaultCallbackByType().runtimeType)
               GestureDetector(
                 onTap: () => widget.onChanged(
                   _defaultCallbackByType(),
                 ),
                 child: const Padding(
-                  padding: EdgeInsets.all(SurveyDimensions.marginS),
+                  padding: EdgeInsets.all(ActivityDimensions.marginS),
                   child: VectorImage(assetName: AppAssets.closeIcon),
                 ),
               ),
           ],
         ),
-        if (widget.surveyAction is GoToAction)
+        if (widget.activityAction is GoToAction)
           _IndexSelector(
-            questionIndex: (widget.surveyAction! as GoToAction).questionIndex,
+            questionIndex: (widget.activityAction! as GoToAction).questionIndex,
             onIndexChanged: (value) => widget.onChanged(
               GoToAction(questionIndex: value),
             ),
@@ -81,21 +81,21 @@ class _ActionsCustomizationItemState extends State<ActionsCustomizationItem> {
   }
 }
 
-class _SurveyActionDropdownButton extends StatelessWidget {
-  final SurveyAction? surveyAction;
-  final ValueChanged<SurveyAction?> onChanged;
+class _ActivityActionDropdownButton extends StatelessWidget {
+  final ActivityAction? activityAction;
+  final ValueChanged<ActivityAction?> onChanged;
   final int questionIndex;
 
-  const _SurveyActionDropdownButton({
-    required this.surveyAction,
+  const _ActivityActionDropdownButton({
+    required this.activityAction,
     required this.onChanged,
     required this.questionIndex,
   });
 
   @override
   Widget build(BuildContext context) {
-    return DropdownCustomizationButton<SurveyAction?>(
-      value: surveyAction,
+    return DropdownCustomizationButton<ActivityAction?>(
+      value: activityAction,
       items: [
         DropdownCustomizationItem(
           value: const GoNextAction(),
@@ -118,9 +118,9 @@ class _SurveyActionDropdownButton extends StatelessWidget {
           child: Text(context.localization.skipQuestion),
         ),
         DropdownCustomizationItem(
-          value: const FinishSurveyAction(),
+          value: const FinishActivityAction(),
           onChange: onChanged,
-          child: Text(context.localization.finishSurvey),
+          child: Text(context.localization.finishActivity),
         ),
       ],
       withColor: true,
@@ -171,7 +171,7 @@ class _IndexSelectorState extends State<_IndexSelector> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(
-        SurveyDimensions.marginM,
+        ActivityDimensions.marginM,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +180,7 @@ class _IndexSelectorState extends State<_IndexSelector> {
             context.localization.questionIndex,
             style: context.theme.textTheme.titleSmall,
           ),
-          const SizedBox(height: SurveyDimensions.marginS),
+          const SizedBox(height: ActivityDimensions.marginS),
           Form(
             key: _formKey,
             child: CustomizationTextField.int(

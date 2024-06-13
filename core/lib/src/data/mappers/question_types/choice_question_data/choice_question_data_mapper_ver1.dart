@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:survey_sdk/src/data/mappers/question_types/json_version/question_data_mapper_json_1.dart';
 import 'package:survey_sdk/src/data/mappers/themes/choice_question_theme/choice_question_theme_mapper_ver_1.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 abstract class _Fields {
   static const String index = 'index';
@@ -48,10 +48,10 @@ class ChoiceQuestionDataMapperVer1
           : const ChoiceQuestionTheme.common(),
       primaryButtonText: json[_Fields.primaryButtonText],
       secondaryButtonText: json[_Fields.secondaryButtonText],
-      mainButtonAction: SurveyAction.fromJson(
+      mainButtonAction: ActivityAction.fromJson(
         json[_Fields.primaryButtonAction],
       ),
-      secondaryButtonAction: SurveyAction.fromJson(
+      secondaryButtonAction: ActivityAction.fromJson(
         json[_Fields.secondaryButtonAction],
       ),
     );
@@ -91,10 +91,10 @@ class ChoiceQuestionDataMapperVer1
       _Fields.primaryButtonText: data.primaryButtonText,
       _Fields.primaryButtonAction: data.mainButtonAction == null
           ? null
-          : SurveyAction.toJson(data.mainButtonAction!),
+          : ActivityAction.toJson(data.mainButtonAction!),
       _Fields.secondaryButtonAction: data.secondaryButtonAction == null
           ? null
-          : SurveyAction.toJson(data.secondaryButtonAction!),
+          : ActivityAction.toJson(data.secondaryButtonAction!),
     };
   }
 }

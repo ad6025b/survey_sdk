@@ -1,6 +1,6 @@
-import 'package:survey_sdk/src/domain/entities/actions/survey_action.dart';
+import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
 
-abstract interface class ActionMapper<T extends SurveyAction> {
+abstract interface class ActionMapper<T extends ActivityAction> {
   Map<String, dynamic> toJson(T data);
   T fromJson(Map<String, dynamic> json);
 }

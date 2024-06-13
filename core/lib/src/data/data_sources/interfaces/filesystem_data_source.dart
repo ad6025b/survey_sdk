@@ -1,6 +1,6 @@
-import 'package:survey_sdk/src/domain/entities/survey_data.dart';
+import 'package:survey_sdk/src/domain/entities/activity_data.dart';
 
 // ignore: one_member_abstracts
 abstract class FilesystemDataSource {
-  Future<(SurveyData?, List<String>)> getSurveyData(String filePath);
+  Future<(ActivityData?, List<String>)> getActivityData(String filePath);
 }

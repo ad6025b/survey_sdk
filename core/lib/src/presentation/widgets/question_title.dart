@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:survey_sdk/src/presentation/utils/utils.dart';
 
-/// Represents the title of a survey question.
+/// Represents the title of a activity question.
 class QuestionTitle extends StatelessWidget {
   /// Title text of the question.
   final String title;
@@ -24,9 +24,9 @@ class QuestionTitle extends StatelessWidget {
     return Text(
       title,
       style: TextStyle(
-        color: textColor ?? SurveyColors.black,
-        fontSize: textSize ?? SurveyFonts.sizeL,
-        fontWeight: SurveyFonts.weightBold,
+        color: textColor ?? ActivityColors.black,
+        fontSize: textSize ?? ActivityFonts.sizeL,
+        fontWeight: ActivityFonts.weightBold,
       ),
     );
   }

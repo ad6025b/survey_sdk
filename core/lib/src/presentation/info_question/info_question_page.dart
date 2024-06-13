@@ -14,10 +14,10 @@ class InfoQuestionPage extends StatefulWidget {
   final InfoQuestionData data;
 
   /// Optional callback that is called after pressing main button.
-  final SurveyCallback? onPrimaryButtonTap;
+  final ActivityCallback? onPrimaryButtonTap;
 
   /// Optional callback that is called when the secondary button is tapped.
-  final SurveyCallback? onSecondaryButtonTap;
+  final ActivityCallback? onSecondaryButtonTap;
 
   const InfoQuestionPage({
     required this.data,
@@ -43,10 +43,10 @@ class _InfoQuestionPageState extends State<InfoQuestionPage> {
             hasScrollBody: false,
             child: Padding(
               padding: const EdgeInsets.only(
-                left: SurveyDimensions.margin2XL,
-                right: SurveyDimensions.margin2XL,
-                top: SurveyDimensions.margin3XL,
-                bottom: SurveyDimensions.marginXL,
+                left: ActivityDimensions.margin2XL,
+                right: ActivityDimensions.margin2XL,
+                top: ActivityDimensions.margin3XL,
+                bottom: ActivityDimensions.marginXL,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +56,7 @@ class _InfoQuestionPageState extends State<InfoQuestionPage> {
                   const Spacer(),
                   Padding(
                     padding:
-                        const EdgeInsets.only(top: SurveyDimensions.marginS),
+                        const EdgeInsets.only(top: ActivityDimensions.marginS),
                     child: Row(
                       children: [
                         if (widget.data.isSkip)

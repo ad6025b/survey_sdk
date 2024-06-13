@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_widgets/customization_text_field.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/option.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class OptionCustomizationItem extends StatefulWidget {
   final List<String> options;
@@ -68,15 +68,15 @@ class _OptionCustomizationItemState extends State<OptionCustomizationItem> {
             onDelete: () => _delete(option),
           ),
         ),
-        const SizedBox(height: SurveyDimensions.sizeS),
+        const SizedBox(height: ActivityDimensions.sizeS),
         Row(
           children: [
             const Icon(
               Icons.fiber_manual_record,
-              size: SurveyDimensions.sizeS,
-              color: SurveyColors.textLightGrey,
+              size: ActivityDimensions.sizeS,
+              color: ActivityColors.textLightGrey,
             ),
-            const SizedBox(width: SurveyDimensions.margin2XS),
+            const SizedBox(width: ActivityDimensions.margin2XS),
             Expanded(
               child: CustomizationTextField(
                 controller: _controller,
@@ -84,7 +84,7 @@ class _OptionCustomizationItemState extends State<OptionCustomizationItem> {
                 decoration: InputDecoration.collapsed(
                   hintText: context.localization.typeNewOptionHere,
                   hintStyle: const TextStyle(
-                    color: SurveyColors.textHintGrey,
+                    color: ActivityColors.textHintGrey,
                   ),
                 ),
               ),

@@ -41,7 +41,7 @@ void main() {
       expect(find.text('Preview'), findsOneWidget);
       expect(find.text('IMPORT'), findsOneWidget);
       expect(find.text('EXPORT'), findsOneWidget);
-      expect(find.text('Survey'), findsOneWidget);
+      expect(find.text('Activity'), findsOneWidget);
       expect(find.text('Common'), findsOneWidget);
       expect(find.text('Content'), findsOneWidget);
       expect(find.text('Info'), findsNWidgets(3));
@@ -127,7 +127,7 @@ void main() {
       tester.binding.platformDispatcher.clearTextScaleFactorTestValue();
     });
 
-    testWidgets('Delete survey', (tester) async {
+    testWidgets('Delete activity', (tester) async {
       tester.binding.platformDispatcher.textScaleFactorTestValue = 0.5;
 
       await tester.pumpWidget(page);

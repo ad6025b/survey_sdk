@@ -5,7 +5,7 @@ import 'package:survey_admin/presentation/widgets/customization_panel/choice/cho
 import 'package:survey_admin/presentation/widgets/customization_panel/info/info_customization_panel.dart';
 import 'package:survey_admin/presentation/widgets/customization_panel/input/input_customization_panel.dart';
 import 'package:survey_admin/presentation/widgets/customization_panel/slider/slider_customization_panel.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class EditorBar extends StatelessWidget {
   final QuestionData? editableQuestion;
@@ -25,20 +25,20 @@ class EditorBar extends StatelessWidget {
     if (!isEditMode) return 0;
 
     final freeSpaceWidth = MediaQuery.of(context).size.width -
-        SurveyDimensions.surveyContentBarWidth;
+        ActivityDimensions.activityContentBarWidth;
 
-    return min(SurveyDimensions.surveyEditorBarWidth, freeSpaceWidth);
+    return min(ActivityDimensions.activityEditorBarWidth, freeSpaceWidth);
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: SurveyDurations.panelSwitchingDuration,
-      color: SurveyColors.whitePrimaryBackground,
+      duration: ActivityDurations.panelSwitchingDuration,
+      color: ActivityColors.whitePrimaryBackground,
       width: _calculateWidth(context),
       child: OverflowBox(
         alignment: Alignment.topLeft,
-        maxWidth: SurveyDimensions.surveyEditorBarWidth,
+        maxWidth: ActivityDimensions.activityEditorBarWidth,
         child: Builder(
           builder: (context) {
             final questionData = editableQuestion;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 //ignore_for_file: prefer-static-class
 void showExportFloatingWindow(
@@ -42,16 +42,16 @@ class ExportFloatingWindow extends StatelessWidget {
     const opacity = 0.2;
     final labelLarge = context.theme.textTheme.labelLarge;
     return Material(
-      color: SurveyColors.black.withOpacity(opacity),
+      color: ActivityColors.black.withOpacity(opacity),
       child: Center(
         child: Container(
           decoration: const BoxDecoration(
-            color: SurveyColors.whitePrimaryBackground,
+            color: ActivityColors.whitePrimaryBackground,
             borderRadius: BorderRadius.all(
-              Radius.circular(SurveyDimensions.circularRadiusS),
+              Radius.circular(ActivityDimensions.circularRadiusS),
             ),
           ),
-          width: SurveyDimensions.exportWindowWidth,
+          width: ActivityDimensions.exportWindowWidth,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -60,16 +60,16 @@ class ExportFloatingWindow extends StatelessWidget {
                 child: IconButton(
                   onPressed: onClose,
                   icon: const Icon(Icons.close),
-                  splashRadius: SurveyDimensions.sizeS,
-                  iconSize: SurveyDimensions.sizeS,
-                  color: SurveyColors.black,
+                  splashRadius: ActivityDimensions.sizeS,
+                  iconSize: ActivityDimensions.sizeS,
+                  color: ActivityColors.black,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  top: SurveyDimensions.marginXS,
-                  left: SurveyDimensions.margin2XL,
-                  right: SurveyDimensions.margin2XL,
+                  top: ActivityDimensions.marginXS,
+                  left: ActivityDimensions.margin2XL,
+                  right: ActivityDimensions.margin2XL,
                 ),
                 child: Text(
                   context.localization.exportFloatingWindowTitle,
@@ -79,11 +79,11 @@ class ExportFloatingWindow extends StatelessWidget {
               ),
               const Image(
                 image: AssetImage('assets/images/task_completed.png'),
-                width: SurveyDimensions.imageSizeM,
-                height: SurveyDimensions.imageSizeM,
+                width: ActivityDimensions.imageSizeM,
+                height: ActivityDimensions.imageSizeM,
               ),
               Padding(
-                padding: const EdgeInsets.all(SurveyDimensions.marginL),
+                padding: const EdgeInsets.all(ActivityDimensions.marginL),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -91,7 +91,7 @@ class ExportFloatingWindow extends StatelessWidget {
                       onPressed: onCopyPressed,
                       style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(
-                          SurveyColors.white,
+                          ActivityColors.white,
                         ),
                         side: MaterialStatePropertyAll(
                           BorderSide(),
@@ -100,7 +100,7 @@ class ExportFloatingWindow extends StatelessWidget {
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(
-                                SurveyDimensions.circularRadiusXS,
+                                ActivityDimensions.circularRadiusXS,
                               ),
                             ),
                           ),
@@ -108,12 +108,12 @@ class ExportFloatingWindow extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: SurveyDimensions.sizeL,
+                          horizontal: ActivityDimensions.sizeL,
                         ),
                         child: Text(
                           context.localization.copy,
                           style: labelLarge?.copyWith(
-                            fontFamily: SurveyFonts.karla,
+                            fontFamily: ActivityFonts.karla,
                           ),
                         ),
                       ),
@@ -122,13 +122,13 @@ class ExportFloatingWindow extends StatelessWidget {
                       onPressed: onDownload,
                       style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(
-                          SurveyColors.black,
+                          ActivityColors.black,
                         ),
                         shape: MaterialStatePropertyAll(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(
-                                SurveyDimensions.circularRadiusXS,
+                                ActivityDimensions.circularRadiusXS,
                               ),
                             ),
                           ),
@@ -136,13 +136,13 @@ class ExportFloatingWindow extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: SurveyDimensions.margin5XL,
+                          horizontal: ActivityDimensions.margin5XL,
                         ),
                         child: Text(
                           context.localization.download,
                           style: labelLarge?.copyWith(
-                            fontFamily: SurveyFonts.karla,
-                            color: SurveyColors.white,
+                            fontFamily: ActivityFonts.karla,
+                            color: ActivityColors.white,
                           ),
                         ),
                       ),

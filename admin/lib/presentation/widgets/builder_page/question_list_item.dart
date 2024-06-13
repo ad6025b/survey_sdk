@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:survey_admin/presentation/utils/utils.dart';
 import 'package:survey_admin/presentation/widgets/vector_image.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class QuestionListItem extends StatelessWidget {
   final QuestionData questionData;
@@ -41,45 +41,45 @@ class QuestionListItem extends StatelessWidget {
         onTap: () => onTap(questionData),
         selected: isSelected,
         tileColor:
-            isSelected ? SurveyColors.greyBackground : SurveyColors.white,
+            isSelected ? ActivityColors.greyBackground : ActivityColors.white,
         title: Padding(
-          padding: const EdgeInsets.all(SurveyDimensions.margin2XS),
+          padding: const EdgeInsets.all(ActivityDimensions.margin2XS),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: SurveyDimensions.marginXS),
+                padding: const EdgeInsets.only(top: ActivityDimensions.marginXS),
                 child: SizedBox(
-                  width: SurveyDimensions.marginXS + SurveyDimensions.margin3XS,
+                  width: ActivityDimensions.marginXS + ActivityDimensions.margin3XS,
                   child: Text(
                     questionData.index.toString(),
                     style: textTheme.bodySmall?.copyWith(
-                      color: SurveyColors.textGrey,
+                      color: ActivityColors.textGrey,
                     ),
                   ),
                 ),
               ),
-              const SizedBox(width: SurveyDimensions.marginXS),
+              const SizedBox(width: ActivityDimensions.marginXS),
               Container(
                 decoration: const BoxDecoration(
-                  color: SurveyColors.white,
+                  color: ActivityColors.white,
                   borderRadius: BorderRadius.all(
-                    Radius.circular(SurveyDimensions.circularRadiusS),
+                    Radius.circular(ActivityDimensions.circularRadiusS),
                   ),
                   border: Border.fromBorderSide(
                     BorderSide(
-                      width: SurveyDimensions.thinBorderWidth,
+                      width: ActivityDimensions.thinBorderWidth,
                     ),
                   ),
                 ),
-                height: SurveyDimensions.imageSizeS,
-                width: SurveyDimensions.imageSizeS,
+                height: ActivityDimensions.imageSizeS,
+                width: ActivityDimensions.imageSizeS,
                 child: Center(
                   //ignore: avoid-returning-widgets
                   child: _questionImage(questionData),
                 ),
               ),
-              const SizedBox(width: SurveyDimensions.marginXS),
+              const SizedBox(width: ActivityDimensions.marginXS),
               Expanded(
                 child: Text(
                   questionData.title,

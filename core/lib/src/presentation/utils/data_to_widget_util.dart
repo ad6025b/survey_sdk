@@ -10,7 +10,7 @@ import 'package:survey_sdk/src/presentation/info_question/info_question_page.dar
 import 'package:survey_sdk/src/presentation/input_question/input_question_page.dart';
 import 'package:survey_sdk/src/presentation/slider_question/slider_question_page.dart';
 
-typedef SurveyCallback = void Function({
+typedef ActivityCallback = void Function({
   required int index,
   required QuestionAnswer? answer,
 });
@@ -19,8 +19,8 @@ abstract class DataToWidgetUtil {
   static Widget createWidget({
     required QuestionData data,
     required VoidCallback onGoNext,
-    required SurveyCallback primaryButtonCallback,
-    SurveyCallback? secondaryButtonCallback,
+    required ActivityCallback primaryButtonCallback,
+    ActivityCallback? secondaryButtonCallback,
     QuestionAnswer? answer,
   }) {
     switch (data.runtimeType) {

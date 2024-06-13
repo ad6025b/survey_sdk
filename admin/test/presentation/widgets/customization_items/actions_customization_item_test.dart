@@ -5,17 +5,17 @@ import 'package:survey_admin/presentation/widgets/customization_items/actions_cu
 import 'package:survey_admin/presentation/widgets/customization_items/customization_widgets/customization_text_field.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/dropdown_customization_button.dart';
 import 'package:survey_admin/presentation/widgets/vector_image.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 import '../app_tester.dart';
 
-SurveyAction _surveyAction = const GoNextAction();
+ActivityAction _activityAction = const GoNextAction();
 
 void main() {
   const questionsLength = 5;
 
   late String goToQuestion;
-  late String finishSurvey;
+  late String finishActivity;
   late String skipQuestion;
   late String goNextQuestion;
   late String goBackQuestion;
@@ -31,14 +31,14 @@ void main() {
             child: Builder(
               builder: (context) {
                 goToQuestion = context.localization.goToQuestion;
-                finishSurvey = context.localization.finishSurvey;
+                finishActivity = context.localization.finishActivity;
                 skipQuestion = context.localization.skipQuestion;
                 goNextQuestion = context.localization.goNextQuestion;
                 goBackQuestion = context.localization.goPreviousQuestion;
 
                 return ActionsCustomizationItem(
                   onChanged: (action) => _mockedOnChanged(action!),
-                  surveyAction: _surveyAction,
+                  activityAction: _activityAction,
                   callbackType: CallbackType.primaryCallback,
                   questionsLength: questionsLength,
                 );
@@ -66,25 +66,25 @@ void main() {
           expect(find.text(goNextQuestion), findsOneWidget);
 
           await tester.tap(
-            find.byType(DropdownCustomizationButton<SurveyAction?>),
+            find.byType(DropdownCustomizationButton<ActivityAction?>),
           );
           await tester.pumpAndSettle();
           expect(find.text(goToQuestion), findsOneWidget);
           expect(find.text(skipQuestion), findsOneWidget);
-          expect(find.text(finishSurvey), findsOneWidget);
+          expect(find.text(finishActivity), findsOneWidget);
           expect(find.text(goBackQuestion), findsOneWidget);
 
           await tester.tap(find.text(goToQuestion));
           await tester.pumpAndSettle();
 
-          expect(_surveyAction.runtimeType, GoToAction);
+          expect(_activityAction.runtimeType, GoToAction);
         },
       );
 
       testWidgets(
         'should switch to SkipQuestion',
         (tester) async {
-          _surveyAction = const GoToAction(questionIndex: 0);
+          _activityAction = const GoToAction(questionIndex: 0);
 
           await tester.pumpWidget(testWidget);
 
@@ -95,111 +95,111 @@ void main() {
           expect(find.text('2'), findsOneWidget);
 
           await tester.tap(
-            find.byType(DropdownCustomizationButton<SurveyAction?>),
+            find.byType(DropdownCustomizationButton<ActivityAction?>),
           );
           await tester.pumpAndSettle();
           expect(find.text(skipQuestion), findsOneWidget);
-          expect(find.text(finishSurvey), findsOneWidget);
+          expect(find.text(finishActivity), findsOneWidget);
 
           await tester.tap(find.text(skipQuestion));
           await tester.pumpAndSettle();
 
-          expect(_surveyAction.runtimeType, SkipQuestionAction);
+          expect(_activityAction.runtimeType, SkipQuestionAction);
         },
       );
 
       testWidgets(
-        'should switch to FinishSurvey',
+        'should switch to FinishActivity',
         (tester) async {
-          _surveyAction = const SkipQuestionAction();
+          _activityAction = const SkipQuestionAction();
 
           await tester.pumpWidget(testWidget);
 
           expect(find.text(skipQuestion), findsOneWidget);
 
           await tester.tap(
-            find.byType(DropdownCustomizationButton<SurveyAction?>),
+            find.byType(DropdownCustomizationButton<ActivityAction?>),
           );
           await tester.pumpAndSettle();
           expect(find.text(goToQuestion), findsOneWidget);
-          expect(find.text(finishSurvey), findsOneWidget);
+          expect(find.text(finishActivity), findsOneWidget);
 
-          await tester.tap(find.text(finishSurvey));
+          await tester.tap(find.text(finishActivity));
           await tester.pumpAndSettle();
 
-          expect(_surveyAction.runtimeType, FinishSurveyAction);
+          expect(_activityAction.runtimeType, FinishActivityAction);
         },
       );
 
       testWidgets(
         'should switch to GoNextAction',
             (tester) async {
-          _surveyAction = const SkipQuestionAction();
+          _activityAction = const SkipQuestionAction();
 
           await tester.pumpWidget(testWidget);
 
           expect(find.text(skipQuestion), findsOneWidget);
 
           await tester.tap(
-            find.byType(DropdownCustomizationButton<SurveyAction?>),
+            find.byType(DropdownCustomizationButton<ActivityAction?>),
           );
           await tester.pumpAndSettle();
           expect(find.text(goToQuestion), findsOneWidget);
-          expect(find.text(finishSurvey), findsOneWidget);
+          expect(find.text(finishActivity), findsOneWidget);
           expect(find.text(goNextQuestion), findsOneWidget);
           expect(find.text(goBackQuestion), findsOneWidget);
 
           await tester.tap(find.text(goNextQuestion));
           await tester.pumpAndSettle();
 
-          expect(_surveyAction.runtimeType, GoNextAction);
+          expect(_activityAction.runtimeType, GoNextAction);
         },
       );
 
       testWidgets(
         'should switch to GoBackAction',
             (tester) async {
-          _surveyAction = const GoNextAction();
+          _activityAction = const GoNextAction();
 
           await tester.pumpWidget(testWidget);
 
           expect(find.text(goNextQuestion), findsOneWidget);
 
           await tester.tap(
-            find.byType(DropdownCustomizationButton<SurveyAction?>),
+            find.byType(DropdownCustomizationButton<ActivityAction?>),
           );
           await tester.pumpAndSettle();
           expect(find.text(goToQuestion), findsOneWidget);
-          expect(find.text(finishSurvey), findsOneWidget);
+          expect(find.text(finishActivity), findsOneWidget);
           expect(find.text(skipQuestion), findsOneWidget);
           expect(find.text(goBackQuestion), findsOneWidget);
 
           await tester.tap(find.text(goBackQuestion));
           await tester.pumpAndSettle();
 
-          expect(_surveyAction.runtimeType, GoBackAction);
+          expect(_activityAction.runtimeType, GoBackAction);
         },
       );
 
       testWidgets(
-        'should clear survey action',
+        'should clear activity action',
             (tester) async {
-          _surveyAction = const FinishSurveyAction();
+          _activityAction = const FinishActivityAction();
 
           await tester.pumpWidget(testWidget);
 
-          expect(find.text(finishSurvey), findsOneWidget);
+          expect(find.text(finishActivity), findsOneWidget);
           expect(find.byType(VectorImage), findsOneWidget);
 
           await tester.tap(find.byType(VectorImage));
           await tester.pumpAndSettle();
 
-          expect(_surveyAction.runtimeType, GoNextAction);
+          expect(_activityAction.runtimeType, GoNextAction);
         },
       );
     },
   );
 }
 
-void _mockedOnChanged(SurveyAction surveyAction) =>
-    _surveyAction = surveyAction;
+void _mockedOnChanged(ActivityAction activityAction) =>
+    _activityAction = activityAction;

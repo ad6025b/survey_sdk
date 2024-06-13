@@ -6,35 +6,35 @@ import '../../utils/shared_mocks.mocks.dart';
 
 void main() {
   final mockSessionStorageSource = MockSessionStorageDataSource();
-  final mockSurveyData = MockSurveyData();
+  final mockActivityData = MockActivityData();
   final sessionStorageRepository =
       SessionStorageRepositoryImpl(mockSessionStorageSource);
-  MockSurveyData? savedData;
+  MockActivityData? savedData;
 
   group('test SessionStorageRepositoryImpl', () {
     when(
-      mockSessionStorageSource.saveSurveyData(mockSurveyData),
+      mockSessionStorageSource.saveActivityData(mockActivityData),
     )
     .thenAnswer(
-      (_) => savedData = mockSurveyData,
+      (_) => savedData = mockActivityData,
     );
 
     when(
-      mockSessionStorageSource.getSurveyData(),
+      mockSessionStorageSource.getActivityData(),
     )
     .thenAnswer(
-      (_) => mockSurveyData,
+      (_) => mockActivityData,
     );
       
 
-    test('get survey data', () {
-      final surveyData = mockSessionStorageSource.getSurveyData();
-      expect(surveyData, mockSurveyData);
+    test('get activity data', () {
+      final activityData = mockSessionStorageSource.getActivityData();
+      expect(activityData, mockActivityData);
     });
 
-    test('save survey data', () {
-      sessionStorageRepository.saveSurveyData(mockSurveyData);
-      expect(savedData, mockSurveyData);
+    test('save activity data', () {
+      sessionStorageRepository.saveActivityData(mockActivityData);
+      expect(savedData, mockActivityData);
     });
   });
 }

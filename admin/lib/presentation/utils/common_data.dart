@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class CommonData {
   final BuildContext context;
@@ -22,8 +22,8 @@ class CommonData {
     );
   }
 
-  SurveyData get surveyData {
-    return SurveyData(
+  ActivityData get activityData {
+    return ActivityData(
       questions: [
         info(index: _firstIndex),
         input(index: _secondIndex),

@@ -8,7 +8,7 @@ import 'package:survey_admin/domain/repository_interfaces/session_storage_reposi
 import 'package:survey_admin/presentation/app/di/injector.dart';
 import 'package:survey_admin/presentation/pages/builder/builder_state.dart';
 import 'package:survey_admin/presentation/utils/common_data.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class BuilderCubit extends Cubit<BuilderState> {
   final FileSystemRepository _fileSystemRepository;
@@ -19,40 +19,40 @@ class BuilderCubit extends Cubit<BuilderState> {
     this._sessionStorageRepository,
   ) : super(
           EditQuestionBuilderState(
-            surveyData: i.get<CommonData>().surveyData,
+            activityData: i.get<CommonData>().activityData,
             selectedIndex: 1,
           ),
         ) {
     _init();
   }
 
-  void downloadSurveyData() {
-    _fileSystemRepository.downloadSurveyData(state.surveyData.toJson());
+  void downloadActivityData() {
+    _fileSystemRepository.downloadActivityData(state.activityData.toJson());
   }
 
-  void copySurveyData() {
-    final jsonText = jsonEncode(state.surveyData.toJson());
+  void copyActivityData() {
+    final jsonText = jsonEncode(state.activityData.toJson());
     Clipboard.setData(ClipboardData(text: jsonText));
   }
 
-  void updateCommonTheme(SurveyData data) {
-    _sessionStorageRepository.saveSurveyData(data);
-    emit(state.copyWith(surveyData: data));
+  void updateCommonTheme(ActivityData data) {
+    _sessionStorageRepository.saveActivityData(data);
+    emit(state.copyWith(activityData: data));
   }
 
   void select(QuestionData data) {
     if (state is EditQuestionBuilderState ||
-        state is ImportSuccessSurveyDataBuilderState) {
+        state is ImportSuccessActivityDataBuilderState) {
       emit(
         EditQuestionBuilderState(
           selectedIndex: data.index,
-          surveyData: state.surveyData,
+          activityData: state.activityData,
         ),
       );
     } else if (state is PreviewQuestionBuilderState) {
       emit(
         PreviewQuestionBuilderState(
-          surveyData: state.surveyData,
+          activityData: state.activityData,
           selectedQuestion: data,
         ),
       );
@@ -60,34 +60,34 @@ class BuilderCubit extends Cubit<BuilderState> {
   }
 
   void deleteQuestionData(QuestionData data) {
-    final questionList = List<QuestionData>.of(state.surveyData.questions)
+    final questionList = List<QuestionData>.of(state.activityData.questions)
       ..remove(data);
 
     _updateIndex(questionList);
 
-    final surveyData = state.surveyData.copyWith(questions: questionList);
-    _sessionStorageRepository.saveSurveyData(surveyData);
-    emit(state.copyWith(surveyData: surveyData));
-    if (state.surveyData.questions.isEmpty) {
+    final activityData = state.activityData.copyWith(questions: questionList);
+    _sessionStorageRepository.saveActivityData(activityData);
+    emit(state.copyWith(activityData: activityData));
+    if (state.activityData.questions.isEmpty) {
       emit(
         EditQuestionBuilderState(
           selectedIndex: 0,
-          surveyData: state.surveyData,
+          activityData: state.activityData,
         ),
       );
     } else {
-      select(state.surveyData.questions.first);
+      select(state.activityData.questions.first);
     }
   }
 
   void addQuestionData(QuestionData data) {
-    final questionList = List<QuestionData>.of(state.surveyData.questions)
+    final questionList = List<QuestionData>.of(state.activityData.questions)
       ..add(data);
 
-    final surveyData = state.surveyData.copyWith(questions: questionList);
-    _sessionStorageRepository.saveSurveyData(surveyData);
-    emit(state.copyWith(surveyData: surveyData));
-    select(state.surveyData.questions.last);
+    final activityData = state.activityData.copyWith(questions: questionList);
+    _sessionStorageRepository.saveActivityData(activityData);
+    emit(state.copyWith(activityData: activityData));
+    select(state.activityData.questions.last);
   }
 
   Future<void> importData() async {
@@ -95,43 +95,43 @@ class BuilderCubit extends Cubit<BuilderState> {
         ? (state as EditQuestionBuilderState).selectedIndex
         : 1;
 
-    final surveyData = await _fileSystemRepository.importSurveyData();
+    final activityData = await _fileSystemRepository.importActivityData();
 
-    if (surveyData != null) {
+    if (activityData != null) {
       emit(
-        ImportSuccessSurveyDataBuilderState(surveyData: surveyData),
+        ImportSuccessActivityDataBuilderState(activityData: activityData),
       );
-      select(surveyData.questions.first);
+      select(activityData.questions.first);
     } else {
       emit(
-        ImportErrorSurveyDataBuilderState(surveyData: state.surveyData),
+        ImportErrorActivityDataBuilderState(activityData: state.activityData),
       );
       emit(
         EditQuestionBuilderState(
           selectedIndex: selectedIndex,
-          surveyData: state.surveyData,
+          activityData: state.activityData,
         ),
       );
     }
   }
 
   void updateQuestionData(QuestionData data) {
-    final questions = List.of(state.surveyData.questions);
+    final questions = List.of(state.activityData.questions);
 
     final index = questions.indexWhere(
       (question) => question.index == data.index,
     );
     if (index != -1) questions[index] = data;
 
-    final surveyData = state.surveyData.copyWith(questions: questions);
-    _sessionStorageRepository.saveSurveyData(surveyData);
-    emit(state.copyWith(surveyData: surveyData));
+    final activityData = state.activityData.copyWith(questions: questions);
+    _sessionStorageRepository.saveActivityData(activityData);
+    emit(state.copyWith(activityData: activityData));
   }
 
   void updateQuestions(List<QuestionData> questionList) {
-    final surveyData = state.surveyData.copyWith(questions: questionList);
-    _sessionStorageRepository.saveSurveyData(surveyData);
-    emit(state.copyWith(surveyData: surveyData));
+    final activityData = state.activityData.copyWith(questions: questionList);
+    _sessionStorageRepository.saveActivityData(activityData);
+    emit(state.copyWith(activityData: activityData));
   }
 
   void openPreviewMode() {
@@ -139,12 +139,12 @@ class BuilderCubit extends Cubit<BuilderState> {
 
     final index = (state as EditQuestionBuilderState).selectedIndex;
     final selectedQuestion =
-        state.surveyData.questions.firstWhereOrNull((e) => e.index == index);
+        state.activityData.questions.firstWhereOrNull((e) => e.index == index);
 
     emit(
       PreviewQuestionBuilderState(
         selectedQuestion: selectedQuestion,
-        surveyData: state.surveyData,
+        activityData: state.activityData,
       ),
     );
   }
@@ -158,7 +158,7 @@ class BuilderCubit extends Cubit<BuilderState> {
     emit(
       EditQuestionBuilderState(
         selectedIndex: selectedIndex,
-        surveyData: state.surveyData,
+        activityData: state.activityData,
       ),
     );
   }
@@ -170,8 +170,8 @@ class BuilderCubit extends Cubit<BuilderState> {
   }
 
   void _init() {
-    final surveyData = _sessionStorageRepository.getSurveyData() ??
-        i.get<CommonData>().surveyData;
-    emit(state.copyWith(surveyData: surveyData));
+    final activityData = _sessionStorageRepository.getActivityData() ??
+        i.get<CommonData>().activityData;
+    emit(state.copyWith(activityData: activityData));
   }
 }

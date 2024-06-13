@@ -8,10 +8,10 @@ import 'package:survey_admin/presentation/pages/new_question_page/new_question_t
 import 'package:survey_admin/presentation/utils/utils.dart';
 import 'package:survey_admin/presentation/widgets/editor_bar.dart';
 import 'package:survey_admin/presentation/widgets/vector_image.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class NewQuestionPage extends StatelessWidget {
-  final SurveyData data;
+  final ActivityData data;
 
   const NewQuestionPage({required this.data, super.key});
 
@@ -33,9 +33,9 @@ class _Content extends StatelessWidget {
     return BlocBuilder<NewQuestionCubit, NewQuestionState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: SurveyColors.white,
+          backgroundColor: ActivityColors.white,
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(SurveyDimensions.appbarHeight),
+            preferredSize: const Size.fromHeight(ActivityDimensions.appbarHeight),
             child: AppBar(
               automaticallyImplyLeading: false,
               title: const _AppBarTitle(),
@@ -46,8 +46,8 @@ class _Content extends StatelessWidget {
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: SurveyDimensions.margin2XS,
-              horizontal: SurveyDimensions.marginM,
+              vertical: ActivityDimensions.margin2XS,
+              horizontal: ActivityDimensions.marginM,
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -102,7 +102,7 @@ class _Content extends StatelessWidget {
 }
 
 class _BackButton extends StatelessWidget {
-  final SurveyData data;
+  final ActivityData data;
 
   const _BackButton({required this.data});
 
@@ -112,7 +112,7 @@ class _BackButton extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: () => Navigator.pop(context, data),
       child: const Padding(
-        padding: EdgeInsets.only(right: SurveyDimensions.marginL),
+        padding: EdgeInsets.only(right: ActivityDimensions.marginL),
         child: VectorImage(assetName: AppAssets.closeIcon),
       ),
     );
@@ -129,7 +129,7 @@ class _AppBarTitle extends StatelessWidget {
       child: Text(
         context.localization.newScreen,
         style: context.theme.textTheme.labelLarge?.copyWith(
-          fontWeight: SurveyFonts.weightRegular,
+          fontWeight: ActivityFonts.weightRegular,
         ),
       ),
     );
@@ -154,16 +154,16 @@ class _TabButton extends StatelessWidget {
       onTap: onTap,
       borderRadius: const BorderRadius.all(Radius.circular(5)),
       child: SizedBox(
-        width: SurveyDimensions.surveyContentBarWidth,
+        width: ActivityDimensions.activityContentBarWidth,
         child: ListTile(
           title: Text(
             title,
             style: isSelected
                 ? titleMedium?.copyWith(
-                    fontWeight: SurveyFonts.weightSemiBold,
+                    fontWeight: ActivityFonts.weightSemiBold,
                   )
                 : titleMedium?.copyWith(
-                    fontWeight: SurveyFonts.weightRegular,
+                    fontWeight: ActivityFonts.weightRegular,
                   ),
           ),
         ),
@@ -211,14 +211,14 @@ class _AssetTextOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(
-        horizontal: SurveyDimensions.margin4XL,
+        horizontal: ActivityDimensions.margin4XL,
       ),
-      padding: const EdgeInsets.all(SurveyDimensions.marginXS),
+      padding: const EdgeInsets.all(ActivityDimensions.marginXS),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           VectorImage(assetName: assetName),
-          const SizedBox(height: SurveyDimensions.marginXL),
+          const SizedBox(height: ActivityDimensions.marginXL),
           Text(
             titleText,
             style: context.theme.textTheme.titleMedium,
@@ -241,20 +241,20 @@ class _AddButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: SurveyDimensions.addButtonWidth,
-        height: SurveyDimensions.addButtonHeight,
+        width: ActivityDimensions.addButtonWidth,
+        height: ActivityDimensions.addButtonHeight,
         decoration: const BoxDecoration(
-          color: SurveyColors.black,
+          color: ActivityColors.black,
           borderRadius: BorderRadius.all(
-            Radius.circular(SurveyDimensions.circularRadiusXS),
+            Radius.circular(ActivityDimensions.circularRadiusXS),
           ),
         ),
         child: Center(
           child: Text(
             context.localization.add,
             style: context.theme.textTheme.labelLarge?.copyWith(
-              fontFamily: SurveyFonts.karla,
-              color: SurveyColors.white,
+              fontFamily: ActivityFonts.karla,
+              color: ActivityColors.white,
             ),
           ),
         ),
@@ -275,21 +275,21 @@ class _CancelButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: SurveyDimensions.addButtonWidth,
-        height: SurveyDimensions.addButtonHeight,
+        width: ActivityDimensions.addButtonWidth,
+        height: ActivityDimensions.addButtonHeight,
         decoration: const BoxDecoration(
-          color: SurveyColors.white,
+          color: ActivityColors.white,
           border: Border.fromBorderSide(BorderSide()),
           borderRadius: BorderRadius.all(
-            Radius.circular(SurveyDimensions.circularRadiusXS),
+            Radius.circular(ActivityDimensions.circularRadiusXS),
           ),
         ),
         child: Center(
           child: Text(
             context.localization.cancel,
             style: context.theme.textTheme.labelLarge?.copyWith(
-              fontFamily: SurveyFonts.karla,
-              color: SurveyColors.black,
+              fontFamily: ActivityFonts.karla,
+              color: ActivityColors.black,
             ),
           ),
         ),

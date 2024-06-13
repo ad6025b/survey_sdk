@@ -1,4 +1,4 @@
-enum SurveyErrorState {
+enum ActivityErrorState {
   collapsed,
   stacktrace,
 }

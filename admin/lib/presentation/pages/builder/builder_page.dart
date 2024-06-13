@@ -9,7 +9,7 @@ import 'package:survey_admin/presentation/widgets/builder_page/phone_view.dart';
 import 'package:survey_admin/presentation/widgets/builder_page/question_list.dart';
 import 'package:survey_admin/presentation/widgets/editor_bar.dart';
 import 'package:survey_admin/presentation/widgets/export_floating_window.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class BuilderPage extends StatelessWidget {
   const BuilderPage({super.key});
@@ -32,7 +32,7 @@ class _Content extends StatefulWidget {
 
 class _ContentState extends State<_Content>
     with SingleTickerProviderStateMixin {
-  late final SurveyController _surveyController;
+  late final ActivityController _activityController;
   late final TabController _tabController;
   static const tabLength = 2;
 
@@ -41,15 +41,15 @@ class _ContentState extends State<_Content>
   @override
   void initState() {
     super.initState();
-    _surveyController = SurveyController()..addListener(_onChangePage);
+    _activityController = ActivityController()..addListener(_onChangePage);
     _tabController = TabController(vsync: this, length: tabLength);
     initCommonData(context);
   }
 
   void _onChangePage() {
     final cubit = this.cubit(context);
-    final questions = cubit.state.surveyData.questions;
-    final index = _surveyController.pageController.page;
+    final questions = cubit.state.activityData.questions;
+    final index = _activityController.pageController.page;
     final question =
         index != null && index % 1 == 0 ? questions[index.toInt()] : null;
 
@@ -69,7 +69,7 @@ class _ContentState extends State<_Content>
               child: Text(
                 context.localization.ok,
                 style: const TextStyle(
-                  color: SurveyColors.white,
+                  color: ActivityColors.white,
                 ),
               ),
               onPressed: () {
@@ -84,7 +84,7 @@ class _ContentState extends State<_Content>
 
   QuestionData? _editableQuestion(BuilderState state) {
     if (state is EditQuestionBuilderState) {
-      return state.surveyData.questions
+      return state.activityData.questions
           .firstWhereOrNull((q) => q.index == state.selectedIndex);
     } else if (state is PreviewQuestionBuilderState) {
       return state.selectedQuestion;
@@ -106,7 +106,7 @@ class _ContentState extends State<_Content>
 
   @override
   void dispose() {
-    _surveyController.dispose();
+    _activityController.dispose();
     _tabController.dispose();
     super.dispose();
   }
@@ -116,13 +116,13 @@ class _ContentState extends State<_Content>
     final cubit = this.cubit(context);
     return BlocConsumer<BuilderCubit, BuilderState>(
       listener: (_, newState) {
-        if (newState is ImportErrorSurveyDataBuilderState) {
+        if (newState is ImportErrorActivityDataBuilderState) {
           _showImportDialog();
         }
         final selected =
             newState is EditQuestionBuilderState ? newState.selectedIndex : 0;
         if (selected != 0) {
-          _surveyController.animateTo(selected - 1);
+          _activityController.animateTo(selected - 1);
         }
       },
       builder: (_, state) {
@@ -142,9 +142,9 @@ class _ContentState extends State<_Content>
                 },
               ),
               _ExportButton(
-                isButtonActive: cubit.state.surveyData.questions.isEmpty,
-                downloadSurveyData: cubit.downloadSurveyData,
-                copySurveyData: cubit.copySurveyData,
+                isButtonActive: cubit.state.activityData.questions.isEmpty,
+                downloadActivityData: cubit.downloadActivityData,
+                copyActivityData: cubit.copyActivityData,
               ),
             ],
             centerTitle: true,
@@ -156,16 +156,16 @@ class _ContentState extends State<_Content>
                 onDelete: cubit.deleteQuestionData,
                 onSelect: cubit.select,
                 onAdd: cubit.addQuestionData,
-                data: cubit.state.surveyData,
+                data: cubit.state.activityData,
                 onUpdate: cubit.updateQuestions,
                 selectedIndex: _selectedIndex(state),
                 onDataUpdate: cubit.updateCommonTheme,
               ),
               Expanded(
                 child: PhoneView(
-                  child: Survey(
-                    surveyData: state.surveyData,
-                    controller: _surveyController,
+                  child: Activity(
+                    activityData: state.activityData,
+                    controller: _activityController,
                     saveAnswer: false,
                   ),
                 ),
@@ -174,7 +174,7 @@ class _ContentState extends State<_Content>
                 isEditMode: state is EditQuestionBuilderState,
                 onChange: cubit.updateQuestionData,
                 editableQuestion: _editableQuestion(state),
-                questionsAmount: state.surveyData.questions.length,
+                questionsAmount: state.activityData.questions.length,
               ),
             ],
           ),
@@ -200,22 +200,22 @@ class _BuilderPageTabBar extends StatelessWidget {
     const previewTabIndex = 1;
 
     return SizedBox(
-      width: SurveyDimensions.tabBarWidth,
+      width: ActivityDimensions.tabBarWidth,
       child: TabBar(
         controller: tabController,
         tabs: [
           Tab(text: context.localization.create),
           Tab(text: context.localization.preview),
         ],
-        padding: const EdgeInsets.only(right: SurveyDimensions.tabBarPadding),
+        padding: const EdgeInsets.only(right: ActivityDimensions.tabBarPadding),
         indicator: const UnderlineTabIndicator(
           borderSide: BorderSide(),
           insets: EdgeInsets.symmetric(
-            horizontal: SurveyDimensions.margin4XL + SurveyDimensions.sizeM,
+            horizontal: ActivityDimensions.margin4XL + ActivityDimensions.sizeM,
           ),
         ),
         labelStyle: context.theme.textTheme.titleMedium
-            ?.copyWith(fontWeight: SurveyFonts.weightBold),
+            ?.copyWith(fontWeight: ActivityFonts.weightBold),
         onTap: (tabIndex) =>
             tabIndex == previewTabIndex ? onTapPreviewMode() : onTapEditMode(),
       ),
@@ -232,9 +232,9 @@ class _ImportButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: SurveyDimensions.margin2XS,
-        right: SurveyDimensions.margin2XL,
-        bottom: SurveyDimensions.margin2XS,
+        top: ActivityDimensions.margin2XS,
+        right: ActivityDimensions.margin2XL,
+        bottom: ActivityDimensions.margin2XS,
       ),
       child: OutlinedButton(
         onPressed: onImportPressed,
@@ -243,13 +243,13 @@ class _ImportButton extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: SurveyDimensions.margin3XL,
+            horizontal: ActivityDimensions.margin3XL,
           ),
           child: Text(
             context.localization.import,
             style: context.theme.textTheme.labelLarge?.copyWith(
-              fontFamily: SurveyFonts.karla,
-              color: SurveyColors.text,
+              fontFamily: ActivityFonts.karla,
+              color: ActivityColors.text,
             ),
           ),
         ),
@@ -260,13 +260,13 @@ class _ImportButton extends StatelessWidget {
 
 class _ExportButton extends StatelessWidget {
   final bool isButtonActive;
-  final VoidCallback downloadSurveyData;
-  final VoidCallback copySurveyData;
+  final VoidCallback downloadActivityData;
+  final VoidCallback copyActivityData;
 
   const _ExportButton({
     required this.isButtonActive,
-    required this.downloadSurveyData,
-    required this.copySurveyData,
+    required this.downloadActivityData,
+    required this.copyActivityData,
   });
 
   Future<void> _errorExportDialog(BuildContext context) {
@@ -280,7 +280,7 @@ class _ExportButton extends StatelessWidget {
               child: Text(
                 context.localization.ok,
                 style: const TextStyle(
-                  color: SurveyColors.white,
+                  color: ActivityColors.white,
                 ),
               ),
               onPressed: () {
@@ -297,9 +297,9 @@ class _ExportButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: SurveyDimensions.margin2XS,
-        right: SurveyDimensions.margin3XL,
-        bottom: SurveyDimensions.margin2XS,
+        top: ActivityDimensions.margin2XS,
+        right: ActivityDimensions.margin3XL,
+        bottom: ActivityDimensions.margin2XS,
       ),
       child: TextButton(
         onPressed: isButtonActive
@@ -307,19 +307,19 @@ class _ExportButton extends StatelessWidget {
             : () {
                 showExportFloatingWindow(
                   context,
-                  onDownloadPressed: downloadSurveyData,
-                  onCopy: copySurveyData,
+                  onDownloadPressed: downloadActivityData,
+                  onCopy: copyActivityData,
                 );
               },
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: SurveyDimensions.margin3XL,
+            horizontal: ActivityDimensions.margin3XL,
           ),
           child: Text(
             context.localization.export,
             style: context.theme.textTheme.labelLarge?.copyWith(
-              fontFamily: SurveyFonts.karla,
-              color: SurveyColors.white,
+              fontFamily: ActivityFonts.karla,
+              color: ActivityColors.white,
             ),
           ),
         ),

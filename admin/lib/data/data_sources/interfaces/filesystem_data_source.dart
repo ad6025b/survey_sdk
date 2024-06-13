@@ -1,7 +1,7 @@
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 abstract class FilesystemDataSource {
-  void downloadSurveyData(Map<String, dynamic> exportJson);
+  void downloadActivityData(Map<String, dynamic> exportJson);
 
-  Future<SurveyData?> importSurveyData();
+  Future<ActivityData?> importActivityData();
 }

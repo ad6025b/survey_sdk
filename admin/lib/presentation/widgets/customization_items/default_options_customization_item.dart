@@ -3,7 +3,7 @@ import 'package:survey_admin/presentation/app/localization/app_localizations_ext
 import 'package:survey_admin/presentation/widgets/customization_items/dropdown_customization_button.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/option.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/switch_customization_item.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class DefaultOptionsCustomizationItem extends StatelessWidget {
   final List<String> options;
@@ -32,7 +32,7 @@ class DefaultOptionsCustomizationItem extends StatelessWidget {
           ),
         ),
         if (defaultOptions != null && options.isNotEmpty) ...[
-          const SizedBox(height: SurveyDimensions.sizeS),
+          const SizedBox(height: ActivityDimensions.sizeS),
           if (isMultipleChoice)
             _DefaultOptionsForMultipleChoice(
               defaultOptions: defaultOptions!,
@@ -119,7 +119,7 @@ class _DefaultOptionsForMultipleChoice extends StatelessWidget {
               child: Text(
                 context.localization.clickToSelectTheOption,
                 style: const TextStyle(
-                  color: SurveyColors.textHintGrey,
+                  color: ActivityColors.textHintGrey,
                 ),
               ),
             ),

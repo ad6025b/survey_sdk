@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
-/// This controller need to navigation on survey and save answer.
+/// This controller need to navigation on activity and save answer.
 /// Function [onNext] navigate to next page and save answer on last page.
 /// Function [onBack] navigate to previous page.
-class SurveyController {
-  /// The controller responsible for managing the pages in the survey.
+class ActivityController {
+  /// The controller responsible for managing the pages in the activity.
   final PageController _pageController = PageController();
 
   PageController get pageController => _pageController;
@@ -16,7 +16,7 @@ class SurveyController {
 
   void onNext() {
     _pageController.nextPage(
-      duration: SurveyDurations.panelSwitchingDuration,
+      duration: ActivityDurations.panelSwitchingDuration,
       curve: Curves.linear,
     );
   }
@@ -27,17 +27,17 @@ class SurveyController {
     if (_pageController.hasClients && _pageController.page != null) {
       _pageController.animateToPage(
         index,
-        duration: SurveyDurations.animateToSpecificPageDuration,
+        duration: ActivityDurations.animateToSpecificPageDuration,
         curve: Curves.easeOutCubic,
       );
     }
   }
 
   /// Moves the [_pageController] to the previous page, effectively allowing the
-  /// user to navigate back within the survey.
+  /// user to navigate back within the activity.
   void onBack() {
     _pageController.previousPage(
-      duration: SurveyDurations.panelSwitchingDuration,
+      duration: ActivityDurations.panelSwitchingDuration,
       curve: Curves.linear,
     );
   }

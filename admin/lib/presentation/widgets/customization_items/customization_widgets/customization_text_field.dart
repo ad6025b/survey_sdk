@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class CustomizationTextField extends StatefulWidget {
   static const InputDecoration _defaultDecoration = InputDecoration(
@@ -36,7 +36,7 @@ class CustomizationTextField extends StatefulWidget {
     this.focusNode,
     this.onEditingComplete,
     this.controller,
-    this.fontSize = SurveyFonts.sizeL,
+    this.fontSize = ActivityFonts.sizeL,
     this.hintText,
     this.maxLines = 1,
     this.style,
@@ -55,7 +55,7 @@ class CustomizationTextField extends StatefulWidget {
     this.focusNode,
     this.onEditingComplete,
     this.controller,
-    this.fontSize = SurveyFonts.sizeL,
+    this.fontSize = ActivityFonts.sizeL,
     this.hintText,
     this.maxLines = 1,
     this.style,

@@ -103,19 +103,19 @@ class InfoQuestionTheme extends ThemeExtension<InfoQuestionTheme>
   /// values.
   const InfoQuestionTheme.common()
       : this(
-          fill: SurveyColors.white,
-          titleColor: SurveyColors.black,
-          titleSize: SurveyFonts.sizeL,
-          subtitleColor: SurveyColors.black,
-          subtitleSize: SurveyFonts.sizeS,
-          primaryButtonFill: SurveyColors.black,
-          primaryButtonTextColor: SurveyColors.white,
-          primaryButtonTextSize: SurveyFonts.sizeS,
-          primaryButtonRadius: SurveyDimensions.circularRadiusS,
-          secondaryButtonFill: SurveyColors.black,
-          secondaryButtonTextColor: SurveyColors.white,
-          secondaryButtonTextSize: SurveyFonts.sizeS,
-          secondaryButtonRadius: SurveyDimensions.circularRadiusS,
+          fill: ActivityColors.white,
+          titleColor: ActivityColors.black,
+          titleSize: ActivityFonts.sizeL,
+          subtitleColor: ActivityColors.black,
+          subtitleSize: ActivityFonts.sizeS,
+          primaryButtonFill: ActivityColors.black,
+          primaryButtonTextColor: ActivityColors.white,
+          primaryButtonTextSize: ActivityFonts.sizeS,
+          primaryButtonRadius: ActivityDimensions.circularRadiusS,
+          secondaryButtonFill: ActivityColors.black,
+          secondaryButtonTextColor: ActivityColors.white,
+          secondaryButtonTextSize: ActivityFonts.sizeS,
+          secondaryButtonRadius: ActivityDimensions.circularRadiusS,
         );
 
   @override

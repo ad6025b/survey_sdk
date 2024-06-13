@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
-import 'package:survey_sdk/src/data/mappers/actions/finish_survey_action/finish_survey_action_mapper.dart';
+import 'package:survey_sdk/src/data/mappers/actions/finish_activity_action/finish_activity_action_mapper.dart';
 import 'package:survey_sdk/src/data/mappers/actions/go_back_action/go_back_action_mapper.dart';
 import 'package:survey_sdk/src/data/mappers/actions/go_next_action/go_next_action_mapper.dart';
 import 'package:survey_sdk/src/data/mappers/actions/go_to_action/go_to_action_mapper.dart';
 import 'package:survey_sdk/src/data/mappers/actions/skip_question_action/skip_question_action_mapper.dart';
-import 'package:survey_sdk/src/domain/entities/actions/finish_survey_action.dart';
+import 'package:survey_sdk/src/domain/entities/actions/finish_activity_action.dart';
 import 'package:survey_sdk/src/domain/entities/actions/go_back_action.dart';
 import 'package:survey_sdk/src/domain/entities/actions/go_next_action.dart';
 import 'package:survey_sdk/src/domain/entities/actions/go_to_action.dart';
@@ -15,18 +15,18 @@ abstract final class _Fields {
   static const String type = 'type';
 }
 
-abstract class SurveyAction extends Equatable {
+abstract class ActivityAction extends Equatable {
   String get type;
 
-  const SurveyAction();
+  const ActivityAction();
 
-  static Map<String, dynamic> toJson(SurveyAction data) =>
+  static Map<String, dynamic> toJson(ActivityAction data) =>
       switch (data.runtimeType) {
         GoToAction => GoToActionMapper().toJson(
             data as GoToAction,
           ),
-        FinishSurveyAction => FinishSurveyActionMapper().toJson(
-            data as FinishSurveyAction,
+        FinishActivityAction => FinishActivityActionMapper().toJson(
+            data as FinishActivityAction,
           ),
         SkipQuestionAction => SkipQuestionActionMapper().toJson(
             data as SkipQuestionAction,
@@ -40,11 +40,11 @@ abstract class SurveyAction extends Equatable {
         _ => throw UnimplementedError(),
       };
 
-  static SurveyAction? fromJson(dynamic json) => json == null
+  static ActivityAction? fromJson(dynamic json) => json == null
       ? null
       : switch ((json as Map<String, dynamic>)[_Fields.type]) {
           ActionTypes.goToAction => GoToActionMapper().fromJson(json),
-          ActionTypes.finishSurveyAction => FinishSurveyActionMapper().fromJson(
+          ActionTypes.finishActivityAction => FinishActivityActionMapper().fromJson(
               json,
             ),
           ActionTypes.skipQuestionAction =>

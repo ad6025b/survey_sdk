@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:survey_sdk/src/data/mappers/actions/go_to_action/go_to_action_mapper.dart';
 import 'package:survey_sdk/src/domain/entities/actions/go_to_action.dart';
-import 'package:survey_sdk/src/domain/entities/actions/survey_action.dart';
+import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
 
 void main() {
   group(
@@ -36,7 +36,7 @@ void main() {
       test(
         'fromType',
             () {
-          final action = SurveyAction.fromJson(receivedJson);
+          final action = ActivityAction.fromJson(receivedJson);
 
           expect(action.runtimeType, GoToAction);
           expect(action, equals(object));
@@ -46,7 +46,7 @@ void main() {
       test(
         'toJsonByType',
             () {
-          final json = SurveyAction.toJson(object);
+          final json = ActivityAction.toJson(object);
 
           expect(json, equals(receivedJson));
         },

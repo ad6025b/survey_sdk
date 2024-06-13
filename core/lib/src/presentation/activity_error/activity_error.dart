@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/src/presentation/localization/survey_localizations_ext.dart';
+import 'package:survey_sdk/src/presentation/localization/activity_localizations_ext.dart';
 import 'package:survey_sdk/src/presentation/utils/utils.dart';
 
-class SurveyError extends StatelessWidget {
+class ActivityError extends StatelessWidget {
   final List<String> providedErrors;
-  final ValueChanged<SurveyErrorState> onDetailsTap;
-  final SurveyErrorState errorState;
+  final ValueChanged<ActivityErrorState> onDetailsTap;
+  final ActivityErrorState errorState;
 
-  const SurveyError({
+  const ActivityError({
     required this.providedErrors,
     required this.onDetailsTap,
     required this.errorState,
     super.key,
   });
 
-  SurveyErrorState get _selectableErrorState => switch (errorState) {
-        SurveyErrorState.collapsed => SurveyErrorState.stacktrace,
-        SurveyErrorState.stacktrace => SurveyErrorState.collapsed,
+  ActivityErrorState get _selectableErrorState => switch (errorState) {
+        ActivityErrorState.collapsed => ActivityErrorState.stacktrace,
+        ActivityErrorState.stacktrace => ActivityErrorState.collapsed,
       };
 
   @override
@@ -26,10 +26,10 @@ class SurveyError extends StatelessWidget {
       children: [
         Builder(
           builder: (_) => switch (errorState) {
-            SurveyErrorState.collapsed => _SurveyErrorTitle(
-                errorTitle: context.localization.surveyLoadError,
+            ActivityErrorState.collapsed => _ActivityErrorTitle(
+                errorTitle: context.localization.activityLoadError,
               ),
-            SurveyErrorState.stacktrace => _StacktraceBody(
+            ActivityErrorState.stacktrace => _StacktraceBody(
                 providedErrors: providedErrors,
                 onDetailsTap: onDetailsTap,
               ),
@@ -38,7 +38,7 @@ class SurveyError extends StatelessWidget {
         TextButton(
           onPressed: () => onDetailsTap(_selectableErrorState),
           child: Text(
-            errorState == SurveyErrorState.stacktrace
+            errorState == ActivityErrorState.stacktrace
                 ? context.localization.hideErrorDetails
                 : context.localization.showErrorDetails,
           ),
@@ -50,7 +50,7 @@ class SurveyError extends StatelessWidget {
 
 class _StacktraceBody extends StatelessWidget {
   final List<String> providedErrors;
-  final ValueChanged<SurveyErrorState> onDetailsTap;
+  final ValueChanged<ActivityErrorState> onDetailsTap;
 
   const _StacktraceBody({
     required this.providedErrors,
@@ -61,16 +61,16 @@ class _StacktraceBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        onDetailsTap(SurveyErrorState.collapsed);
+        onDetailsTap(ActivityErrorState.collapsed);
         return false;
       },
       child: Expanded(
         child: ListView(
           padding: const EdgeInsets.symmetric(
-            horizontal: SurveyDimensions.marginS,
+            horizontal: ActivityDimensions.marginS,
           ),
           children: [
-            _SurveyErrorTitle(
+            _ActivityErrorTitle(
               errorTitle: providedErrors.first,
             ),
             ExpansionTile(
@@ -86,10 +86,10 @@ class _StacktraceBody extends StatelessWidget {
   }
 }
 
-class _SurveyErrorTitle extends StatelessWidget {
+class _ActivityErrorTitle extends StatelessWidget {
   final String errorTitle;
 
-  const _SurveyErrorTitle({required this.errorTitle});
+  const _ActivityErrorTitle({required this.errorTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -97,14 +97,14 @@ class _SurveyErrorTitle extends StatelessWidget {
     return Align(
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          vertical: SurveyDimensions.margin2XS,
+          vertical: ActivityDimensions.margin2XS,
         ),
         child: Text(
           errorTitle,
           style: const TextStyle(
-            color: SurveyColors.black,
-            fontWeight: SurveyFonts.weightBold,
-            fontSize: SurveyFonts.sizeXL,
+            color: ActivityColors.black,
+            fontWeight: ActivityFonts.weightBold,
+            fontSize: ActivityFonts.sizeXL,
           ),
         ),
       ),

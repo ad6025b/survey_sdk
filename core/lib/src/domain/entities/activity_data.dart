@@ -6,7 +6,7 @@ import 'package:survey_sdk/src/data/mappers/question_types/input_question_data/i
 import 'package:survey_sdk/src/data/mappers/question_types/slider_question_data/slider_question_data_mapper_factory.dart';
 import 'package:survey_sdk/src/domain/entities/api_object.dart';
 import 'package:survey_sdk/src/domain/entities/constants/scheme_info.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 abstract class _Fields {
   static const String questions = 'questions';
@@ -14,9 +14,9 @@ abstract class _Fields {
   static const String schemeVersion = 'schemeVersion';
 }
 
-/// Holds the core survey data used in the whole app, including the list of
+/// Holds the core activity data used in the whole app, including the list of
 /// questions and the common theme.
-class SurveyData with EquatableMixin, ApiObject {
+class ActivityData with EquatableMixin, ApiObject {
   /// List of questions used to build question pages of different types
   /// of questions.
   final List<QuestionData> questions;
@@ -30,19 +30,19 @@ class SurveyData with EquatableMixin, ApiObject {
         commonTheme,
       ];
 
-  SurveyData({
+  ActivityData({
     required this.questions,
     required this.commonTheme,
   });
 
-  factory SurveyData.fromJson(Map<String, dynamic> json) {
+  factory ActivityData.fromJson(Map<String, dynamic> json) {
     final questions = <QuestionData>[];
     final schemeVersion = json[_Fields.schemeVersion];
     for (final questionJson in json[_Fields.questions]) {
       questions.add(QuestionData.fromType(questionJson, schemeVersion));
     }
 
-    return SurveyData(
+    return ActivityData(
       questions: questions,
       commonTheme: CommonTheme.fromJson(
         json[_Fields.commonTheme],
@@ -51,11 +51,11 @@ class SurveyData with EquatableMixin, ApiObject {
     );
   }
 
-  SurveyData copyWith({
+  ActivityData copyWith({
     List<QuestionData>? questions,
     CommonTheme? commonTheme,
   }) {
-    return SurveyData(
+    return ActivityData(
       questions: questions ?? this.questions,
       commonTheme: commonTheme ?? this.commonTheme,
     );

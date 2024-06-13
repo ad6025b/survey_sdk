@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:survey_sdk/src/presentation/di/injector.dart';
-import 'package:survey_sdk/src/presentation/survey/survey_state.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/src/presentation/activity/activity_state.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 import '../presentation/widget/app_tester.dart';
 import '../utils/mocked_entities.dart';
 
 void main() {
   final app = AppTester(
-    child: Survey(
-      surveyData: MockedEntities.data2.copyWith(
+    child: Activity(
+      activityData: MockedEntities.data2.copyWith(
         questions: [
           MockedEntities.slider3,
         ],
@@ -40,11 +40,11 @@ void main() {
         'move slider to 5',
         (tester) async {
           await tester.pumpWidget(app);
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await moveSliderToValue(tester, 5, 10, 0);
           await tester.tap(find.text('NEXT'));
           expect(
-            (cubit.state as SurveyLoadedState).answers[0]?.answer,
+            (cubit.state as ActivityLoadedState).answers[0]?.answer,
             5,
           );
         },
@@ -54,11 +54,11 @@ void main() {
         'move slider to more then maxValue',
         (tester) async {
           await tester.pumpWidget(app);
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await moveSliderToValue(tester, 11, 10, 0);
           await tester.tap(find.text('NEXT'));
           expect(
-            (cubit.state as SurveyLoadedState).answers[0]?.answer,
+            (cubit.state as ActivityLoadedState).answers[0]?.answer,
             10,
           );
         },
@@ -68,11 +68,11 @@ void main() {
         'move slider to less than minValue',
         (tester) async {
           await tester.pumpWidget(app);
-          final cubit = Injector().surveyCubit;
+          final cubit = Injector().activityCubit;
           await moveSliderToValue(tester, -1, 10, 0);
           await tester.tap(find.text('NEXT'));
           expect(
-            (cubit.state as SurveyLoadedState).answers[0]?.answer,
+            (cubit.state as ActivityLoadedState).answers[0]?.answer,
             0,
           );
         },

@@ -3,7 +3,7 @@ import 'package:survey_sdk/src/domain/entities/question_types/choice_question_da
 import 'package:survey_sdk/src/domain/entities/question_types/info_question_data.dart';
 import 'package:survey_sdk/src/domain/entities/question_types/input_question_data.dart';
 import 'package:survey_sdk/src/domain/entities/question_types/slider_question_data.dart';
-import 'package:survey_sdk/src/domain/entities/survey_data.dart';
+import 'package:survey_sdk/src/domain/entities/activity_data.dart';
 import 'package:survey_sdk/src/domain/entities/themes/choice_question_theme.dart';
 import 'package:survey_sdk/src/domain/entities/themes/common_theme.dart';
 import 'package:survey_sdk/src/domain/entities/themes/info_question_theme.dart';
@@ -164,7 +164,7 @@ abstract class MockedEntities {
       secondaryButtonText: 'Skip',
     );
 
-  static final data1 = SurveyData(
+  static final data1 = ActivityData(
     questions: [
       info1.copyWith(index: 1),
       choice1.copyWith(index: 2),

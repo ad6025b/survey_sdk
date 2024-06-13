@@ -5,7 +5,7 @@ import 'package:survey_admin/presentation/widgets/customization_items/color_cust
 import 'package:survey_admin/presentation/widgets/customization_items/customization_items_container.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/default_options_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/multiple_choice_customization_item.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class ChoiceButtonsCustomizationTab extends CustomizationTab {
   final ValueChanged<QuestionData> onChange;
@@ -29,7 +29,7 @@ class ChoiceButtonsCustomizationTab extends CustomizationTab {
         CustomizationItemsContainer(
           shouldShowTopDivider: true,
           itemsPadding: const EdgeInsets.all(
-            SurveyDimensions.marginM,
+            ActivityDimensions.marginM,
           ),
           children: [
             MultipleChoiceCustomizationItem(
@@ -74,7 +74,7 @@ class ChoiceButtonsCustomizationTab extends CustomizationTab {
         ),
         CustomizationItemsContainer(
           itemsPadding: const EdgeInsets.all(
-            SurveyDimensions.marginM,
+            ActivityDimensions.marginM,
           ),
           children: [
             DefaultOptionsCustomizationItem(

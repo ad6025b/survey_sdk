@@ -1,7 +1,7 @@
-import 'package:survey_sdk/src/presentation/localization/flutter_gen/survey_localizations.dart';
+import 'package:survey_sdk/src/presentation/localization/flutter_gen/activity_localizations.dart';
 
 /// The translations for English (`en`).
-class SurveyLocalizationsEn extends SurveyLocalizations {
+class ActivityLocalizationsEn extends ActivityLocalizations {
   @override
   String get damagedJson => 'Damaged JSON';
 
@@ -18,10 +18,10 @@ class SurveyLocalizationsEn extends SurveyLocalizations {
   String get skip => 'SKIP';
 
   @override
-  String get surveyLoadError => 'Data is corrupted, survey has not been loaded';
+  String get activityLoadError => 'Data is corrupted, activity has not been loaded';
 
   @override
   String get textField => 'Text field';
 
-  SurveyLocalizationsEn([super.locale = 'en']);
+  ActivityLocalizationsEn([super.locale = 'en']);
 }

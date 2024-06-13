@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:survey_admin/data/data_sources/interfaces/filesystem_data_source.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 import 'package:universal_html/html.dart' as html;
 
 class WebFilesystemDataSourceImpl implements FilesystemDataSource {
   @override
-  Future<void> downloadSurveyData(Map<String, dynamic> exportJson) async {
+  Future<void> downloadActivityData(Map<String, dynamic> exportJson) async {
     const encoder = JsonEncoder.withIndent('  ');
     final mapObject = encoder.convert(exportJson);
 
@@ -27,7 +27,7 @@ class WebFilesystemDataSourceImpl implements FilesystemDataSource {
   }
 
   @override
-  Future<SurveyData?> importSurveyData() async {
+  Future<ActivityData?> importActivityData() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['json'],
@@ -37,7 +37,7 @@ class WebFilesystemDataSourceImpl implements FilesystemDataSource {
       final bytes = result?.files.single.bytes;
       final string = bytes?.let(const Utf8Decoder().convert);
       final map = string?.let((str) => json.decode(str));
-      return map != null ? SurveyData.fromJson(map) : null;
+      return map != null ? ActivityData.fromJson(map) : null;
     } catch (_) {
       return null;
     }

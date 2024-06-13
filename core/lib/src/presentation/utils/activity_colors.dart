@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-abstract class SurveyColors {
+abstract class ActivityColors {
   static const transparentW = Color(0x00FFFFFF);
   static const white = Color(0xFFFFFFFF);
   static const black = Color(0xFF000000);

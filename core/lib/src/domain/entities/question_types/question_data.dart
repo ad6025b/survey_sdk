@@ -3,7 +3,7 @@ import 'package:survey_sdk/src/data/mappers/question_types/choice_question_data/
 import 'package:survey_sdk/src/data/mappers/question_types/info_question_data/info_question_data_mapper_factory.dart';
 import 'package:survey_sdk/src/data/mappers/question_types/input_question_data/input_question_data_mapper_factory.dart';
 import 'package:survey_sdk/src/data/mappers/question_types/slider_question_data/slider_question_data_mapper_factory.dart';
-import 'package:survey_sdk/src/domain/entities/actions/survey_action.dart';
+import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
 import 'package:survey_sdk/src/domain/entities/constants/question_types.dart';
 
 abstract class _Fields {
@@ -42,11 +42,11 @@ abstract class QuestionData<T> extends Equatable {
 
   /// Overridden action of the main button, if this field is null,
   /// then the standard action will be used.
-  final SurveyAction? mainButtonAction;
+  final ActivityAction? mainButtonAction;
 
   /// Overridden action of the secondary button, if this field is null,
   /// then the standard action will be used.
-  final SurveyAction? secondaryButtonAction;
+  final ActivityAction? secondaryButtonAction;
 
   /// The type of the question.
   ///
@@ -73,7 +73,7 @@ abstract class QuestionData<T> extends Equatable {
     bool? isSkip,
     String? secondaryButtonText,
     String? primaryButtonText,
-    SurveyAction? mainButtonAction,
+    ActivityAction? mainButtonAction,
   });
 
   /// Converts a JSON map to a [QuestionData] instance based on the question's

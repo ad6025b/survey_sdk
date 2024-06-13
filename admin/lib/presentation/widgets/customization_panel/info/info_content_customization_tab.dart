@@ -5,7 +5,7 @@ import 'package:survey_admin/presentation/widgets/customization_items/actions_cu
 import 'package:survey_admin/presentation/widgets/customization_items/customization_items_container.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_multiline_text_field.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/secondary_button_customization_item.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class InfoContentCustomizationTab extends CustomizationTab {
   final ValueChanged<QuestionData> onChange;
@@ -30,7 +30,7 @@ class InfoContentCustomizationTab extends CustomizationTab {
           children: [
             CustomizationMultilineTextField(
               value: editable.title,
-              maxHeight: SurveyDimensions.sizeL,
+              maxHeight: ActivityDimensions.sizeL,
               onChanged: (title) => onChange(
                 editable.copyWith(title: title),
               ),
@@ -42,7 +42,7 @@ class InfoContentCustomizationTab extends CustomizationTab {
           children: [
             CustomizationMultilineTextField(
               value: editable.subtitle,
-              maxHeight: SurveyDimensions.sizeL,
+              maxHeight: ActivityDimensions.sizeL,
               onChanged: (subtitle) => onChange(
                 editable.copyWith(subtitle: subtitle),
               ),
@@ -54,7 +54,7 @@ class InfoContentCustomizationTab extends CustomizationTab {
           children: [
             CustomizationMultilineTextField(
               value: editable.primaryButtonText,
-              maxHeight: SurveyDimensions.sizeL,
+              maxHeight: ActivityDimensions.sizeL,
               onChanged: (text) => onChange(
                 editable.copyWith(primaryButtonText: text),
               ),
@@ -63,7 +63,7 @@ class InfoContentCustomizationTab extends CustomizationTab {
         ),
         CustomizationItemsContainer(
           itemsPadding: const EdgeInsets.all(
-            SurveyDimensions.marginM,
+            ActivityDimensions.marginM,
           ),
           children: [
             SecondaryButtonCustomizationItem(
@@ -87,7 +87,7 @@ class InfoContentCustomizationTab extends CustomizationTab {
                     mainButtonAction: action,
                   ),
                 ),
-                surveyAction: editable.mainButtonAction,
+                activityAction: editable.mainButtonAction,
                 callbackType: CallbackType.primaryCallback,
                 questionsLength: questionsAmount!,
               ),
@@ -105,7 +105,7 @@ class InfoContentCustomizationTab extends CustomizationTab {
                     secondaryButtonAction: action,
                   ),
                 ),
-                surveyAction: editable.secondaryButtonAction,
+                activityAction: editable.secondaryButtonAction,
                 callbackType: CallbackType.secondaryCallback,
                 questionsLength: questionsAmount!,
               ),

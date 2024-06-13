@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:survey_sdk/src/domain/entities/actions/survey_action.dart';
+import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
 import 'package:survey_sdk/src/domain/entities/question_answer.dart';
 import 'package:survey_sdk/src/domain/entities/question_types/choice_question_data.dart';
 import 'package:survey_sdk/src/domain/entities/question_types/info_question_data.dart';
@@ -106,7 +106,7 @@ class _BadQuestionData extends QuestionData {
     bool? isSkip,
     String? secondaryButtonText,
     String? primaryButtonText,
-    SurveyAction? mainButtonAction,
+    ActivityAction? mainButtonAction,
   }) {
     throw UnimplementedError();
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 const _titleSize = 18.0;
 const _subtitleSize = 15.0;
@@ -36,19 +36,19 @@ abstract class MockedEntities {
     ruleType: RuleType.none,
     ruleValue: 0,
     theme: ChoiceQuestionTheme(
-      activeColor: SurveyColors.grey,
-      inactiveColor: SurveyColors.grey,
-      fill: SurveyColors.grey,
-      titleColor: SurveyColors.grey,
+      activeColor: ActivityColors.grey,
+      inactiveColor: ActivityColors.grey,
+      fill: ActivityColors.grey,
+      titleColor: ActivityColors.grey,
       titleSize: _titleSize,
-      subtitleColor: SurveyColors.grey,
+      subtitleColor: ActivityColors.grey,
       subtitleSize: _subtitleSize,
-      primaryButtonFill: SurveyColors.grey,
-      primaryButtonTextColor: SurveyColors.grey,
+      primaryButtonFill: ActivityColors.grey,
+      primaryButtonTextColor: ActivityColors.grey,
       primaryButtonTextSize: _buttonTextSize,
       primaryButtonRadius: _buttonRadius,
-      secondaryButtonFill: SurveyColors.grey,
-      secondaryButtonTextColor: SurveyColors.grey,
+      secondaryButtonFill: ActivityColors.grey,
+      secondaryButtonTextColor: ActivityColors.grey,
       secondaryButtonTextSize: _buttonTextSize,
       secondaryButtonRadius: _buttonRadius,
     ),
@@ -80,10 +80,10 @@ abstract class MockedEntities {
       borderColor: Colors.blueAccent,
       borderWidth: 1,
       lines: 1,
-      hintColor: SurveyColors.textLightGrey,
-      hintSize: SurveyFonts.sizeL,
-      textColor: SurveyColors.black,
-      textSize: SurveyFonts.sizeL,
+      hintColor: ActivityColors.textLightGrey,
+      hintSize: ActivityFonts.sizeL,
+      textColor: ActivityColors.black,
+      textSize: ActivityFonts.sizeL,
       inputType: InputType.number,
       errorText: 'Error',
       isMultiline: false,
@@ -123,19 +123,19 @@ abstract class MockedEntities {
     isSkip: true,
     content: 'content',
     theme: InfoQuestionTheme(
-      fill: SurveyColors.grey,
-      titleColor: SurveyColors.grey,
-      titleSize: SurveyFonts.sizeL,
-      subtitleColor: SurveyColors.grey,
-      subtitleSize: SurveyFonts.sizeS,
-      primaryButtonFill: SurveyColors.grey,
-      primaryButtonTextColor: SurveyColors.grey,
-      primaryButtonTextSize: SurveyFonts.sizeS,
-      primaryButtonRadius: SurveyDimensions.circularRadiusS,
-      secondaryButtonFill: SurveyColors.grey,
-      secondaryButtonTextColor: SurveyColors.grey,
-      secondaryButtonTextSize: SurveyFonts.sizeS,
-      secondaryButtonRadius: SurveyDimensions.circularRadiusS,
+      fill: ActivityColors.grey,
+      titleColor: ActivityColors.grey,
+      titleSize: ActivityFonts.sizeL,
+      subtitleColor: ActivityColors.grey,
+      subtitleSize: ActivityFonts.sizeS,
+      primaryButtonFill: ActivityColors.grey,
+      primaryButtonTextColor: ActivityColors.grey,
+      primaryButtonTextSize: ActivityFonts.sizeS,
+      primaryButtonRadius: ActivityDimensions.circularRadiusS,
+      secondaryButtonFill: ActivityColors.grey,
+      secondaryButtonTextColor: ActivityColors.grey,
+      secondaryButtonTextSize: ActivityFonts.sizeS,
+      secondaryButtonRadius: ActivityDimensions.circularRadiusS,
     ),
     secondaryButtonText: 'SKIP',
     primaryButtonText: 'Next',
@@ -188,7 +188,7 @@ abstract class MockedEntities {
     primaryButtonText: 'Next',
   );
 
-  static final data1 = SurveyData(
+  static final data1 = ActivityData(
     questions: [
       info1.copyWith(index: 1),
       choice1.copyWith(index: 2),

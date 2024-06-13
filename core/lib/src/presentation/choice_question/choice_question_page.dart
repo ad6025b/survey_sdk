@@ -25,10 +25,10 @@ class ChoiceQuestionPage extends StatefulWidget {
 
   /// Callback that is called when [ChoiceQuestionData.isSkip] is true or at
   /// least one option has been selected.
-  final SurveyCallback onPrimaryButtonTap;
+  final ActivityCallback onPrimaryButtonTap;
 
   /// Optional callback that is called when the secondary button is tapped.
-  final SurveyCallback? onSecondaryButtonTap;
+  final ActivityCallback? onSecondaryButtonTap;
 
   const ChoiceQuestionPage({
     required this.data,
@@ -105,10 +105,10 @@ class _ChoiceQuestionPageState extends State<ChoiceQuestionPage>
             hasScrollBody: false,
             child: Padding(
               padding: const EdgeInsets.only(
-                left: SurveyDimensions.margin2XL,
-                right: SurveyDimensions.margin2XL,
-                top: SurveyDimensions.margin3XL,
-                bottom: SurveyDimensions.marginXL,
+                left: ActivityDimensions.margin2XL,
+                right: ActivityDimensions.margin2XL,
+                top: ActivityDimensions.margin3XL,
+                bottom: ActivityDimensions.marginXL,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,7 +122,7 @@ class _ChoiceQuestionPageState extends State<ChoiceQuestionPage>
                   if (widget.data.subtitle.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.only(
-                        top: SurveyDimensions.marginS,
+                        top: ActivityDimensions.marginS,
                       ),
                       // TODO(dev): We passed a subtitle to widget for content?
                       child: QuestionContent(
@@ -133,7 +133,7 @@ class _ChoiceQuestionPageState extends State<ChoiceQuestionPage>
                     ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      top: SurveyDimensions.marginM,
+                      top: ActivityDimensions.marginM,
                     ),
                     child: widget.data.isMultipleChoice
                         ? _QuestionCheckboxes(
@@ -157,7 +157,7 @@ class _ChoiceQuestionPageState extends State<ChoiceQuestionPage>
                   const Spacer(),
                   Padding(
                     padding:
-                        const EdgeInsets.only(top: SurveyDimensions.marginS),
+                        const EdgeInsets.only(top: ActivityDimensions.marginS),
                     child: Row(
                       children: [
                         if (widget.data.isSkip)
@@ -247,7 +247,7 @@ class _QuestionCheckboxes extends StatelessWidget {
               ),
               value: selectedOptions.contains(option),
               activeColor: Colors.transparent,
-              checkColor: SurveyColors.black,
+              checkColor: ActivityColors.black,
               side: MaterialStateBorderSide.resolveWith((states) {
                 return states.contains(MaterialState.selected)
                     ? BorderSide(color: activeColor)

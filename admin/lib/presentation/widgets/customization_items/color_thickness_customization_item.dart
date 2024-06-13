@@ -5,7 +5,7 @@ import 'package:survey_admin/presentation/app/localization/app_localizations_ext
 import 'package:survey_admin/presentation/utils/double_input_formatter.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/color_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_widgets/customization_text_field.dart';
-import 'package:survey_sdk/survey_sdk.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 
 class ColorThicknessCustomizationItem extends StatefulWidget {
   final Color initialColor;
@@ -81,7 +81,7 @@ class _ColorThicknessCustomizationItemState
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.only(right: SurveyDimensions.margin5XL),
+            padding: const EdgeInsets.only(right: ActivityDimensions.margin5XL),
             child: CustomizationTextField(
               controller: _textEditingController,
               inputFormatters: [
@@ -93,7 +93,7 @@ class _ColorThicknessCustomizationItemState
                 border: InputBorder.none,
                 suffix: Padding(
                   padding: const EdgeInsets.only(
-                    left: SurveyDimensions.margin2XS,
+                    left: ActivityDimensions.margin2XS,
                   ),
                   child: Text(
                     context.localization.px,
