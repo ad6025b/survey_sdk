@@ -3,19 +3,19 @@
 // found in the LICENSE file.
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:survey_sdk/activity_sdk.dart';
 import 'package:survey_sdk/src/domain/entities/question_answer.dart';
 import 'package:survey_sdk/src/domain/repository_interfaces/activity_data_repository.dart';
 import 'package:survey_sdk/src/presentation/activity/activity_state.dart';
-import 'package:survey_sdk/src/presentation/utils/on_finish_callback.dart';
 import 'package:survey_sdk/src/presentation/utils/activity_button_callback.dart';
-import 'package:survey_sdk/src/presentation/utils/utils.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:survey_sdk/src/presentation/utils/on_finish_callback.dart';
 
 class ActivityCubit extends Cubit<ActivityState> {
   /// A repository responsible for retrieving activity data from a data source.
   final ActivityDataRepository _activityDataRepository;
 
-  ActivityCubit(this._activityDataRepository) : super(const ActivityEmptyState());
+  ActivityCubit(this._activityDataRepository)
+      : super(const ActivityEmptyState());
 
   /// Initializes the activity data by loading it from the specified [filePath].
   /// If the [filePath] is not null, it retrieves the activity data using the
@@ -61,7 +61,8 @@ class ActivityCubit extends Cubit<ActivityState> {
   }
 
   /// Sets the activity data of the cubit to the provided [activityData].
-  void setActivityData(ActivityData? activityData, List<String> providedErrors) {
+  void setActivityData(
+      ActivityData? activityData, List<String> providedErrors) {
     emit(
       activityData != null
           ? ActivityLoadedState(activityData: activityData)
