@@ -1,6 +1,6 @@
-# How to Contribute to What-the-Flutter Survey SDK Repository
+# How to Contribute to What-the-Flutter Activity SDK Repository
 
-We welcome contributions from the community and appreciate your interest in making What-the-Flutter Survey SDK even better. To help us facilitate the contribution process, please review the following guidelines.
+We welcome contributions from the community and appreciate your interest in making What-the-Flutter Activity SDK even better. To help us facilitate the contribution process, please review the following guidelines.
 
 ## How to Contribute
 
@@ -31,4 +31,4 @@ As a contributor, we ask that you respect the code of conduct. Any inappropriate
 
 By contributing, you agree that your contributions will be licensed under the project's LICENSE file.
 
-Thank you for contributing to Survey SDK!
+Thank you for contributing to Activity SDK!

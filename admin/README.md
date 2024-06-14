@@ -1,6 +1,6 @@
 # Survey Admin Module
 
-The Admin module is a web application that allows you to build, manage and customize surveys. It provides a user-friendly interface to modify and customize survey widgets, as well as import and export survey modifications. This module provides a user-friendly interface for creating and configuring surveys, and it is designed to work seamlessly with the  [Survey SDK](https://github.com/What-the-Flutter/survey_sdk "inspect Survey SDK").
+The Admin module is a web application that allows you to build, manage and customize surveys. It provides a user-friendly interface to modify and customize survey widgets, as well as import and export survey modifications. This module provides a user-friendly interface for creating and configuring surveys, and it is designed to work seamlessly with the [Activity SDK]
 
 ## Features
 
@@ -30,26 +30,26 @@ In addition to the preview, the application offers a set of basic settings that 
 
 ## Question editing
 
-You have the flexibility to customize various aspects of each question in your surveys. The application offers a wide range of configuration options, enabling you to tailor each question to your specific requirements and create highly customized surveys. 
+You have the flexibility to customize various aspects of each question in your surveys. The application offers a wide range of configuration options, enabling you to tailor each question to your specific requirements and create highly customized surveys.
 
-In addition to the extensive customization options for each question, the Admin Flutter Project with Core Survey SDK provides a set of common settings that might be applied to every question. These common settings allow you to configure certain aspects that can be nessesary across different questions in your surveys. They are splitted up into two tabs: ***Common*** and ***Content***.
+In addition to the extensive customization options for each question, the Admin Flutter Project with Core Activity SDK provides a set of common settings that might be applied to every question. These common settings allow you to configure certain aspects that can be nessesary across different questions in your surveys. They are splitted up into two tabs: **_Common_** and **_Content_**.
 
-***Common*** contains:
+**_Common_** contains:
 
-- ```Fill:``` background color of screen
-- ```Title:``` color and font size of Title
-- ```Subtitle:``` color and font size of Subtitle
-- ```Primary button:``` color of Primary button background, color of Primary button's text, font size of text, Primary button's border radius
-- ```Secondary button:``` color of Secondary button background, color of Secondary button's text, font size of text, Secondary button's border radius (This is shown if the Secondary button is enabled)
+- `Fill:` background color of screen
+- `Title:` color and font size of Title
+- `Subtitle:` color and font size of Subtitle
+- `Primary button:` color of Primary button background, color of Primary button's text, font size of text, Primary button's border radius
+- `Secondary button:` color of Secondary button background, color of Secondary button's text, font size of text, Secondary button's border radius (This is shown if the Secondary button is enabled)
 
-***Content*** contains:
+**_Content_** contains:
 
-- ```Title:``` text for Title
-- ```Subtitle:``` text for Subtitle
-- ```Primary button:``` text for Primary button
-- ```Secoondary button:``` toggle to enable or disable Secondary button, text for Secondary button
+- `Title:` text for Title
+- `Subtitle:` text for Subtitle
+- `Primary button:` text for Primary button
+- `Secoondary button:` toggle to enable or disable Secondary button, text for Secondary button
 
-***
+---
 
 ### Infos
 
@@ -57,83 +57,82 @@ In addition to the extensive customization options for each question, the Admin 
 
 ![info_content](https://github.com/What-the-Flutter/survey_sdk/assets/94079414/12ccf3ec-e59d-4af1-be25-f8e2c4646a22)
 
-
 This question contains only basic settings.
 
-***
+---
 
 ### Choice
 
 ![image](https://github.com/What-the-Flutter/survey_sdk/assets/94079414/aba0b7cf-05e5-46d9-b7ef-8ffab33be9cc)
 
-In addition to ***Common*** and ***Content*** tabs, there is also ***Radio buttons*** tab (or ***Check boxes*** depending on settings)
+In addition to **_Common_** and **_Content_** tabs, there is also **_Radio buttons_** tab (or **_Check boxes_** depending on settings)
 
 ![image](https://github.com/What-the-Flutter/survey_sdk/assets/94079414/3f90bb1a-6beb-4358-acd7-662909df23e1)
 
 This tab contains:
 
-- ```Multiple choice:``` toggle to enable or disable multiple choice
-- ```Active:``` backgroud color of options' buttons if they are active
-- ```Inactive:``` background color of options' buttons if they are inactive
+- `Multiple choice:` toggle to enable or disable multiple choice
+- `Active:` backgroud color of options' buttons if they are active
+- `Inactive:` background color of options' buttons if they are inactive
 
-In addition to basic settings in ***Content*** tab there is an extra one.
+In addition to basic settings in **_Content_** tab there is an extra one.
 
 ![image](https://github.com/What-the-Flutter/survey_sdk/assets/94079414/d2a63ea8-1d2b-4d59-aa40-92a7433abe34)
 
-- ```Options:``` all options of Choice question, there you can add, edit and delete these options
+- `Options:` all options of Choice question, there you can add, edit and delete these options
 
-***
+---
 
 ### Slider
 
 ![image](https://github.com/What-the-Flutter/survey_sdk/assets/94079414/db3e8b0a-d84a-4300-b220-c324fe158687)
 
-In addition to ***Common*** and ***Content*** tabs, there is also ***Slider*** tab
+In addition to **_Common_** and **_Content_** tabs, there is also **_Slider_** tab
 
 ![image](https://github.com/What-the-Flutter/survey_sdk/assets/94079414/ba7f8756-ef56-45e6-9ac4-a2bfc3afcf5e)
 
 This tab contains:
 
-- ```Thickness:``` thickness of Slider's track
-- ```Active:``` color of active part of Slider's track
-- ```Inactive:``` color of inactive part of Slider's track
-- ```Thumb:``` color and radius of Slider's thumb
+- `Thickness:` thickness of Slider's track
+- `Active:` color of active part of Slider's track
+- `Inactive:` color of inactive part of Slider's track
+- `Thumb:` color and radius of Slider's thumb
 
-In addition to basic settings in ***Content*** tab there is an extra ones.
+In addition to basic settings in **_Content_** tab there is an extra ones.
 
 ![image](https://github.com/What-the-Flutter/survey_sdk/assets/94079414/dc07024d-2848-4ebd-8541-f6e047047511)
 
-- ```Value:``` minimum and maximum values of Slider
-- ```Divisions:``` number of divisions for Slider
+- `Value:` minimum and maximum values of Slider
+- `Divisions:` number of divisions for Slider
 
-***
+---
 
 ### Input
 
 ![image](https://github.com/What-the-Flutter/survey_sdk/assets/94079414/319eabca-0017-4176-92a1-39696757f0e6)
 
-In addition to ***Common*** and ***Content*** tabs, there is also ***Input*** tab
+In addition to **_Common_** and **_Content_** tabs, there is also **_Input_** tab
 
 ![image](https://github.com/What-the-Flutter/survey_sdk/assets/94079414/b5c6d4ea-7805-4925-961a-7a7146c5edfe)
 
 This tab contains:
 
-- ```Multiline:``` toggle to enable or disable multiline text in input
-- ```Fill:``` backgroud color of Input's field
-- ```Border:``` color and width of Input's border
-- ```Padding:``` horizontal and vertical padding for content in Input field
-- ```Hint:``` color and fontsize of hint in Input field
-- ```Text:``` color and fontsize of text in Input field
-- ```Input type:``` text type for validation [text, number, date, email, password, phone]
-- ```Validation error message:``` error text if validation fails
+- `Multiline:` toggle to enable or disable multiline text in input
+- `Fill:` backgroud color of Input's field
+- `Border:` color and width of Input's border
+- `Padding:` horizontal and vertical padding for content in Input field
+- `Hint:` color and fontsize of hint in Input field
+- `Text:` color and fontsize of text in Input field
+- `Input type:` text type for validation [text, number, date, email, password, phone]
+- `Validation error message:` error text if validation fails
 
-In addition to basic settings in ***Content*** tab there is an extra one.
+In addition to basic settings in **_Content_** tab there is an extra one.
 
 ![image](https://github.com/What-the-Flutter/survey_sdk/assets/94079414/f2e3d70e-506a-42b8-81ed-7cb753136114)
 
-- ```Hint:``` hint text in Input field
+- `Hint:` hint text in Input field
 
-***
+---
 
 ## Question Management
 
