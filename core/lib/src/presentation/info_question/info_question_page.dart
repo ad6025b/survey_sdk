@@ -36,71 +36,95 @@ class _InfoQuestionPageState extends State<InfoQuestionPage> {
     final theme =
         widget.data.theme ?? Theme.of(context).extension<InfoQuestionTheme>()!;
     return Scaffold(
-      backgroundColor: theme.fill,
-      body: CustomScrollView(
-        slivers: [
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: ActivityDimensions.margin2XL,
-                right: ActivityDimensions.margin2XL,
-                top: ActivityDimensions.margin3XL,
-                bottom: ActivityDimensions.marginXL,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  InfoDataView(data: widget.data),
-                  const Spacer(),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: ActivityDimensions.marginS),
-                    child: Row(
+      backgroundColor: ActivityColors.greyBackground, // Light gray background
+      body: Padding(
+        padding: const EdgeInsets.only(
+          left: ActivityDimensions.margin2XL,
+          right: ActivityDimensions.margin2XL,
+          top: ActivityDimensions.margin3XL,
+          bottom: ActivityDimensions.marginXL,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Container(
+                // Wrap the question content with a Container
+                decoration: BoxDecoration(
+                  color: ActivityColors.white,
+                  // Set the border properties
+                  border: Border.all(
+                    color: ActivityColors.white, // Border color
+                    width: 2, // Border width
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(
+                        ActivityDimensions.circularRadiusS), // Border radius
+                  ),
+                ),
+                padding: const EdgeInsets.all(
+                    ActivityDimensions.marginS), // Add some padding
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    InfoDataView(data: widget.data),
+                    const Spacer(),
+                    //the fake row is need to fill the width of the screen
+                    Row(
                       children: [
-                        if (widget.data.isSkip)
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 8),
-                              child: QuestionBottomButton(
-                                text: widget.data.secondaryButtonText,
-                                color: theme.secondaryButtonFill,
-                                textColor: theme.secondaryButtonTextColor,
-                                textSize: theme.secondaryButtonTextSize,
-                                radius: theme.secondaryButtonRadius,
-                                onPressed: () {
-                                  widget.onSecondaryButtonTap?.call(
-                                    index: widget.data.index,
-                                    answer: null,
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                        Flexible(
-                          child: QuestionBottomButton(
-                            text: widget.data.primaryButtonText,
-                            color: theme.primaryButtonFill,
-                            textColor: theme.primaryButtonTextColor,
-                            textSize: theme.primaryButtonTextSize,
-                            radius: theme.primaryButtonRadius,
-                            onPressed: () {
-                              widget.onPrimaryButtonTap?.call(
-                                index: widget.data.index,
-                                answer: null,
-                              );
-                            },
-                          ),
+                        Expanded(
+                          child: Container(),
                         ),
                       ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: ActivityDimensions.marginS),
+              child: Row(
+                children: [
+                  if (widget.data.isSkip)
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: QuestionBottomButton(
+                          text: widget.data.secondaryButtonText,
+                          color: theme.secondaryButtonFill,
+                          textColor: theme.secondaryButtonTextColor,
+                          textSize: theme.secondaryButtonTextSize,
+                          radius: theme.secondaryButtonRadius,
+                          onPressed: () {
+                            widget.onSecondaryButtonTap?.call(
+                              index: widget.data.index,
+                              answer: null,
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  Flexible(
+                    child: QuestionBottomButton(
+                      text: widget.data.primaryButtonText,
+                      color: theme.primaryButtonFill,
+                      textColor: theme.primaryButtonTextColor,
+                      textSize: theme.primaryButtonTextSize,
+                      radius: theme.primaryButtonRadius,
+                      onPressed: () {
+                        widget.onPrimaryButtonTap?.call(
+                          index: widget.data.index,
+                          answer: null,
+                        );
+                      },
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

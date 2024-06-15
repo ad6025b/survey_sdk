@@ -6,7 +6,8 @@ abstract class ActivityDimensions {
   static const double marginM = 16;
   static const double marginL = 18;
   static const double marginXL = 20;
-  static const double margin2XL = 32;
+  //static const double margin2XL = 32;
+  static const double margin2XL = 16;
   static const double margin3XL = 36;
   static const double margin4XL = 50;
   static const double margin5XL = 55;

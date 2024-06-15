@@ -61,18 +61,33 @@ class _SliderQuestionPageState extends State<SliderQuestionPage> {
     final theme = widget.data.theme ??
         Theme.of(context).extension<SliderQuestionTheme>()!;
     return Scaffold(
-      backgroundColor: theme.fill,
-      body: CustomScrollView(
-        slivers: [
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: ActivityDimensions.margin2XL,
-                right: ActivityDimensions.margin2XL,
-                top: ActivityDimensions.margin3XL,
-                bottom: ActivityDimensions.marginXL,
+      backgroundColor: ActivityColors.greyBackground,
+      body: Padding(
+        padding: const EdgeInsets.only(
+          left: ActivityDimensions.margin2XL,
+          right: ActivityDimensions.margin2XL,
+          top: ActivityDimensions.margin3XL,
+          bottom: ActivityDimensions.marginXL,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              // Wrap the question content with a Container
+              decoration: BoxDecoration(
+                color: ActivityColors.white,
+                // Set the border properties
+                border: Border.all(
+                  color: ActivityColors.white, // Border color
+                  width: 2, // Border width
+                ),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(
+                      ActivityDimensions.circularRadiusS), // Border radius
+                ),
               ),
+              padding: const EdgeInsets.all(
+                  ActivityDimensions.marginS), // Add some padding
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -105,50 +120,50 @@ class _SliderQuestionPageState extends State<SliderQuestionPage> {
                       divisions: widget.data.divisions,
                     ),
                   ),
-                  const Spacer(),
-                  Row(
-                    children: [
-                      if (widget.data.isSkip)
-                        Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.only(right: 8),
-                            child: QuestionBottomButton(
-                              text: widget.data.secondaryButtonText,
-                              radius: theme.secondaryButtonRadius,
-                              color: theme.secondaryButtonFill,
-                              textColor: theme.secondaryButtonTextColor,
-                              textSize: theme.secondaryButtonTextSize,
-                              onPressed: () {
-                                widget.onSecondaryButtonTap?.call(
-                                  index: widget.data.index,
-                                  answer: QuestionAnswer<double>(_answer),
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                      Flexible(
-                        child: QuestionBottomButton(
-                          text: widget.data.primaryButtonText,
-                          onPressed: () {
-                            widget.onPrimaryButtonTap.call(
-                              index: widget.data.index,
-                              answer: QuestionAnswer<double>(_answer),
-                            );
-                          },
-                          radius: theme.primaryButtonRadius,
-                          color: theme.primaryButtonFill,
-                          textColor: theme.primaryButtonTextColor,
-                          textSize: theme.primaryButtonTextSize,
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
-          ),
-        ],
+            const Spacer(),
+            Row(
+              children: [
+                if (widget.data.isSkip)
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: QuestionBottomButton(
+                        text: widget.data.secondaryButtonText,
+                        radius: theme.secondaryButtonRadius,
+                        color: theme.secondaryButtonFill,
+                        textColor: theme.secondaryButtonTextColor,
+                        textSize: theme.secondaryButtonTextSize,
+                        onPressed: () {
+                          widget.onSecondaryButtonTap?.call(
+                            index: widget.data.index,
+                            answer: QuestionAnswer<double>(_answer),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                Flexible(
+                  child: QuestionBottomButton(
+                    text: widget.data.primaryButtonText,
+                    onPressed: () {
+                      widget.onPrimaryButtonTap.call(
+                        index: widget.data.index,
+                        answer: QuestionAnswer<double>(_answer),
+                      );
+                    },
+                    radius: theme.primaryButtonRadius,
+                    color: theme.primaryButtonFill,
+                    textColor: theme.primaryButtonTextColor,
+                    textSize: theme.primaryButtonTextSize,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -240,7 +255,8 @@ class _QuestionSliderState extends State<_QuestionSlider> {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: ActivityDimensions.sizeM),
+                  padding:
+                      const EdgeInsets.only(left: ActivityDimensions.sizeM),
                   child: Text(
                     widget.minValue.toString(),
                     style: textStyle,
@@ -248,7 +264,8 @@ class _QuestionSliderState extends State<_QuestionSlider> {
                 ),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.only(right: ActivityDimensions.sizeM),
+                  padding:
+                      const EdgeInsets.only(right: ActivityDimensions.sizeM),
                   child: Text(
                     widget.maxValue.toString(),
                     style: textStyle,

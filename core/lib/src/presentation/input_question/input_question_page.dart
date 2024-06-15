@@ -118,18 +118,33 @@ class _InputQuestionPageState extends State<InputQuestionPage> {
       isDateType ? _dateTime.toString() : _input,
     );
     return Scaffold(
-      backgroundColor: theme.fill,
-      body: CustomScrollView(
-        slivers: [
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: ActivityDimensions.margin2XL,
-                right: ActivityDimensions.margin2XL,
-                top: ActivityDimensions.margin3XL,
-                bottom: ActivityDimensions.marginXL,
+      backgroundColor: ActivityColors.greyBackground,
+      body: Padding(
+        padding: const EdgeInsets.only(
+          left: ActivityDimensions.margin2XL,
+          right: ActivityDimensions.margin2XL,
+          top: ActivityDimensions.margin3XL,
+          bottom: ActivityDimensions.marginXL,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              // Wrap the question content with a Container
+              decoration: BoxDecoration(
+                // Set the border properties
+                color: ActivityColors.white,
+                border: Border.all(
+                  color: ActivityColors.white, // Border color
+                  width: 2, // Border width
+                ),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(
+                      ActivityDimensions.circularRadiusS), // Border radius
+                ),
               ),
+              padding: const EdgeInsets.all(
+                  ActivityDimensions.marginS), // Add some padding
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -187,50 +202,47 @@ class _InputQuestionPageState extends State<InputQuestionPage> {
                                 : widget.data.validator.validate(text),
                           ),
                   ),
-                  const Spacer(),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: ActivityDimensions.marginS),
-                    child: Row(
-                      children: [
-                        if (widget.data.isSkip)
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 8),
-                              child: QuestionBottomButton(
-                                text: widget.data.secondaryButtonText,
-                                color: theme.secondaryButtonFill,
-                                textSize: theme.secondaryButtonTextSize,
-                                textColor: theme.secondaryButtonTextColor,
-                                radius: theme.secondaryButtonRadius,
-                                onPressed: () =>
-                                    _onSecondaryButtonPressed(isValid),
-                              ),
-                            ),
-                          ),
-                        Flexible(
-                          child: QuestionBottomButton(
-                            text: widget.data.primaryButtonText,
-                            onPressed: () => _onPrimaryButtonPressed(isValid),
-                            isEnabled: isDateType
-                                ? _canBeSkippedDate || (isValid == null)
-                                : _canBeSkippedNumber ||
-                                    (_input.trim().isNotEmpty &&
-                                        isValid == null),
-                            color: theme.primaryButtonFill,
-                            textSize: theme.primaryButtonTextSize,
-                            textColor: theme.primaryButtonTextColor,
-                            radius: theme.primaryButtonRadius,
-                          ),
+                ],
+              ),
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(top: ActivityDimensions.marginS),
+              child: Row(
+                children: [
+                  if (widget.data.isSkip)
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: QuestionBottomButton(
+                          text: widget.data.secondaryButtonText,
+                          color: theme.secondaryButtonFill,
+                          textColor: theme.secondaryButtonTextColor,
+                          textSize: theme.secondaryButtonTextSize,
+                          radius: theme.secondaryButtonRadius,
+                          onPressed: () => _onSecondaryButtonPressed(isValid),
                         ),
-                      ],
+                      ),
+                    ),
+                  Flexible(
+                    child: QuestionBottomButton(
+                      text: widget.data.primaryButtonText,
+                      onPressed: () => _onPrimaryButtonPressed(isValid),
+                      isEnabled: isDateType
+                          ? _canBeSkippedDate || (isValid == null)
+                          : _canBeSkippedNumber ||
+                              (_input.trim().isNotEmpty && isValid == null),
+                      color: theme.primaryButtonFill,
+                      textSize: theme.primaryButtonTextSize,
+                      textColor: theme.primaryButtonTextColor,
+                      radius: theme.primaryButtonRadius,
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
