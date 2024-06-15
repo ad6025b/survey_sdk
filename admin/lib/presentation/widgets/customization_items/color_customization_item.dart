@@ -1,8 +1,8 @@
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_widgets/customization_text_field.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 class ColorCustomizationItem extends StatefulWidget {
   final Color initialColor;

@@ -1,6 +1,6 @@
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 class CustomizationTextField extends StatefulWidget {
   static const InputDecoration _defaultDecoration = InputDecoration(

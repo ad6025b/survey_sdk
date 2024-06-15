@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +9,6 @@ import 'package:survey_admin/domain/repository_interfaces/session_storage_reposi
 import 'package:survey_admin/presentation/app/di/injector.dart';
 import 'package:survey_admin/presentation/pages/builder/builder_state.dart';
 import 'package:survey_admin/presentation/utils/common_data.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 class BuilderCubit extends Cubit<BuilderState> {
   final FileSystemRepository _fileSystemRepository;

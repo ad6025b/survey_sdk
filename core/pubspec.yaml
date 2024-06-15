@@ -1,5 +1,5 @@
 name: activity_builder
-description: The Activity SDK is a toolkit that allows developers to integrate surveys into their Flutter applications
+description: The Activity Builder Core
 version: 0.0.1
 environment:
   sdk: ">=3.0.0 <4.0.0"

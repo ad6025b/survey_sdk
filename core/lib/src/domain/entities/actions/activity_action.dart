@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:activity_builder/src/data/mappers/actions/finish_activity_action/finish_activity_action_mapper.dart';
 import 'package:activity_builder/src/data/mappers/actions/go_back_action/go_back_action_mapper.dart';
 import 'package:activity_builder/src/data/mappers/actions/go_next_action/go_next_action_mapper.dart';
@@ -10,6 +9,7 @@ import 'package:activity_builder/src/domain/entities/actions/go_next_action.dart
 import 'package:activity_builder/src/domain/entities/actions/go_to_action.dart';
 import 'package:activity_builder/src/domain/entities/actions/skip_question_action.dart';
 import 'package:activity_builder/src/domain/entities/constants/action_types.dart';
+import 'package:equatable/equatable.dart';
 
 abstract final class _Fields {
   static const String type = 'type';

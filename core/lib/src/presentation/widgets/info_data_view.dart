@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:activity_builder/src/presentation/widgets/question_content.dart';
 import 'package:activity_builder/src/presentation/widgets/question_title.dart';
-import 'package:activity_builder/activity_sdk.dart';
+import 'package:flutter/material.dart';
 
 class InfoDataView extends StatelessWidget {
   final InfoQuestionData data;

@@ -1,8 +1,8 @@
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:activity_builder/src/data/repositories/activity_data_repository_impl.dart';
 import 'package:activity_builder/src/presentation/activity/activity_state.dart';
-import 'package:activity_builder/activity_sdk.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 
 import '../../../lib/src/presentation/activity/activity_cubit.dart';
 

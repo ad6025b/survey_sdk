@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:activity_builder/activity_sdk.dart';
+import 'package:flutter/material.dart';
 
 class SwitchCustomizationItem extends StatelessWidget {
   final String title;

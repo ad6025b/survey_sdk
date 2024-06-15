@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:activity_builder/src/domain/entities/actions/activity_action.dart';
 import 'package:activity_builder/src/domain/entities/actions/finish_activity_action.dart';
 import 'package:activity_builder/src/domain/entities/actions/go_back_action.dart';
@@ -10,6 +9,7 @@ import 'package:activity_builder/src/domain/entities/question_types/question_dat
 import 'package:activity_builder/src/presentation/activity/activity_controller.dart';
 import 'package:activity_builder/src/presentation/utils/callback_type.dart';
 import 'package:activity_builder/src/presentation/utils/on_finish_callback.dart';
+import 'package:flutter/material.dart';
 
 class ActivityButtonCallback {
   final ActivityAction? callback;

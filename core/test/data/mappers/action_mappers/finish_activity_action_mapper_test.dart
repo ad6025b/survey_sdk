@@ -1,7 +1,7 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:activity_builder/src/data/mappers/actions/finish_activity_action/finish_activity_action_mapper.dart';
-import 'package:activity_builder/src/domain/entities/actions/finish_activity_action.dart';
 import 'package:activity_builder/src/domain/entities/actions/activity_action.dart';
+import 'package:activity_builder/src/domain/entities/actions/finish_activity_action.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group(

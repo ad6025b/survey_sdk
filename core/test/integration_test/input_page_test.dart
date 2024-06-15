@@ -1,10 +1,10 @@
+import 'package:activity_builder/activity_sdk.dart';
+import 'package:activity_builder/src/presentation/activity/activity_state.dart';
+import 'package:activity_builder/src/presentation/di/injector.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
-import 'package:activity_builder/src/presentation/di/injector.dart';
-import 'package:activity_builder/src/presentation/activity/activity_state.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 import '../presentation/widget/app_tester.dart';
 import '../utils/mocked_entities.dart';

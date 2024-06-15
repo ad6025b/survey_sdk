@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:activity_builder/src/presentation/localization/activity_localizations_ext.dart';
 import 'package:activity_builder/src/presentation/utils/utils.dart';
+import 'package:flutter/material.dart';
 
 class ActivityError extends StatelessWidget {
   final List<String> providedErrors;

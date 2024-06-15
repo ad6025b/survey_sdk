@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
+
 import 'package:activity_builder/src/data/data_sources/interfaces/filesystem_data_source.dart';
 import 'package:activity_builder/src/domain/entities/activity_data.dart';
 import 'package:activity_builder/src/domain/utils/invalid_data_exception.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 
 class FilesystemDataSourceImpl implements FilesystemDataSource {
   @override

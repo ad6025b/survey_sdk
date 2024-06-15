@@ -1,6 +1,6 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:activity_builder/src/data/data_sources/filesystem_data_source_impl.dart';
 import 'package:activity_builder/src/data/data_sources/interfaces/filesystem_data_source.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 /*import '../../utils/mocked_entities.dart';*/
 

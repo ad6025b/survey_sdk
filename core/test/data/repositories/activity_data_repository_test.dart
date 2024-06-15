@@ -1,7 +1,7 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:activity_builder/src/data/data_sources/filesystem_data_source_impl.dart';
 import 'package:activity_builder/src/data/repositories/activity_data_repository_impl.dart';
 import 'package:activity_builder/src/domain/entities/activity_data.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

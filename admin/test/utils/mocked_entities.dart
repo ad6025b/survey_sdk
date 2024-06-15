@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:activity_builder/activity_sdk.dart';
+import 'package:flutter/material.dart';
 
 const _titleSize = 18.0;
 const _subtitleSize = 15.0;

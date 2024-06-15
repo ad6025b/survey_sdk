@@ -1,9 +1,9 @@
 import 'dart:ui';
 
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:activity_builder/src/presentation/utils/activity_colors.dart';
 import 'package:activity_builder/src/presentation/utils/activity_fonts.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 const _titleSize = 16.0;
 const _subtitleSize = 12.0;

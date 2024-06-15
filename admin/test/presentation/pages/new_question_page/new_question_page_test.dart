@@ -1,3 +1,4 @@
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
@@ -14,7 +15,6 @@ import 'package:survey_admin/presentation/pages/new_question_page/new_question_c
 import 'package:survey_admin/presentation/pages/new_question_page/new_question_page.dart';
 import 'package:survey_admin/presentation/utils/common_data.dart';
 import 'package:survey_admin/presentation/widgets/vector_image.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 import '../../../utils/shared_mocks.mocks.dart';
 import '../../widgets/app_tester.dart';

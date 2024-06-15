@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:activity_builder/src/presentation/utils/utils.dart';
+import 'package:flutter/material.dart';
 
 /// Represents the content of a activity question.
 class QuestionContent extends StatelessWidget {

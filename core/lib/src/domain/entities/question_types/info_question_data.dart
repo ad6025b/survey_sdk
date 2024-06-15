@@ -1,6 +1,6 @@
+import 'package:activity_builder/src/domain/entities/actions/activity_action.dart';
 import 'package:activity_builder/src/domain/entities/actions/go_next_action.dart';
 import 'package:activity_builder/src/domain/entities/actions/skip_question_action.dart';
-import 'package:activity_builder/src/domain/entities/actions/activity_action.dart';
 import 'package:activity_builder/src/domain/entities/constants/question_types.dart';
 import 'package:activity_builder/src/domain/entities/question_types/question_data.dart';
 import 'package:activity_builder/src/domain/entities/themes/info_question_theme.dart';

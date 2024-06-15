@@ -1,5 +1,5 @@
-import 'package:activity_builder/src/domain/entities/question_answer.dart';
 import 'package:activity_builder/src/domain/entities/activity_data.dart';
+import 'package:activity_builder/src/domain/entities/question_answer.dart';
 import 'package:activity_builder/src/presentation/utils/activity_error_state.dart';
 
 abstract class ActivityState {

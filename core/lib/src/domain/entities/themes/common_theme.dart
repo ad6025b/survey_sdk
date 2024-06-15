@@ -1,5 +1,3 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:activity_builder/src/data/mappers/question_types/choice_question_data/choice_question_data_mapper_factory.dart';
 import 'package:activity_builder/src/data/mappers/question_types/info_question_data/info_question_data_mapper_factory.dart';
 import 'package:activity_builder/src/data/mappers/question_types/input_question_data/input_question_data_mapper_factory.dart';
@@ -10,6 +8,8 @@ import 'package:activity_builder/src/domain/entities/question_types/choice_quest
 import 'package:activity_builder/src/domain/entities/question_types/info_question_data.dart';
 import 'package:activity_builder/src/domain/entities/question_types/input_question_data.dart';
 import 'package:activity_builder/src/domain/entities/question_types/slider_question_data.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class _Fields {
   static const String slider = 'slider';

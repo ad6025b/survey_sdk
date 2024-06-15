@@ -1,9 +1,9 @@
+import 'package:activity_builder/src/domain/entities/activity_data.dart';
 import 'package:activity_builder/src/domain/entities/input_validator.dart';
 import 'package:activity_builder/src/domain/entities/question_types/choice_question_data.dart';
 import 'package:activity_builder/src/domain/entities/question_types/info_question_data.dart';
 import 'package:activity_builder/src/domain/entities/question_types/input_question_data.dart';
 import 'package:activity_builder/src/domain/entities/question_types/slider_question_data.dart';
-import 'package:activity_builder/src/domain/entities/activity_data.dart';
 import 'package:activity_builder/src/domain/entities/themes/choice_question_theme.dart';
 import 'package:activity_builder/src/domain/entities/themes/common_theme.dart';
 import 'package:activity_builder/src/domain/entities/themes/info_question_theme.dart';

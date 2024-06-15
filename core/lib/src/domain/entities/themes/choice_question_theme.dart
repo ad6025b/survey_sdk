@@ -1,8 +1,8 @@
 import 'dart:ui';
 
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 const _titleSize = 16.0;
 const _subtitleSize = 12.0;

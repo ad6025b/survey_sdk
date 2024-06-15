@@ -3,7 +3,6 @@ import 'package:activity_builder/src/data/data_sources/interfaces/filesystem_dat
 import 'package:activity_builder/src/data/repositories/activity_data_repository_impl.dart';
 import 'package:activity_builder/src/domain/repository_interfaces/activity_data_repository.dart';
 import 'package:activity_builder/src/presentation/activity/activity_cubit.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 class Injector {
   late ActivityCubit activityCubit;

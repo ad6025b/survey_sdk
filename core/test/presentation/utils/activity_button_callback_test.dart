@@ -1,15 +1,15 @@
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
+import 'package:activity_builder/src/domain/entities/actions/activity_action.dart';
 import 'package:activity_builder/src/domain/entities/actions/finish_activity_action.dart';
 import 'package:activity_builder/src/domain/entities/actions/go_back_action.dart';
 import 'package:activity_builder/src/domain/entities/actions/go_next_action.dart';
 import 'package:activity_builder/src/domain/entities/actions/go_to_action.dart';
 import 'package:activity_builder/src/domain/entities/actions/skip_question_action.dart';
-import 'package:activity_builder/src/domain/entities/actions/activity_action.dart';
 import 'package:activity_builder/src/domain/entities/question_types/question_data.dart';
 import 'package:activity_builder/src/presentation/activity/activity_controller.dart';
-import 'package:activity_builder/src/presentation/utils/callback_type.dart';
 import 'package:activity_builder/src/presentation/utils/activity_button_callback.dart';
+import 'package:activity_builder/src/presentation/utils/callback_type.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 
 import '../../utils/mocked_entities.dart';
 

@@ -1,7 +1,7 @@
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:survey_admin/presentation/utils/utils.dart';
 import 'package:survey_admin/presentation/widgets/vector_image.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 class QuestionListItem extends StatelessWidget {
   final QuestionData questionData;

@@ -1,5 +1,5 @@
-import 'package:equatable/equatable.dart';
 import 'package:activity_builder/activity_sdk.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class BuilderState extends Equatable {
   final ActivityData activityData;

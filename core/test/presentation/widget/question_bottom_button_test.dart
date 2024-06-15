@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter_test/flutter_test.dart';
 import 'package:activity_builder/src/presentation/widgets/question_bottom_button.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 import 'app_tester.dart';
 

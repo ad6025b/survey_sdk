@@ -1,3 +1,4 @@
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
@@ -5,7 +6,6 @@ import 'package:survey_admin/presentation/widgets/customization_items/actions_cu
 import 'package:survey_admin/presentation/widgets/customization_items/customization_widgets/customization_text_field.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/dropdown_customization_button.dart';
 import 'package:survey_admin/presentation/widgets/vector_image.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 import '../app_tester.dart';
 

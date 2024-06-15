@@ -1,11 +1,10 @@
 import 'dart:async';
 
+import 'package:activity_builder/src/presentation/localization/flutter_gen/activity_localizations_en.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
-
-import 'package:activity_builder/src/presentation/localization/flutter_gen/activity_localizations_en.dart';
 
 // ignore_for_file: lines_longer_than_80_chars
 

@@ -1,8 +1,8 @@
 import 'dart:ui';
 
+import 'package:activity_builder/src/presentation/utils/utils.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:activity_builder/src/presentation/utils/utils.dart';
 
 /// The [InfoQuestionTheme] class represents the visual styling and appearance
 /// for an info question options.

@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:activity_builder/src/data/mappers/question_types/json_version/question_data_mapper_json_1.dart';
 import 'package:activity_builder/src/data/mappers/themes/info_question_theme/info_question_theme_mapper_ver_1.dart';
-import 'package:activity_builder/activity_sdk.dart';
+import 'package:flutter/material.dart';
 
 abstract class _Fields {
   static const String index = 'index';

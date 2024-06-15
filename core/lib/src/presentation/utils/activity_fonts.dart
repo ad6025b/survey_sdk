@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:activity_builder/src/presentation/utils/activity_colors.dart';
+import 'package:flutter/material.dart';
 
 class ActivityFonts {
   static const FontWeight weightBold = FontWeight.w700;

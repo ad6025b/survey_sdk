@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:activity_builder/src/data/mappers/themes/json_version/question_theme_mapper_json_1.dart';
 import 'package:activity_builder/src/domain/entities/themes/info_question_theme.dart';
+import 'package:flutter/material.dart';
 
 abstract class _Fields {
   static const String fill = 'fill';

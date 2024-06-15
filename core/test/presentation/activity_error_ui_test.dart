@@ -1,14 +1,14 @@
+import 'package:activity_builder/activity_sdk.dart';
+import 'package:activity_builder/src/data/data_sources/filesystem_data_source_impl.dart';
+import 'package:activity_builder/src/data/repositories/activity_data_repository_impl.dart';
+import 'package:activity_builder/src/presentation/activity/activity_state.dart';
+import 'package:activity_builder/src/presentation/activity_error/activity_error.dart';
+import 'package:activity_builder/src/presentation/localization/activity_localizations_ext.dart';
+import 'package:activity_builder/src/presentation/utils/activity_error_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:activity_builder/src/data/data_sources/filesystem_data_source_impl.dart';
-import 'package:activity_builder/src/data/repositories/activity_data_repository_impl.dart';
-import 'package:activity_builder/src/presentation/localization/activity_localizations_ext.dart';
-import 'package:activity_builder/src/presentation/activity/activity_state.dart';
-import 'package:activity_builder/src/presentation/activity_error/activity_error.dart';
-import 'package:activity_builder/src/presentation/utils/activity_error_state.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 import '../../lib/src/presentation/activity/activity_cubit.dart';
 import 'widget/app_tester.dart';

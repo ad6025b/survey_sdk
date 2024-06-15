@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:activity_builder/src/domain/entities/question_answer.dart';
 import 'package:activity_builder/src/domain/entities/question_types/choice_question_data.dart';
 import 'package:activity_builder/src/domain/entities/themes/choice_question_theme.dart';
@@ -7,6 +6,7 @@ import 'package:activity_builder/src/presentation/utils/utils.dart';
 import 'package:activity_builder/src/presentation/widgets/question_bottom_button.dart';
 import 'package:activity_builder/src/presentation/widgets/question_content.dart';
 import 'package:activity_builder/src/presentation/widgets/question_title.dart';
+import 'package:flutter/material.dart';
 
 /// The page with options to choose from,
 /// along with a question, question description, and a button.

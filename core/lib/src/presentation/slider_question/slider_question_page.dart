@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:activity_builder/src/domain/entities/question_answer.dart';
 import 'package:activity_builder/src/domain/entities/question_types/slider_question_data.dart';
 import 'package:activity_builder/src/domain/entities/themes/slider_question_theme.dart';
@@ -6,6 +5,7 @@ import 'package:activity_builder/src/presentation/utils/utils.dart';
 import 'package:activity_builder/src/presentation/widgets/question_bottom_button.dart';
 import 'package:activity_builder/src/presentation/widgets/question_content.dart';
 import 'package:activity_builder/src/presentation/widgets/question_title.dart';
+import 'package:flutter/material.dart';
 
 /// The question page with a question, question description, button to submit
 /// the answer and slider to select a value from a range.

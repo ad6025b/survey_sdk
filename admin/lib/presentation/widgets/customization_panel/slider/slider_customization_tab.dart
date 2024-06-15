@@ -1,3 +1,4 @@
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
 import 'package:survey_admin/presentation/widgets/base/customization_tab.dart';
@@ -6,7 +7,6 @@ import 'package:survey_admin/presentation/widgets/customization_items/color_thic
 import 'package:survey_admin/presentation/widgets/customization_items/customization_items_container.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/thickness_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_panel/constants/customization_panel_dimensions.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 class SliderCustomizationTab extends CustomizationTab {
   final ValueChanged<QuestionData> onChange;

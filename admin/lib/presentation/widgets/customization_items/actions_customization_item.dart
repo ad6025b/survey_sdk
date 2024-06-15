@@ -1,3 +1,4 @@
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
 import 'package:survey_admin/presentation/utils/no_single_zero_formatter.dart';
@@ -5,7 +6,6 @@ import 'package:survey_admin/presentation/utils/utils.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_widgets/customization_text_field.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/dropdown_customization_button.dart';
 import 'package:survey_admin/presentation/widgets/vector_image.dart';
-import 'package:activity_builder/activity_sdk.dart';
 
 class ActionsCustomizationItem extends StatefulWidget {
   final ValueChanged<ActivityAction?> onChanged;
