@@ -1,10 +1,10 @@
-import 'package:survey_sdk/src/domain/entities/actions/go_next_action.dart';
-import 'package:survey_sdk/src/domain/entities/actions/skip_question_action.dart';
-import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
-import 'package:survey_sdk/src/domain/entities/constants/question_types.dart';
-import 'package:survey_sdk/src/domain/entities/input_validator.dart';
-import 'package:survey_sdk/src/domain/entities/question_types/question_data.dart';
-import 'package:survey_sdk/src/domain/entities/themes/input_question_theme.dart';
+import 'package:activity_builder/src/domain/entities/actions/go_next_action.dart';
+import 'package:activity_builder/src/domain/entities/actions/skip_question_action.dart';
+import 'package:activity_builder/src/domain/entities/actions/activity_action.dart';
+import 'package:activity_builder/src/domain/entities/constants/question_types.dart';
+import 'package:activity_builder/src/domain/entities/input_validator.dart';
+import 'package:activity_builder/src/domain/entities/question_types/question_data.dart';
+import 'package:activity_builder/src/domain/entities/themes/input_question_theme.dart';
 
 /// Data class representing an input question.
 ///

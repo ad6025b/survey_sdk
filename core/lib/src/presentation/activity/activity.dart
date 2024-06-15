@@ -4,12 +4,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:survey_sdk/activity_sdk.dart';
-import 'package:survey_sdk/src/domain/entities/question_answer.dart';
-import 'package:survey_sdk/src/presentation/activity/activity_state.dart';
-import 'package:survey_sdk/src/presentation/activity_error/activity_error.dart';
-import 'package:survey_sdk/src/presentation/di/injector.dart';
-import 'package:survey_sdk/src/presentation/utils/on_finish_callback.dart';
+import 'package:activity_builder/activity_sdk.dart';
+import 'package:activity_builder/src/domain/entities/question_answer.dart';
+import 'package:activity_builder/src/presentation/activity/activity_state.dart';
+import 'package:activity_builder/src/presentation/activity_error/activity_error.dart';
+import 'package:activity_builder/src/presentation/di/injector.dart';
+import 'package:activity_builder/src/presentation/utils/on_finish_callback.dart';
 
 import 'activity_cubit.dart';
 

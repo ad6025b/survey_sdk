@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 /// This controller need to navigation on activity and save answer.
 /// Function [onNext] navigate to next page and save answer on last page.

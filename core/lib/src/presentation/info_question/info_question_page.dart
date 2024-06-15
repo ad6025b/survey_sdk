@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/src/domain/entities/question_types/info_question_data.dart';
-import 'package:survey_sdk/src/domain/entities/themes/info_question_theme.dart';
-import 'package:survey_sdk/src/presentation/utils/utils.dart';
-import 'package:survey_sdk/src/presentation/widgets/info_data_view.dart';
-import 'package:survey_sdk/src/presentation/widgets/question_bottom_button.dart';
+import 'package:activity_builder/src/domain/entities/question_types/info_question_data.dart';
+import 'package:activity_builder/src/domain/entities/themes/info_question_theme.dart';
+import 'package:activity_builder/src/presentation/utils/utils.dart';
+import 'package:activity_builder/src/presentation/widgets/info_data_view.dart';
+import 'package:activity_builder/src/presentation/widgets/question_bottom_button.dart';
 
 /// The question page for displaying info content.
 ///

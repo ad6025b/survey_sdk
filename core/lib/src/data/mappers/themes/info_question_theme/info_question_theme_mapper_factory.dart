@@ -1,5 +1,5 @@
-import 'package:survey_sdk/src/data/mappers/themes/info_question_theme/info_question_theme_mapper_ver_1.dart';
-import 'package:survey_sdk/src/data/mappers/themes/question_theme_mapper.dart';
+import 'package:activity_builder/src/data/mappers/themes/info_question_theme/info_question_theme_mapper_ver_1.dart';
+import 'package:activity_builder/src/data/mappers/themes/question_theme_mapper.dart';
 
 abstract class InfoQuestionThemeMapperFactory {
   /// _implementations contains all versions InfoQuestionThemeMapper

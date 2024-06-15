@@ -3,12 +3,12 @@
 // found in the LICENSE file.
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:survey_sdk/activity_sdk.dart';
-import 'package:survey_sdk/src/domain/entities/question_answer.dart';
-import 'package:survey_sdk/src/domain/repository_interfaces/activity_data_repository.dart';
-import 'package:survey_sdk/src/presentation/activity/activity_state.dart';
-import 'package:survey_sdk/src/presentation/utils/activity_button_callback.dart';
-import 'package:survey_sdk/src/presentation/utils/on_finish_callback.dart';
+import 'package:activity_builder/activity_sdk.dart';
+import 'package:activity_builder/src/domain/entities/question_answer.dart';
+import 'package:activity_builder/src/domain/repository_interfaces/activity_data_repository.dart';
+import 'package:activity_builder/src/presentation/activity/activity_state.dart';
+import 'package:activity_builder/src/presentation/utils/activity_button_callback.dart';
+import 'package:activity_builder/src/presentation/utils/on_finish_callback.dart';
 
 class ActivityCubit extends Cubit<ActivityState> {
   /// A repository responsible for retrieving activity data from a data source.

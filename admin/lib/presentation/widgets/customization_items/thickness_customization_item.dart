@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_widgets/customization_text_field.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 class ThicknessCustomizationItem extends StatefulWidget {
   final ValueChanged<double> onThicknessChanged;

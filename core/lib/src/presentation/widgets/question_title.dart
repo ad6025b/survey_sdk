@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/src/presentation/utils/utils.dart';
+import 'package:activity_builder/src/presentation/utils/utils.dart';
 
 /// Represents the title of a activity question.
 class QuestionTitle extends StatelessWidget {

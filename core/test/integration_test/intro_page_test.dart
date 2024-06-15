@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:survey_sdk/src/presentation/di/injector.dart';
-import 'package:survey_sdk/src/presentation/activity/activity_state.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/src/presentation/di/injector.dart';
+import 'package:activity_builder/src/presentation/activity/activity_state.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 import '../presentation/widget/app_tester.dart';
 import '../utils/mocked_entities.dart';

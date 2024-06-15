@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:survey_sdk/src/domain/entities/api_object.dart';
-import 'package:survey_sdk/src/domain/entities/constants/validator_regexes.dart';
-import 'package:survey_sdk/src/domain/entities/themes/input_question_theme.dart';
+import 'package:activity_builder/src/domain/entities/api_object.dart';
+import 'package:activity_builder/src/domain/entities/constants/validator_regexes.dart';
+import 'package:activity_builder/src/domain/entities/themes/input_question_theme.dart';
 
 abstract class _ValidatorKeys {
   static const validator = 'validator';

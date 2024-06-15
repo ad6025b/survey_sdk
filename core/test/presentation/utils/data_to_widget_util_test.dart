@@ -1,16 +1,16 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
-import 'package:survey_sdk/src/domain/entities/question_answer.dart';
-import 'package:survey_sdk/src/domain/entities/question_types/choice_question_data.dart';
-import 'package:survey_sdk/src/domain/entities/question_types/info_question_data.dart';
-import 'package:survey_sdk/src/domain/entities/question_types/input_question_data.dart';
-import 'package:survey_sdk/src/domain/entities/question_types/question_data.dart';
-import 'package:survey_sdk/src/domain/entities/question_types/slider_question_data.dart';
-import 'package:survey_sdk/src/presentation/choice_question/choice_question_page.dart';
-import 'package:survey_sdk/src/presentation/info_question/info_question_page.dart';
-import 'package:survey_sdk/src/presentation/input_question/input_question_page.dart';
-import 'package:survey_sdk/src/presentation/slider_question/slider_question_page.dart';
-import 'package:survey_sdk/src/presentation/utils/data_to_widget_util.dart';
+import 'package:activity_builder/src/domain/entities/actions/activity_action.dart';
+import 'package:activity_builder/src/domain/entities/question_answer.dart';
+import 'package:activity_builder/src/domain/entities/question_types/choice_question_data.dart';
+import 'package:activity_builder/src/domain/entities/question_types/info_question_data.dart';
+import 'package:activity_builder/src/domain/entities/question_types/input_question_data.dart';
+import 'package:activity_builder/src/domain/entities/question_types/question_data.dart';
+import 'package:activity_builder/src/domain/entities/question_types/slider_question_data.dart';
+import 'package:activity_builder/src/presentation/choice_question/choice_question_page.dart';
+import 'package:activity_builder/src/presentation/info_question/info_question_page.dart';
+import 'package:activity_builder/src/presentation/input_question/input_question_page.dart';
+import 'package:activity_builder/src/presentation/slider_question/slider_question_page.dart';
+import 'package:activity_builder/src/presentation/utils/data_to_widget_util.dart';
 
 //ignore: avoid-unused-parameters
 void _mockOnSend({required int index, required QuestionAnswer? answer}) {}

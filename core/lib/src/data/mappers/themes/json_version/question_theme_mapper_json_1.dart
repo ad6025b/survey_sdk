@@ -1,4 +1,4 @@
-import 'package:survey_sdk/src/data/mappers/themes/question_theme_mapper.dart';
+import 'package:activity_builder/src/data/mappers/themes/question_theme_mapper.dart';
 
 abstract class QuestionThemeMapperJson1<T> extends QuestionThemeMapper<T> {
   @override

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/src/domain/entities/actions/go_next_action.dart';
-import 'package:survey_sdk/src/domain/entities/actions/skip_question_action.dart';
-import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
-import 'package:survey_sdk/src/domain/entities/constants/question_types.dart';
-import 'package:survey_sdk/src/domain/entities/question_types/question_data.dart';
-import 'package:survey_sdk/src/domain/entities/themes/slider_question_theme.dart';
+import 'package:activity_builder/src/domain/entities/actions/go_next_action.dart';
+import 'package:activity_builder/src/domain/entities/actions/skip_question_action.dart';
+import 'package:activity_builder/src/domain/entities/actions/activity_action.dart';
+import 'package:activity_builder/src/domain/entities/constants/question_types.dart';
+import 'package:activity_builder/src/domain/entities/question_types/question_data.dart';
+import 'package:activity_builder/src/domain/entities/themes/slider_question_theme.dart';
 
 const _maxValue = 10;
 const _divisions = 8;

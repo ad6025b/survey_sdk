@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/src/presentation/utils/utils.dart';
+import 'package:activity_builder/src/presentation/utils/utils.dart';
 
 class QuestionBottomButton extends StatelessWidget {
   /// Text displayed on the button.

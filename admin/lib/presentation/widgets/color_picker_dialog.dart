@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 class ColorPickerDialog extends StatelessWidget {
   final ValueChanged<Color> onColorPicked;

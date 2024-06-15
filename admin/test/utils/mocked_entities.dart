@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 const _titleSize = 18.0;
 const _subtitleSize = 15.0;

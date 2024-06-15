@@ -6,7 +6,7 @@ import 'package:survey_admin/presentation/widgets/customization_items/color_cust
 import 'package:survey_admin/presentation/widgets/customization_items/customization_items_container.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/radius_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/text_style_customization_item.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 class InputCommonCustomizationTab extends CustomizationTab {
   final ValueChanged<QuestionData> onChange;

@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:survey_sdk/src/domain/entities/question_answer.dart';
-import 'package:survey_sdk/src/presentation/choice_question/choice_question_page.dart';
+import 'package:activity_builder/src/domain/entities/question_answer.dart';
+import 'package:activity_builder/src/presentation/choice_question/choice_question_page.dart';
 
 import '../utils/mocked_entities.dart';
 import 'widget/app_tester.dart';

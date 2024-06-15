@@ -1,5 +1,5 @@
-import 'package:survey_sdk/src/data/mappers/actions/action_mapper.dart';
-import 'package:survey_sdk/src/domain/entities/actions/go_next_action.dart';
+import 'package:activity_builder/src/data/mappers/actions/action_mapper.dart';
+import 'package:activity_builder/src/domain/entities/actions/go_next_action.dart';
 
 abstract final class _Fields {
   static const String type = 'type';

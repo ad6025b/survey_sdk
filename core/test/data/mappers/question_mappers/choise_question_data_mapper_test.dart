@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:survey_sdk/src/data/mappers/question_types/choice_question_data/choice_question_data_mapper_ver1.dart';
-import 'package:survey_sdk/src/domain/entities/question_types/choice_question_data.dart';
-import 'package:survey_sdk/src/domain/entities/question_types/question_data.dart';
+import 'package:activity_builder/src/data/mappers/question_types/choice_question_data/choice_question_data_mapper_ver1.dart';
+import 'package:activity_builder/src/domain/entities/question_types/choice_question_data.dart';
+import 'package:activity_builder/src/domain/entities/question_types/question_data.dart';
 
 void main() {
   group(

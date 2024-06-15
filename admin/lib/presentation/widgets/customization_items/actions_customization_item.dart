@@ -5,7 +5,7 @@ import 'package:survey_admin/presentation/utils/utils.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_widgets/customization_text_field.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/dropdown_customization_button.dart';
 import 'package:survey_admin/presentation/widgets/vector_image.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 class ActionsCustomizationItem extends StatefulWidget {
   final ValueChanged<ActivityAction?> onChanged;

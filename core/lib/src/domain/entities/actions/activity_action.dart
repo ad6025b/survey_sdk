@@ -1,15 +1,15 @@
 import 'package:equatable/equatable.dart';
-import 'package:survey_sdk/src/data/mappers/actions/finish_activity_action/finish_activity_action_mapper.dart';
-import 'package:survey_sdk/src/data/mappers/actions/go_back_action/go_back_action_mapper.dart';
-import 'package:survey_sdk/src/data/mappers/actions/go_next_action/go_next_action_mapper.dart';
-import 'package:survey_sdk/src/data/mappers/actions/go_to_action/go_to_action_mapper.dart';
-import 'package:survey_sdk/src/data/mappers/actions/skip_question_action/skip_question_action_mapper.dart';
-import 'package:survey_sdk/src/domain/entities/actions/finish_activity_action.dart';
-import 'package:survey_sdk/src/domain/entities/actions/go_back_action.dart';
-import 'package:survey_sdk/src/domain/entities/actions/go_next_action.dart';
-import 'package:survey_sdk/src/domain/entities/actions/go_to_action.dart';
-import 'package:survey_sdk/src/domain/entities/actions/skip_question_action.dart';
-import 'package:survey_sdk/src/domain/entities/constants/action_types.dart';
+import 'package:activity_builder/src/data/mappers/actions/finish_activity_action/finish_activity_action_mapper.dart';
+import 'package:activity_builder/src/data/mappers/actions/go_back_action/go_back_action_mapper.dart';
+import 'package:activity_builder/src/data/mappers/actions/go_next_action/go_next_action_mapper.dart';
+import 'package:activity_builder/src/data/mappers/actions/go_to_action/go_to_action_mapper.dart';
+import 'package:activity_builder/src/data/mappers/actions/skip_question_action/skip_question_action_mapper.dart';
+import 'package:activity_builder/src/domain/entities/actions/finish_activity_action.dart';
+import 'package:activity_builder/src/domain/entities/actions/go_back_action.dart';
+import 'package:activity_builder/src/domain/entities/actions/go_next_action.dart';
+import 'package:activity_builder/src/domain/entities/actions/go_to_action.dart';
+import 'package:activity_builder/src/domain/entities/actions/skip_question_action.dart';
+import 'package:activity_builder/src/domain/entities/constants/action_types.dart';
 
 abstract final class _Fields {
   static const String type = 'type';

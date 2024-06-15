@@ -3,7 +3,7 @@ import 'package:survey_admin/presentation/app/localization/app_localizations_ext
 import 'package:survey_admin/presentation/widgets/customization_items/dropdown_customization_button.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/option.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/switch_customization_item.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 class DefaultOptionsCustomizationItem extends StatelessWidget {
   final List<String> options;

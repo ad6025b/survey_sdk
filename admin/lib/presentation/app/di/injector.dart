@@ -12,7 +12,7 @@ import 'package:survey_admin/domain/repository_interfaces/session_storage_reposi
 import 'package:survey_admin/presentation/pages/builder/builder_cubit.dart';
 import 'package:survey_admin/presentation/pages/new_question_page/new_question_cubit.dart';
 import 'package:survey_admin/presentation/utils/common_data.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 //ignore_for_file: prefer-static-class
 GetIt get i => GetIt.instance;

@@ -1,4 +1,4 @@
-import 'package:survey_sdk/src/presentation/localization/flutter_gen/activity_localizations.dart';
+import 'package:activity_builder/src/presentation/localization/flutter_gen/activity_localizations.dart';
 
 /// The translations for English (`en`).
 class ActivityLocalizationsEn extends ActivityLocalizations {

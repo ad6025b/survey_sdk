@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
-import 'package:survey_sdk/src/data/mappers/question_types/choice_question_data/choice_question_data_mapper_factory.dart';
-import 'package:survey_sdk/src/data/mappers/question_types/info_question_data/info_question_data_mapper_factory.dart';
-import 'package:survey_sdk/src/data/mappers/question_types/input_question_data/input_question_data_mapper_factory.dart';
-import 'package:survey_sdk/src/data/mappers/question_types/slider_question_data/slider_question_data_mapper_factory.dart';
-import 'package:survey_sdk/src/domain/entities/actions/activity_action.dart';
-import 'package:survey_sdk/src/domain/entities/constants/question_types.dart';
+import 'package:activity_builder/src/data/mappers/question_types/choice_question_data/choice_question_data_mapper_factory.dart';
+import 'package:activity_builder/src/data/mappers/question_types/info_question_data/info_question_data_mapper_factory.dart';
+import 'package:activity_builder/src/data/mappers/question_types/input_question_data/input_question_data_mapper_factory.dart';
+import 'package:activity_builder/src/data/mappers/question_types/slider_question_data/slider_question_data_mapper_factory.dart';
+import 'package:activity_builder/src/domain/entities/actions/activity_action.dart';
+import 'package:activity_builder/src/domain/entities/constants/question_types.dart';
 
 abstract class _Fields {
   static const String type = 'type';

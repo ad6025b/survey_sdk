@@ -1,9 +1,9 @@
-import 'package:survey_sdk/src/data/data_sources/filesystem_data_source_impl.dart';
-import 'package:survey_sdk/src/data/data_sources/interfaces/filesystem_data_source.dart';
-import 'package:survey_sdk/src/data/repositories/activity_data_repository_impl.dart';
-import 'package:survey_sdk/src/domain/repository_interfaces/activity_data_repository.dart';
-import 'package:survey_sdk/src/presentation/activity/activity_cubit.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/src/data/data_sources/filesystem_data_source_impl.dart';
+import 'package:activity_builder/src/data/data_sources/interfaces/filesystem_data_source.dart';
+import 'package:activity_builder/src/data/repositories/activity_data_repository_impl.dart';
+import 'package:activity_builder/src/domain/repository_interfaces/activity_data_repository.dart';
+import 'package:activity_builder/src/presentation/activity/activity_cubit.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 class Injector {
   late ActivityCubit activityCubit;

@@ -8,7 +8,7 @@ import 'package:survey_admin/presentation/pages/new_question_page/new_question_t
 import 'package:survey_admin/presentation/utils/utils.dart';
 import 'package:survey_admin/presentation/widgets/editor_bar.dart';
 import 'package:survey_admin/presentation/widgets/vector_image.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 class NewQuestionPage extends StatelessWidget {
   final ActivityData data;

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
 import 'package:survey_admin/presentation/utils/utils.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 enum NewQuestionTabs {
   info,

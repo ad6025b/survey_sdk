@@ -1,4 +1,4 @@
-import 'package:survey_sdk/src/domain/entities/activity_data.dart';
+import 'package:activity_builder/src/domain/entities/activity_data.dart';
 
 // ignore: one_member_abstracts
 abstract class FilesystemDataSource {

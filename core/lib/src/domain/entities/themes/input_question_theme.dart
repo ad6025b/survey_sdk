@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/src/presentation/utils/activity_colors.dart';
-import 'package:survey_sdk/src/presentation/utils/activity_fonts.dart';
+import 'package:activity_builder/src/presentation/utils/activity_colors.dart';
+import 'package:activity_builder/src/presentation/utils/activity_fonts.dart';
 
 const _titleSize = 16.0;
 const _subtitleSize = 12.0;

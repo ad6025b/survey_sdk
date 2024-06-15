@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:survey_sdk/src/data/mappers/question_types/choice_question_data/choice_question_data_mapper_factory.dart';
-import 'package:survey_sdk/src/data/mappers/question_types/info_question_data/info_question_data_mapper_factory.dart';
-import 'package:survey_sdk/src/data/mappers/question_types/input_question_data/input_question_data_mapper_factory.dart';
-import 'package:survey_sdk/src/data/mappers/question_types/slider_question_data/slider_question_data_mapper_factory.dart';
-import 'package:survey_sdk/src/domain/entities/api_object.dart';
-import 'package:survey_sdk/src/domain/entities/constants/scheme_info.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/src/data/mappers/question_types/choice_question_data/choice_question_data_mapper_factory.dart';
+import 'package:activity_builder/src/data/mappers/question_types/info_question_data/info_question_data_mapper_factory.dart';
+import 'package:activity_builder/src/data/mappers/question_types/input_question_data/input_question_data_mapper_factory.dart';
+import 'package:activity_builder/src/data/mappers/question_types/slider_question_data/slider_question_data_mapper_factory.dart';
+import 'package:activity_builder/src/domain/entities/api_object.dart';
+import 'package:activity_builder/src/domain/entities/constants/scheme_info.dart';
+import 'package:activity_builder/activity_sdk.dart';
 
 abstract class _Fields {
   static const String questions = 'questions';

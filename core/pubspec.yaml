@@ -1,4 +1,4 @@
-name: survey_sdk
+name: activity_builder
 description: The Activity SDK is a toolkit that allows developers to integrate surveys into their Flutter applications
 version: 0.0.1
 environment:

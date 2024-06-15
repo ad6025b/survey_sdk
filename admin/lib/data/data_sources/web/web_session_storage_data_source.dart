@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:survey_admin/data/data_sources/interfaces/session_storage_data_source.dart';
-import 'package:survey_sdk/activity_sdk.dart';
+import 'package:activity_builder/activity_sdk.dart';
 import 'package:universal_html/html.dart' as html;
 
 class WebSessionStorageDataSource implements SessionStorageDataSource {

@@ -1,5 +1,5 @@
-import 'package:survey_sdk/src/data/mappers/themes/question_theme_mapper.dart';
-import 'package:survey_sdk/src/data/mappers/themes/slider_question_theme/slider_question_theme_mapper_ver_1.dart';
+import 'package:activity_builder/src/data/mappers/themes/question_theme_mapper.dart';
+import 'package:activity_builder/src/data/mappers/themes/slider_question_theme/slider_question_theme_mapper_ver_1.dart';
 
 abstract class SliderQuestionThemeMapperFactory {
   /// _implementations contains all versions SliderQuestionThemeMapper

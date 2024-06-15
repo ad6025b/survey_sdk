@@ -1,5 +1,5 @@
-import 'package:survey_sdk/src/data/mappers/question_types/input_question_data/input_question_data_mapper_ver1.dart';
-import 'package:survey_sdk/src/data/mappers/question_types/question_data_mapper.dart';
+import 'package:activity_builder/src/data/mappers/question_types/input_question_data/input_question_data_mapper_ver1.dart';
+import 'package:activity_builder/src/data/mappers/question_types/question_data_mapper.dart';
 
 abstract class InputQuestionDataMapperFactory {
   static final List<QuestionDataMapper> _implementations = [
