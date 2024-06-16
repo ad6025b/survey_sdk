@@ -22,4 +22,10 @@ abstract class ActivityColors {
   static const greyBackground = Color(0xFFDEDEDE);
 
   static const tabBarInactiveText = Color(0xFF929292);
+
+  static const itemBackground = Color(0xFFFFFFFF);
+  static const itemBackgroundBorder = Color(0xFFFFFFFF);
+  static const itemDivider = Color(0xFF9E9E9E);
+
+  static const appBarColor = Color(0xFFF5F5F5);
 }

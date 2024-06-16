@@ -75,10 +75,10 @@ class _SliderQuestionPageState extends State<SliderQuestionPage> {
             Container(
               // Wrap the question content with a Container
               decoration: BoxDecoration(
-                color: ActivityColors.white,
+                color: ActivityColors.itemBackground,
                 // Set the border properties
                 border: Border.all(
-                  color: ActivityColors.white, // Border color
+                  color: ActivityColors.itemBackgroundBorder, // Border color
                   width: 2, // Border width
                 ),
                 borderRadius: const BorderRadius.all(
@@ -97,6 +97,15 @@ class _SliderQuestionPageState extends State<SliderQuestionPage> {
                       textSize: theme.titleSize,
                       textColor: theme.titleColor,
                     ),
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      top: ActivityDimensions.margin2XL,
+                    ),
+                    child: Divider(
+                      height: 1,
+                      color: ActivityColors.itemDivider,
+                    ),
+                  ),
                   if (widget.data.subtitle.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.only(

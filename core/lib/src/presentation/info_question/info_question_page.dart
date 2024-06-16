@@ -51,10 +51,10 @@ class _InfoQuestionPageState extends State<InfoQuestionPage> {
               child: Container(
                 // Wrap the question content with a Container
                 decoration: BoxDecoration(
-                  color: ActivityColors.white,
+                  color: ActivityColors.itemBackground,
                   // Set the border properties
                   border: Border.all(
-                    color: ActivityColors.white, // Border color
+                    color: ActivityColors.itemBackgroundBorder, // Border color
                     width: 2, // Border width
                   ),
                   borderRadius: const BorderRadius.all(

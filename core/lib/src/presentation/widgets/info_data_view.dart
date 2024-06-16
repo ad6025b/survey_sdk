@@ -25,6 +25,15 @@ class InfoDataView extends StatelessWidget {
             textColor: theme.titleColor,
             textSize: theme.titleSize,
           ),
+        const Padding(
+          padding: EdgeInsets.only(
+            top: ActivityDimensions.margin2XL,
+          ),
+          child: Divider(
+            height: 1,
+            color: ActivityColors.itemDivider,
+          ),
+        ),
         if (data.subtitle.isNotEmpty)
           Padding(
             padding: const EdgeInsets.only(

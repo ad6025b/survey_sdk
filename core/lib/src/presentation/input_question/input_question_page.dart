@@ -118,6 +118,10 @@ class _InputQuestionPageState extends State<InputQuestionPage> {
       isDateType ? _dateTime.toString() : _input,
     );
     return Scaffold(
+      // appBar: AppBar(
+      //     title: const Text('EQ5D Survey'),
+      //     centerTitle: true,
+      //     backgroundColor: ActivityColors.appBarColor),
       backgroundColor: ActivityColors.greyBackground,
       body: Padding(
         padding: const EdgeInsets.only(
@@ -133,9 +137,9 @@ class _InputQuestionPageState extends State<InputQuestionPage> {
               // Wrap the question content with a Container
               decoration: BoxDecoration(
                 // Set the border properties
-                color: ActivityColors.white,
+                color: ActivityColors.itemBackground,
                 border: Border.all(
-                  color: ActivityColors.white, // Border color
+                  color: ActivityColors.itemBackgroundBorder, // Border color
                   width: 2, // Border width
                 ),
                 borderRadius: const BorderRadius.all(
@@ -154,6 +158,15 @@ class _InputQuestionPageState extends State<InputQuestionPage> {
                       textSize: theme.titleSize,
                       textColor: theme.titleColor,
                     ),
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      top: ActivityDimensions.margin2XL,
+                    ),
+                    child: Divider(
+                      height: 1,
+                      color: ActivityColors.itemDivider,
+                    ),
+                  ),
                   if (widget.data.subtitle.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.only(
