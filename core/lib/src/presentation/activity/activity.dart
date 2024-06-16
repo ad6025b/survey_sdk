@@ -157,6 +157,7 @@ class _ActivityState extends State<Activity> {
                   ...data.questions.map<Widget>(
                     (question) => DataToWidgetUtil.createWidget(
                       data: question,
+                      totalQuestions: data.questions.length,
                       answer: state.answers[question.index],
                       primaryButtonCallback: ({
                         required index,

@@ -13,6 +13,8 @@ class InfoQuestionPage extends StatefulWidget {
   /// Contains the content for a page.
   final InfoQuestionData data;
 
+  final int totalQuestions;
+
   /// Optional callback that is called after pressing main button.
   final ActivityCallback? onPrimaryButtonTap;
 
@@ -21,6 +23,7 @@ class InfoQuestionPage extends StatefulWidget {
 
   const InfoQuestionPage({
     required this.data,
+    required this.totalQuestions,
     this.onPrimaryButtonTap,
     this.onSecondaryButtonTap,
     super.key,
@@ -47,6 +50,23 @@ class _InfoQuestionPageState extends State<InfoQuestionPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: ActivityDimensions.marginS,
+              ),
+              child: Column(
+                children: [
+                  LinearProgressIndicator(
+                    value: (widget.data.index) / widget.totalQuestions,
+                    color: ActivityColors.linearProgressIndicatorColor,
+                  ),
+                  const SizedBox(height: ActivityDimensions.margin2XS),
+                  Text(
+                    'Question ${widget.data.index} of ${widget.totalQuestions}',
+                  ),
+                ],
+              ),
+            ),
             Expanded(
               child: Container(
                 // Wrap the question content with a Container

@@ -22,12 +22,14 @@ abstract class DataToWidgetUtil {
     required ActivityCallback primaryButtonCallback,
     ActivityCallback? secondaryButtonCallback,
     QuestionAnswer? answer,
+    required int totalQuestions,
   }) {
     switch (data.runtimeType) {
       case SliderQuestionData:
         return SliderQuestionPage(
           data: data as SliderQuestionData,
           answer: answer as QuestionAnswer<double>?,
+          totalQuestions: totalQuestions,
           onPrimaryButtonTap: primaryButtonCallback,
           onSecondaryButtonTap: secondaryButtonCallback,
         );
@@ -35,6 +37,7 @@ abstract class DataToWidgetUtil {
         return ChoiceQuestionPage(
           data: data as ChoiceQuestionData,
           answer: answer as QuestionAnswer<List<String>>?,
+          totalQuestions: totalQuestions,
           onPrimaryButtonTap: primaryButtonCallback,
           onSecondaryButtonTap: secondaryButtonCallback,
         );
@@ -42,12 +45,14 @@ abstract class DataToWidgetUtil {
         return InputQuestionPage(
           data: data as InputQuestionData,
           answer: answer,
+          totalQuestions: totalQuestions,
           onPrimaryButtonTap: primaryButtonCallback,
           onSecondaryButtonTap: secondaryButtonCallback,
         );
       case InfoQuestionData:
         return InfoQuestionPage(
           data: data as InfoQuestionData,
+          totalQuestions: totalQuestions,
           onPrimaryButtonTap: primaryButtonCallback,
           onSecondaryButtonTap: secondaryButtonCallback,
         );

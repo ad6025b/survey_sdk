@@ -30,9 +30,12 @@ class ChoiceQuestionPage extends StatefulWidget {
   /// Optional callback that is called when the secondary button is tapped.
   final ActivityCallback? onSecondaryButtonTap;
 
+  final int totalQuestions;
+
   const ChoiceQuestionPage({
     required this.data,
     required this.onPrimaryButtonTap,
+    required this.totalQuestions,
     this.answer,
     this.onSecondaryButtonTap,
     super.key,
@@ -109,6 +112,23 @@ class _ChoiceQuestionPageState extends State<ChoiceQuestionPage>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: ActivityDimensions.marginS,
+              ),
+              child: Column(
+                children: [
+                  LinearProgressIndicator(
+                    value: (widget.data.index) / widget.totalQuestions,
+                    color: ActivityColors.linearProgressIndicatorColor,
+                  ),
+                  const SizedBox(height: ActivityDimensions.margin2XS),
+                  Text(
+                    'Question ${widget.data.index} of ${widget.totalQuestions}',
+                  ),
+                ],
+              ),
+            ),
             Container(
               // Wrap the question content with a Container
               decoration: BoxDecoration(

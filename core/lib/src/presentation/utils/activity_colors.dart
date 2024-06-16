@@ -28,4 +28,6 @@ abstract class ActivityColors {
   static const itemDivider = Color(0xFF9E9E9E);
 
   static const appBarColor = Color(0xFFF5F5F5);
+
+  static const linearProgressIndicatorColor = Color.fromARGB(255, 52, 237, 11);
 }
