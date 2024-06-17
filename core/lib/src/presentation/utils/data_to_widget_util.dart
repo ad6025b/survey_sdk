@@ -22,7 +22,7 @@ abstract class DataToWidgetUtil {
     required ActivityCallback primaryButtonCallback,
     ActivityCallback? secondaryButtonCallback,
     QuestionAnswer? answer,
-    required int totalQuestions,
+    int? totalQuestions,
   }) {
     switch (data.runtimeType) {
       case SliderQuestionData:

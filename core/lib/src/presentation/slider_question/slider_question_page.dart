@@ -23,12 +23,12 @@ class SliderQuestionPage extends StatefulWidget {
   /// Optional callback that is called when the secondary button is tapped.
   final ActivityCallback? onSecondaryButtonTap;
 
-  final int totalQuestions;
+  final int? totalQuestions;
 
   const SliderQuestionPage({
     required this.data,
     required this.onPrimaryButtonTap,
-    required this.totalQuestions,
+    this.totalQuestions,
     this.answer,
     this.onSecondaryButtonTap,
     super.key,
@@ -82,7 +82,7 @@ class _SliderQuestionPageState extends State<SliderQuestionPage> {
               child: Column(
                 children: [
                   LinearProgressIndicator(
-                    value: (widget.data.index) / widget.totalQuestions,
+                    value: (widget.data.index) / widget.totalQuestions!,
                     color: ActivityColors.linearProgressIndicatorColor,
                   ),
                   const SizedBox(height: ActivityDimensions.margin2XS),
