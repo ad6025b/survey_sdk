@@ -120,10 +120,21 @@ class InputValidator extends Equatable implements ApiObject {
 
   /// If the input is valid, the method returns null, otherwise, it returns
   /// an error message.
-  String? validate(String? input) {
+  // String? validate(String? input) {
+  //   return input == null || _reg.hasMatch(input)
+  //       ? null
+  //       : _ValidatorKeys.validatorError;
+  // }
+  //String? validate(String? input, String? errorText) {
+  String? validate(
+    String? input, {
+    String? errorText = _ValidatorKeys.validatorError,
+  }) {
     return input == null || _reg.hasMatch(input)
         ? null
-        : _ValidatorKeys.validatorError;
+        : errorText == null || errorText.isEmpty
+            ? _ValidatorKeys.validatorError
+            : errorText;
   }
 
   @override

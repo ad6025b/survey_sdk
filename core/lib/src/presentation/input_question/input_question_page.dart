@@ -232,7 +232,10 @@ class _InputQuestionPageState extends State<InputQuestionPage> {
                             initialValue: _input,
                             validator: (text) => _canBeSkippedNumber
                                 ? null
-                                : widget.data.validator.validate(text),
+                                : widget.data.validator.validate(
+                                    text,
+                                    errorText: widget.data.theme?.errorText,
+                                  ),
                           ),
                   ),
                 ],
