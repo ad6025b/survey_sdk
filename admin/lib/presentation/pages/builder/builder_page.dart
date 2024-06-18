@@ -166,7 +166,10 @@ class _ContentState extends State<_Content>
                   child: Activity(
                     activityData: state.activityData,
                     controller: _activityController,
-                    saveAnswer: false,
+                    saveAnswer: state.saveAnswer ?? false,
+                    onFinish: (answers) => answers.forEach((key, value) {
+                      debugPrint('Key: $key, Value: $value');
+                    }),
                   ),
                 ),
               ),

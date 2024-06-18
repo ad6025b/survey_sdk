@@ -27,7 +27,21 @@ class CommonData {
       questions: [
         info(index: _firstIndex),
         input(index: _secondIndex),
-        choice(index: _thirdIndex),
+
+        //choice(index: _thirdIndex),
+
+        // // // Create the choice question and add the dependency
+        choice(index: _thirdIndex).copyWith(
+          title: 'ddd',
+          dependencies: [
+            QuestionDependency(
+              parentQuestionIndex:
+                  _secondIndex, // Depends on the input question
+              requiredValue: 'hh', // Only show if the input is "Hello"
+            ),
+          ],
+        ),
+
         slider(index: _fourthIndex),
       ],
       commonTheme: commonTheme,

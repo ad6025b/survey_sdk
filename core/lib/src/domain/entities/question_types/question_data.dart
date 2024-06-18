@@ -4,6 +4,7 @@ import 'package:activity_builder/src/data/mappers/question_types/input_question_
 import 'package:activity_builder/src/data/mappers/question_types/slider_question_data/slider_question_data_mapper_factory.dart';
 import 'package:activity_builder/src/domain/entities/actions/activity_action.dart';
 import 'package:activity_builder/src/domain/entities/constants/question_types.dart';
+import 'package:activity_builder/src/domain/entities/question_types/question_dependency.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class _Fields {
@@ -48,6 +49,9 @@ abstract class QuestionData<T> extends Equatable {
   /// then the standard action will be used.
   final ActivityAction? secondaryButtonAction;
 
+  // List of dependencies for this question
+  final List<QuestionDependency> dependencies;
+
   /// The type of the question.
   ///
   /// Subclasses must provide an implementation for this property.
@@ -63,6 +67,7 @@ abstract class QuestionData<T> extends Equatable {
     this.mainButtonAction,
     this.secondaryButtonAction,
     this.content,
+    this.dependencies = const [],
   });
 
   QuestionData copyWith({

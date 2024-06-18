@@ -50,12 +50,14 @@ class BuilderCubit extends Cubit<BuilderState> {
         ),
       );
     } else if (state is PreviewQuestionBuilderState) {
-      emit(
-        PreviewQuestionBuilderState(
-          activityData: state.activityData,
-          selectedQuestion: data,
-        ),
-      );
+      //alex-dont-emit-new-state while in previewmode
+      // emit(
+      //   PreviewQuestionBuilderState(
+      //     activityData: state.activityData,
+      //     selectedQuestion: data,
+      //     saveAnswer: true,
+      //   ),
+      // );
     }
   }
 
@@ -145,6 +147,7 @@ class BuilderCubit extends Cubit<BuilderState> {
       PreviewQuestionBuilderState(
         selectedQuestion: selectedQuestion,
         activityData: state.activityData,
+        saveAnswer: true,
       ),
     );
   }

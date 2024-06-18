@@ -15,6 +15,7 @@ export 'package:activity_builder/src/domain/entities/question_types/choice_quest
 export 'package:activity_builder/src/domain/entities/question_types/info_question_data.dart';
 export 'package:activity_builder/src/domain/entities/question_types/input_question_data.dart';
 export 'package:activity_builder/src/domain/entities/question_types/question_data.dart';
+export 'package:activity_builder/src/domain/entities/question_types/question_dependency.dart';
 export 'package:activity_builder/src/domain/entities/question_types/slider_question_data.dart';
 export 'package:activity_builder/src/domain/entities/themes/choice_question_theme.dart';
 export 'package:activity_builder/src/domain/entities/themes/common_theme.dart';

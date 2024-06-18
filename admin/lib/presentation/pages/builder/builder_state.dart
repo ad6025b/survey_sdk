@@ -4,8 +4,11 @@ import 'package:equatable/equatable.dart';
 abstract class BuilderState extends Equatable {
   final ActivityData activityData;
 
+  final bool? saveAnswer;
+
   const BuilderState({
     required this.activityData,
+    this.saveAnswer,
   });
 
   BuilderState copyWith({
@@ -45,6 +48,7 @@ class PreviewQuestionBuilderState extends BuilderState {
   const PreviewQuestionBuilderState({
     required super.activityData,
     required this.selectedQuestion,
+    super.saveAnswer,
   });
 
   @override
@@ -55,9 +59,9 @@ class PreviewQuestionBuilderState extends BuilderState {
     return PreviewQuestionBuilderState(
       activityData: activityData ?? this.activityData,
       selectedQuestion: selectedQuestion ?? this.selectedQuestion,
+      saveAnswer: this.saveAnswer,
     );
   }
-
 }
 
 class ImportSuccessActivityDataBuilderState extends BuilderState {

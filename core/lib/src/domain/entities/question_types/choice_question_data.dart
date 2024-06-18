@@ -3,6 +3,7 @@ import 'package:activity_builder/src/domain/entities/actions/go_next_action.dart
 import 'package:activity_builder/src/domain/entities/actions/skip_question_action.dart';
 import 'package:activity_builder/src/domain/entities/constants/question_types.dart';
 import 'package:activity_builder/src/domain/entities/question_types/question_data.dart';
+import 'package:activity_builder/src/domain/entities/question_types/question_dependency.dart';
 import 'package:activity_builder/src/domain/entities/themes/choice_question_theme.dart';
 
 /// Data class representing a question with multiple or single choice.
@@ -63,6 +64,7 @@ class ChoiceQuestionData extends QuestionData<ChoiceQuestionTheme> {
         primaryButtonText,
         mainButtonAction,
         secondaryButtonAction,
+        dependencies,
       ];
 
   const ChoiceQuestionData({
@@ -81,6 +83,7 @@ class ChoiceQuestionData extends QuestionData<ChoiceQuestionTheme> {
     super.secondaryButtonAction,
     super.content,
     this.selectedByDefault,
+    super.dependencies,
   }) : assert(
           selectedByDefault == null ||
               (!isMultipleChoice && selectedByDefault.length == 1) ||
@@ -140,6 +143,7 @@ class ChoiceQuestionData extends QuestionData<ChoiceQuestionTheme> {
     bool clearSelectedByDefault = false,
     bool clearMainAction = false,
     bool clearSecondaryAction = false,
+    List<QuestionDependency>? dependencies,
   }) {
     return ChoiceQuestionData(
       isMultipleChoice: isMultipleChoice ?? this.isMultipleChoice,
@@ -163,6 +167,7 @@ class ChoiceQuestionData extends QuestionData<ChoiceQuestionTheme> {
       secondaryButtonAction: clearSecondaryAction
           ? secondaryButtonAction
           : secondaryButtonAction ?? this.secondaryButtonAction,
+      dependencies: dependencies ?? this.dependencies,
     );
   }
 }

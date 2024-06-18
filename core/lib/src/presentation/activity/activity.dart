@@ -154,7 +154,10 @@ class _ActivityState extends State<Activity> {
                 controller: _activityController.pageController,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  ...data.questions.map<Widget>(
+                  ...data.questions.where((question) {
+                    // Check if dependencies are met for this question
+                    return _areDependenciesMet(question, state.answers);
+                  }).map<Widget>(
                     (question) => DataToWidgetUtil.createWidget(
                       data: question,
                       totalQuestions: data.questions.length,
@@ -201,5 +204,20 @@ class _ActivityState extends State<Activity> {
         );
       },
     );
+  }
+
+  // Helper function to check if dependencies are met
+  bool _areDependenciesMet(
+    QuestionData question,
+    Map<int, QuestionAnswer> answers,
+  ) {
+    for (final dependency in question.dependencies) {
+      final parentAnswer = answers[dependency.parentQuestionIndex];
+      if (parentAnswer == null ||
+          parentAnswer.answer != dependency.requiredValue) {
+        return false;
+      }
+    }
+    return true;
   }
 }
