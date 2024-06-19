@@ -19,6 +19,7 @@ abstract class _Fields {
   static const String type = 'type';
   static const String primaryButtonAction = 'primaryButtonAction';
   static const String secondaryButtonAction = 'secondaryButtonAction';
+  static const String dependencies = 'dependencies';
 }
 
 class SliderQuestionDataMapperVer1
@@ -26,6 +27,11 @@ class SliderQuestionDataMapperVer1
   @override
   SliderQuestionData fromJson(Map<String, dynamic> json) {
     final theme = json[_Fields.theme];
+
+    final dependencies = (json[_Fields.dependencies] as List<dynamic>?)
+            ?.map((e) => QuestionDependency.fromJson(e))
+            .toList() ??
+        [];
 
     return SliderQuestionData(
       index: json[_Fields.index],
@@ -48,6 +54,7 @@ class SliderQuestionDataMapperVer1
       secondaryButtonAction: ActivityAction.fromJson(
         json[_Fields.secondaryButtonAction],
       ),
+      dependencies: dependencies,
     );
   }
 

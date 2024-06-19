@@ -15,6 +15,7 @@ abstract class _Fields {
   static const String type = 'type';
   static const String primaryButtonAction = 'primaryButtonAction';
   static const String secondaryButtonAction = 'secondaryButtonAction';
+  static const String dependencies = 'dependencies';
 }
 
 class InfoQuestionDataMapperVer1
@@ -22,6 +23,11 @@ class InfoQuestionDataMapperVer1
   @override
   InfoQuestionData fromJson(Map<String, dynamic> json) {
     final theme = json[_Fields.theme];
+
+    final dependencies = (json[_Fields.dependencies] as List<dynamic>?)
+            ?.map((e) => QuestionDependency.fromJson(e))
+            .toList() ??
+        [];
 
     return InfoQuestionData(
       index: json[_Fields.index],
@@ -40,6 +46,7 @@ class InfoQuestionDataMapperVer1
       secondaryButtonAction: ActivityAction.fromJson(
         json[_Fields.secondaryButtonAction],
       ),
+      dependencies: dependencies,
     );
   }
 

@@ -53,7 +53,7 @@ class CommonData {
         //choice(index: _thirdIndex),
         //not  needed later...load from json file// // // Create the choice question and add the dependency
         choice(index: _thirdIndex).copyWith(
-          title: 'ddd',
+          //title: 'Choices Title',
           dependencies: [
             const QuestionDependency(
               parentQuestionIndex:
@@ -65,7 +65,7 @@ class CommonData {
 
         //slider(index: _fourthIndex),
         slider(index: _fourthIndex).copyWith(
-          title: 'ggg',
+          //title: 'Slider Title',
           dependencies: [
             const QuestionDependency(
               parentQuestionIndex:
