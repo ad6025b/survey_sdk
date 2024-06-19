@@ -211,6 +211,9 @@ class _ActivityState extends State<Activity> {
     QuestionData question,
     Map<int, QuestionAnswer> answers,
   ) {
+    //if mode is buildMode (not Previewmode), the return true for all dependencies (short-circuit)
+    if (widget.saveAnswer == false) return true;
+
     for (final dependency in question.dependencies) {
       final parentAnswer = answers[dependency.parentQuestionIndex];
       if (parentAnswer == null ||
