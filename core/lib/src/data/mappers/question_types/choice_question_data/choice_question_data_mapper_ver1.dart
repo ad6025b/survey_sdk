@@ -21,6 +21,7 @@ abstract class _Fields {
   static const String type = 'type';
   static const String primaryButtonAction = 'primaryButtonAction';
   static const String secondaryButtonAction = 'secondaryButtonAction';
+  static const String dependencies = 'dependencies';
 }
 
 class ChoiceQuestionDataMapperVer1
@@ -29,6 +30,11 @@ class ChoiceQuestionDataMapperVer1
   ChoiceQuestionData fromJson(Map<String, dynamic> json) {
     final payload = json[_Fields.payload] as Map<String, dynamic>;
     final theme = json[_Fields.theme];
+
+    final dependencies = (json[_Fields.dependencies] as List<dynamic>?)
+            ?.map((e) => QuestionDependency.fromJson(e))
+            .toList() ??
+        [];
 
     return ChoiceQuestionData(
       index: json[_Fields.index],
@@ -54,6 +60,8 @@ class ChoiceQuestionDataMapperVer1
       secondaryButtonAction: ActivityAction.fromJson(
         json[_Fields.secondaryButtonAction],
       ),
+      dependencies: dependencies,
+      //dependencies: json[_Fields.dependencies],
     );
   }
 

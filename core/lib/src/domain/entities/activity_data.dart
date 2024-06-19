@@ -12,6 +12,7 @@ abstract class _Fields {
   static const String questions = 'questions';
   static const String commonTheme = 'commonTheme';
   static const String schemeVersion = 'schemeVersion';
+  static const String dependencies = 'dependencies';
 }
 
 /// Holds the core activity data used in the whole app, including the list of
@@ -39,7 +40,12 @@ class ActivityData with EquatableMixin, ApiObject {
     final questions = <QuestionData>[];
     final schemeVersion = json[_Fields.schemeVersion];
     for (final questionJson in json[_Fields.questions]) {
-      questions.add(QuestionData.fromType(questionJson, schemeVersion));
+      questions.add(
+        QuestionData.fromType(
+          questionJson,
+          schemeVersion,
+        ),
+      );
     }
 
     return ActivityData(
@@ -107,28 +113,40 @@ class ActivityData with EquatableMixin, ApiObject {
         ).toJson(
           question as ChoiceQuestionData,
           commonTheme: themeFromQuestionType,
-        );
+        )..addAll({
+            _Fields.dependencies:
+                question.dependencies.map((e) => e.toJson()).toList(),
+          });
       case QuestionTypes.slider:
         return SliderQuestionDataMapperFactory.getMapper(
           schemeVersion,
         ).toJson(
           question as SliderQuestionData,
           commonTheme: themeFromQuestionType,
-        );
+        )..addAll({
+            _Fields.dependencies:
+                question.dependencies.map((e) => e.toJson()).toList(),
+          });
       case QuestionTypes.input:
         return InputQuestionDataMapperFactory.getMapper(
           schemeVersion,
         ).toJson(
           question as InputQuestionData,
           commonTheme: themeFromQuestionType,
-        );
+        )..addAll({
+            _Fields.dependencies:
+                question.dependencies.map((e) => e.toJson()).toList(),
+          });
       case QuestionTypes.info:
         return InfoQuestionDataMapperFactory.getMapper(
           schemeVersion,
         ).toJson(
           question as InfoQuestionData,
           commonTheme: themeFromQuestionType,
-        );
+        )..addAll({
+            _Fields.dependencies:
+                question.dependencies.map((e) => e.toJson()).toList(),
+          });
     }
     return null;
   }
