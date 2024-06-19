@@ -4,6 +4,7 @@ import 'package:activity_builder/src/domain/entities/actions/skip_question_actio
 import 'package:activity_builder/src/domain/entities/constants/question_types.dart';
 import 'package:activity_builder/src/domain/entities/input_validator.dart';
 import 'package:activity_builder/src/domain/entities/question_types/question_data.dart';
+import 'package:activity_builder/src/domain/entities/question_types/question_dependency.dart';
 import 'package:activity_builder/src/domain/entities/themes/input_question_theme.dart';
 
 /// Data class representing an input question.
@@ -40,6 +41,7 @@ class InputQuestionData extends QuestionData<InputQuestionTheme> {
         primaryButtonText,
         mainButtonAction,
         secondaryButtonAction,
+        dependencies,
       ];
 
   const InputQuestionData({
@@ -55,6 +57,7 @@ class InputQuestionData extends QuestionData<InputQuestionTheme> {
     super.secondaryButtonAction,
     super.content,
     this.hintText,
+    super.dependencies,
   });
 
   /// Creates a common instance of [InputQuestionData].
@@ -95,6 +98,7 @@ class InputQuestionData extends QuestionData<InputQuestionTheme> {
     ActivityAction? secondaryButtonAction,
     bool clearMainAction = false,
     bool clearSecondaryAction = false,
+    List<QuestionDependency>? dependencies,
   }) {
     return InputQuestionData(
       validator: validator ?? this.validator,
@@ -113,6 +117,7 @@ class InputQuestionData extends QuestionData<InputQuestionTheme> {
       secondaryButtonAction: clearSecondaryAction
           ? secondaryButtonAction
           : secondaryButtonAction ?? this.secondaryButtonAction,
+      dependencies: dependencies ?? this.dependencies,
     );
   }
 }

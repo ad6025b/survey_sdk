@@ -11,6 +11,7 @@ class CommonData {
   static const _secondIndex = 2;
   static const _thirdIndex = 3;
   static const _fourthIndex = 4;
+  static const _fifthIndex = 5;
   static const _dividers = 10;
 
   CommonTheme get commonTheme {
@@ -26,10 +27,30 @@ class CommonData {
     return ActivityData(
       questions: [
         info(index: _firstIndex),
+        // info(index: _firstIndex).copyWith(
+        //   title: 'yyy',
+        //   dependencies: [
+        //     const QuestionDependency(
+        //       parentQuestionIndex:
+        //           _secondIndex, // Depends on the input question
+        //       requiredValue: 'hh', // Only show if the input is "Hello"
+        //     ),
+        //   ],
+        // ),
+
         input(index: _secondIndex),
+        // input(index: _secondIndex).copyWith(
+        //   title: 'ppp',
+        //   dependencies: [
+        //     const QuestionDependency(
+        //       parentQuestionIndex:
+        //           _secondIndex, // Depends on the input question
+        //       requiredValue: 'hh', // Only show if the input is "Hello"
+        //     ),
+        //   ],
+        // ),
 
         //choice(index: _thirdIndex),
-
         //not  needed later...load from json file// // // Create the choice question and add the dependency
         choice(index: _thirdIndex).copyWith(
           title: 'ddd',
@@ -42,7 +63,24 @@ class CommonData {
           ],
         ),
 
-        slider(index: _fourthIndex),
+        //slider(index: _fourthIndex),
+        slider(index: _fourthIndex).copyWith(
+          title: 'ggg',
+          dependencies: [
+            const QuestionDependency(
+              parentQuestionIndex:
+                  _secondIndex, // Depends on the input question
+              requiredValue: 'hh', // Only show if the input is "Hello"
+            ),
+          ],
+        ),
+
+        info(index: _fifthIndex).copyWith(
+          title: 'You are done.',
+          subtitle: 'Thank you for taking this survey.',
+          primaryButtonText: 'DONE',
+          mainButtonAction: const FinishActivityAction(),
+        ),
       ],
       commonTheme: commonTheme,
     );

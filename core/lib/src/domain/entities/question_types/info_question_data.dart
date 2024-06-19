@@ -3,6 +3,7 @@ import 'package:activity_builder/src/domain/entities/actions/go_next_action.dart
 import 'package:activity_builder/src/domain/entities/actions/skip_question_action.dart';
 import 'package:activity_builder/src/domain/entities/constants/question_types.dart';
 import 'package:activity_builder/src/domain/entities/question_types/question_data.dart';
+import 'package:activity_builder/src/domain/entities/question_types/question_dependency.dart';
 import 'package:activity_builder/src/domain/entities/themes/info_question_theme.dart';
 
 /// Data class representing an information question.
@@ -29,6 +30,7 @@ class InfoQuestionData extends QuestionData {
         primaryButtonText,
         mainButtonAction,
         secondaryButtonAction,
+        dependencies,
       ];
 
   const InfoQuestionData({
@@ -42,6 +44,7 @@ class InfoQuestionData extends QuestionData {
     super.mainButtonAction,
     super.secondaryButtonAction,
     super.content,
+    super.dependencies,
   });
 
   /// Creates a common instance of [InfoQuestionData].
@@ -83,6 +86,7 @@ class InfoQuestionData extends QuestionData {
     ActivityAction? secondaryButtonAction,
     bool clearMainAction = false,
     bool clearSecondaryAction = false,
+    List<QuestionDependency>? dependencies,
   }) {
     return InfoQuestionData(
       index: index ?? this.index,
@@ -99,6 +103,7 @@ class InfoQuestionData extends QuestionData {
       secondaryButtonAction: clearSecondaryAction
           ? secondaryButtonAction
           : secondaryButtonAction ?? this.secondaryButtonAction,
+      dependencies: dependencies ?? this.dependencies,
     );
   }
 }

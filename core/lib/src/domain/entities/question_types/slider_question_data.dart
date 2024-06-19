@@ -3,6 +3,7 @@ import 'package:activity_builder/src/domain/entities/actions/go_next_action.dart
 import 'package:activity_builder/src/domain/entities/actions/skip_question_action.dart';
 import 'package:activity_builder/src/domain/entities/constants/question_types.dart';
 import 'package:activity_builder/src/domain/entities/question_types/question_data.dart';
+import 'package:activity_builder/src/domain/entities/question_types/question_dependency.dart';
 import 'package:activity_builder/src/domain/entities/themes/slider_question_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -55,6 +56,7 @@ class SliderQuestionData extends QuestionData<SliderThemeData> {
         primaryButtonText,
         mainButtonAction,
         secondaryButtonAction,
+        dependencies,
       ];
 
   const SliderQuestionData({
@@ -72,6 +74,7 @@ class SliderQuestionData extends QuestionData<SliderThemeData> {
     super.mainButtonAction,
     super.secondaryButtonAction,
     super.content,
+    super.dependencies,
   });
 
   /// Creates a common instance of [SliderQuestionData].
@@ -121,6 +124,7 @@ class SliderQuestionData extends QuestionData<SliderThemeData> {
     ActivityAction? secondaryButtonAction,
     bool clearMainAction = false,
     bool clearSecondaryAction = false,
+    List<QuestionDependency>? dependencies,
   }) {
     return SliderQuestionData(
       minValue: minValue ?? this.minValue,
@@ -141,6 +145,7 @@ class SliderQuestionData extends QuestionData<SliderThemeData> {
       secondaryButtonAction: clearSecondaryAction
           ? secondaryButtonAction
           : secondaryButtonAction ?? this.secondaryButtonAction,
+      dependencies: dependencies ?? this.dependencies,
     );
   }
 }
