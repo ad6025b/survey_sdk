@@ -32,7 +32,7 @@ abstract class ActivityDimensions {
   static const double thinBorderWidth = 0.5;
   static const double defaultBorderWidth = 1;
 
-  static const double activityContentBarWidth = 210;
+  static const double activityContentBarWidth = 350;
 
   static const double addButtonWidth = 150;
   static const double addButtonHeight = 34;
@@ -44,7 +44,7 @@ abstract class ActivityDimensions {
   static const double switchWidth = 34;
   static const double switchHeight = 18;
 
-  static const double activityEditorBarWidth = 300;
+  static const double activityEditorBarWidth = 400;
   static const double activityEditorTabBarHeight = 37;
 
   static const double tabBarPadding = 126;

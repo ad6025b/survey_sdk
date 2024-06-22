@@ -9,10 +9,10 @@ abstract class _Fields {
 /// Represents a dependency between questions.
 class QuestionDependency extends Equatable implements ApiObject {
   /// Index of the parent question this dependency relies on.
-  final int parentQuestionIndex;
+  final int? parentQuestionIndex;
 
   /// The value the parent question needs to have for this question to be visible.
-  final String requiredValue;
+  final String? requiredValue;
 
   @override
   List<Object?> get props => [
@@ -21,8 +21,8 @@ class QuestionDependency extends Equatable implements ApiObject {
       ];
 
   const QuestionDependency({
-    required this.parentQuestionIndex,
-    required this.requiredValue,
+    this.parentQuestionIndex,
+    this.requiredValue,
   });
 
   factory QuestionDependency.fromJson(Map<String, dynamic> json) {
@@ -37,4 +37,12 @@ class QuestionDependency extends Equatable implements ApiObject {
         _Fields.parentQuestionIndex: parentQuestionIndex,
         _Fields.requiredValue: requiredValue,
       };
+
+  QuestionDependency copyWith(
+      {int? parentQuestionIndex, String? requiredValue}) {
+    return QuestionDependency(
+      parentQuestionIndex: parentQuestionIndex ?? this.parentQuestionIndex,
+      requiredValue: requiredValue ?? this.requiredValue,
+    );
+  }
 }

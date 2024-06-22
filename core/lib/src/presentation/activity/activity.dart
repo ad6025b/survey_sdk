@@ -211,16 +211,31 @@ class _ActivityState extends State<Activity> {
     QuestionData question,
     Map<int, QuestionAnswer> answers,
   ) {
-    //if mode is buildMode (not Previewmode), the return true for all dependencies (short-circuit)
+    // If mode is buildMode (not Previewmode), then return true for all dependencies (short-circuit)
     if (widget.saveAnswer == false) return true;
 
     for (final dependency in question.dependencies) {
       final parentAnswer = answers[dependency.parentQuestionIndex];
-      if (parentAnswer == null ||
-          parentAnswer.answer != dependency.requiredValue) {
+
+      if (parentAnswer == null) {
+        return false;
+      }
+
+      final answer = parentAnswer.answer;
+      bool isDependencyMet;
+
+      if (answer is List) {
+        isDependencyMet =
+            answer.isNotEmpty && answer.first == dependency.requiredValue;
+      } else {
+        isDependencyMet = answer == dependency.requiredValue;
+      }
+
+      if (!isDependencyMet) {
         return false;
       }
     }
+
     return true;
   }
 }

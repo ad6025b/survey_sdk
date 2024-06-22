@@ -1,10 +1,13 @@
 import 'package:activity_builder/activity_sdk.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
+import 'package:survey_admin/presentation/pages/builder/builder_cubit.dart';
 import 'package:survey_admin/presentation/widgets/base/customization_tab.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/actions_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_items_container.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_multiline_text_field.dart';
+import 'package:survey_admin/presentation/widgets/customization_items/dependency_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/dropdown_customization_button.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/option_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/secondary_button_customization_item.dart';
@@ -24,6 +27,9 @@ class ChoiceContentCustomizationTab extends CustomizationTab {
 
   @override
   Widget build(BuildContext context) {
+    final builderCubit = context.read<BuilderCubit>();
+    final activityData = builderCubit.state.activityData;
+
     return ListView(
       children: [
         CustomizationItemsContainer(
@@ -182,6 +188,21 @@ class ChoiceContentCustomizationTab extends CustomizationTab {
               ),
             ],
           ),
+        CustomizationItemsContainer(
+          //title: context.localization.dependencies,
+          title: 'Dependencies',
+          children: [
+            // Add the DependencyCustomizationItem here
+            DependencyCustomizationItem(
+              dependencies: editable.dependencies,
+              questionIndex: editable.index,
+              questions: activityData.questions,
+              onChanged: (newDependencies) => onChange(
+                editable.copyWith(dependencies: newDependencies),
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }

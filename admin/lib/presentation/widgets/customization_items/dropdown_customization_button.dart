@@ -4,12 +4,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:survey_admin/presentation/utils/utils.dart';
 
 class DropdownCustomizationButton<T> extends StatefulWidget {
-  final T value;
+  final T? value;
   final List<DropdownCustomizationItem<T>> items;
   final bool withColor;
 
   const DropdownCustomizationButton({
-    required this.value,
+    this.value,
     required this.items,
     required this.withColor,
     super.key,
@@ -64,6 +64,7 @@ class _DropdownCustomizationButtonState<T>
 
   @override
   Widget build(BuildContext context) {
+    T effectiveValue = widget.value ?? widget.items.first.value;
     return DecoratedBox(
       decoration: widget.withColor
           ? BoxDecoration(
@@ -84,29 +85,19 @@ class _DropdownCustomizationButtonState<T>
               horizontal: ActivityDimensions.marginM,
             ),
             child: InkWell(
-              child: widget.value == null
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        RotationTransition(
-                          turns: _animation,
-                          child: SvgPicture.asset(AppAssets.arrowIcon),
-                        ),
-                      ],
-                    )
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        widget.items
-                            .where((element) => element.value == widget.value)
-                            .first
-                            .child,
-                        RotationTransition(
-                          turns: _animation,
-                          child: SvgPicture.asset(AppAssets.arrowIcon),
-                        ),
-                      ],
-                    ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  widget.items
+                      .where((element) => element.value == effectiveValue)
+                      .first
+                      .child,
+                  RotationTransition(
+                    turns: _animation,
+                    child: SvgPicture.asset(AppAssets.arrowIcon),
+                  ),
+                ],
+              ),
               onTap: () {
                 _isExpanded
                     ? _iconAnimationController.reverse()
@@ -121,7 +112,7 @@ class _DropdownCustomizationButtonState<T>
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: widget.items
-                        .where((element) => element.value != widget.value)
+                        .where((element) => element.value != effectiveValue)
                         .toList(),
                   )
                 : const SizedBox.shrink(),

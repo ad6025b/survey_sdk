@@ -43,9 +43,8 @@ class CommonData {
         //   title: 'ppp',
         //   dependencies: [
         //     const QuestionDependency(
-        //       parentQuestionIndex:
-        //           _secondIndex, // Depends on the input question
-        //       requiredValue: 'hh', // Only show if the input is "Hello"
+        //       parentQuestionIndex: _thirdIndex, // Depends on the input question
+        //       //requiredValue: 'hh', // Only show if the input is "Hello"
         //     ),
         //   ],
         // ),
@@ -54,6 +53,9 @@ class CommonData {
         //not  needed later...load from json file// // // Create the choice question and add the dependency
         choice(index: _thirdIndex).copyWith(
           //title: 'Choices Title',
+          secondaryButtonAction: const GoBackAction(),
+          secondaryButtonText: 'BACK',
+          isSkip: true,
           dependencies: [
             const QuestionDependency(
               parentQuestionIndex:
@@ -65,12 +67,20 @@ class CommonData {
 
         //slider(index: _fourthIndex),
         slider(index: _fourthIndex).copyWith(
-          //title: 'Slider Title',
+          title: 'Slider Title',
+          secondaryButtonAction: const GoBackAction(),
+          secondaryButtonText: 'BACK',
+          isSkip: true,
           dependencies: [
             const QuestionDependency(
               parentQuestionIndex:
                   _secondIndex, // Depends on the input question
               requiredValue: 'hh', // Only show if the input is "Hello"
+            ),
+            const QuestionDependency(
+              parentQuestionIndex: _thirdIndex, // Depends on the input question
+              requiredValue:
+                  'Second option', // Only show if the input is "Hello"
             ),
           ],
         ),

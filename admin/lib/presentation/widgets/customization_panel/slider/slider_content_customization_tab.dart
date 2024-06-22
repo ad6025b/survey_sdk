@@ -1,10 +1,13 @@
 import 'package:activity_builder/activity_sdk.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:survey_admin/presentation/app/localization/app_localizations_ext.dart';
+import 'package:survey_admin/presentation/pages/builder/builder_cubit.dart';
 import 'package:survey_admin/presentation/widgets/base/customization_tab.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/actions_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_items_container.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/customization_multiline_text_field.dart';
+import 'package:survey_admin/presentation/widgets/customization_items/dependency_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/divisions_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/min_max_customization_item.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/secondary_button_customization_item.dart';
@@ -24,6 +27,9 @@ class SliderContentCustomizationTab extends CustomizationTab {
 
   @override
   Widget build(BuildContext context) {
+    final builderCubit = context.read<BuilderCubit>();
+    final activityData = builderCubit.state.activityData;
+
     return ListView(
       children: [
         CustomizationItemsContainer(
@@ -108,22 +114,22 @@ class SliderContentCustomizationTab extends CustomizationTab {
         ),
         if (questionsAmount != null)
           CustomizationItemsContainer(
-          title: context.localization.primaryButtonAction,
-          itemsPadding: EdgeInsets.zero,
-          children: [
-            ActionsCustomizationItem(
-              onChanged: (action) => onChange(
-                editable.copyWith(
-                  clearMainAction: true,
-                  mainButtonAction: action,
+            title: context.localization.primaryButtonAction,
+            itemsPadding: EdgeInsets.zero,
+            children: [
+              ActionsCustomizationItem(
+                onChanged: (action) => onChange(
+                  editable.copyWith(
+                    clearMainAction: true,
+                    mainButtonAction: action,
+                  ),
                 ),
+                activityAction: editable.mainButtonAction,
+                callbackType: CallbackType.primaryCallback,
+                questionsLength: questionsAmount!,
               ),
-              activityAction: editable.mainButtonAction,
-              callbackType: CallbackType.primaryCallback,
-              questionsLength: questionsAmount!,
-            ),
-          ],
-        ),
+            ],
+          ),
         if (editable.isSkip && questionsAmount != null)
           CustomizationItemsContainer(
             title: context.localization.secondaryButtonAction,
@@ -142,6 +148,21 @@ class SliderContentCustomizationTab extends CustomizationTab {
               ),
             ],
           ),
+        CustomizationItemsContainer(
+          //title: context.localization.dependencies,
+          title: 'Dependencies',
+          children: [
+            // Add the DependencyCustomizationItem here
+            DependencyCustomizationItem(
+              dependencies: editable.dependencies,
+              questionIndex: editable.index,
+              questions: activityData.questions,
+              onChanged: (newDependencies) => onChange(
+                editable.copyWith(dependencies: newDependencies),
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
