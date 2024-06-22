@@ -57,6 +57,7 @@ class SliderQuestionData extends QuestionData<SliderThemeData> {
         mainButtonAction,
         secondaryButtonAction,
         dependencies,
+        dependencyLogic,
       ];
 
   const SliderQuestionData({
@@ -75,6 +76,7 @@ class SliderQuestionData extends QuestionData<SliderThemeData> {
     super.secondaryButtonAction,
     super.content,
     super.dependencies,
+    super.dependencyLogic,
   });
 
   /// Creates a common instance of [SliderQuestionData].
@@ -125,6 +127,7 @@ class SliderQuestionData extends QuestionData<SliderThemeData> {
     bool clearMainAction = false,
     bool clearSecondaryAction = false,
     List<QuestionDependency>? dependencies,
+    DependencyLogic? dependencyLogic,
   }) {
     return SliderQuestionData(
       minValue: minValue ?? this.minValue,
@@ -146,6 +149,7 @@ class SliderQuestionData extends QuestionData<SliderThemeData> {
           ? secondaryButtonAction
           : secondaryButtonAction ?? this.secondaryButtonAction,
       dependencies: dependencies ?? this.dependencies,
+      dependencyLogic: dependencyLogic ?? this.dependencyLogic,
     );
   }
 }

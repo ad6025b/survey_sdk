@@ -42,6 +42,7 @@ class InputQuestionData extends QuestionData<InputQuestionTheme> {
         mainButtonAction,
         secondaryButtonAction,
         dependencies,
+        dependencyLogic,
       ];
 
   const InputQuestionData({
@@ -58,6 +59,7 @@ class InputQuestionData extends QuestionData<InputQuestionTheme> {
     super.content,
     this.hintText,
     super.dependencies,
+    super.dependencyLogic,
   });
 
   /// Creates a common instance of [InputQuestionData].
@@ -99,6 +101,7 @@ class InputQuestionData extends QuestionData<InputQuestionTheme> {
     bool clearMainAction = false,
     bool clearSecondaryAction = false,
     List<QuestionDependency>? dependencies,
+    DependencyLogic? dependencyLogic,
   }) {
     return InputQuestionData(
       validator: validator ?? this.validator,
@@ -118,6 +121,7 @@ class InputQuestionData extends QuestionData<InputQuestionTheme> {
           ? secondaryButtonAction
           : secondaryButtonAction ?? this.secondaryButtonAction,
       dependencies: dependencies ?? this.dependencies,
+      dependencyLogic: dependencyLogic ?? this.dependencyLogic,
     );
   }
 }

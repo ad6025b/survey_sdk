@@ -13,6 +13,7 @@ abstract class _Fields {
   static const String commonTheme = 'commonTheme';
   static const String schemeVersion = 'schemeVersion';
   static const String dependencies = 'dependencies';
+  static const String dependencyLogic = 'dependencyLogic';
 }
 
 /// Holds the core activity data used in the whole app, including the list of
@@ -40,6 +41,16 @@ class ActivityData with EquatableMixin, ApiObject {
     final questions = <QuestionData>[];
     final schemeVersion = json[_Fields.schemeVersion];
     for (final questionJson in json[_Fields.questions]) {
+      final dependencies =
+          (questionJson[_Fields.dependencies] as List<dynamic>?)
+                  ?.map((e) => QuestionDependency.fromJson(e))
+                  .toList() ??
+              [];
+
+      final dependencyLogic = questionJson[_Fields.dependencyLogic] != null
+          ? DependencyLogic.values[questionJson[_Fields.dependencyLogic]]
+          : DependencyLogic.and;
+
       questions.add(
         QuestionData.fromType(
           questionJson,
@@ -116,6 +127,7 @@ class ActivityData with EquatableMixin, ApiObject {
         )..addAll({
             _Fields.dependencies:
                 question.dependencies.map((e) => e.toJson()).toList(),
+            _Fields.dependencyLogic: question.dependencyLogic.index,
           });
       case QuestionTypes.slider:
         return SliderQuestionDataMapperFactory.getMapper(
@@ -126,6 +138,7 @@ class ActivityData with EquatableMixin, ApiObject {
         )..addAll({
             _Fields.dependencies:
                 question.dependencies.map((e) => e.toJson()).toList(),
+            _Fields.dependencyLogic: question.dependencyLogic.index,
           });
       case QuestionTypes.input:
         return InputQuestionDataMapperFactory.getMapper(
@@ -136,6 +149,7 @@ class ActivityData with EquatableMixin, ApiObject {
         )..addAll({
             _Fields.dependencies:
                 question.dependencies.map((e) => e.toJson()).toList(),
+            _Fields.dependencyLogic: question.dependencyLogic.index,
           });
       case QuestionTypes.info:
         return InfoQuestionDataMapperFactory.getMapper(
@@ -146,6 +160,7 @@ class ActivityData with EquatableMixin, ApiObject {
         )..addAll({
             _Fields.dependencies:
                 question.dependencies.map((e) => e.toJson()).toList(),
+            _Fields.dependencyLogic: question.dependencyLogic.index,
           });
     }
     return null;

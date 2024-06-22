@@ -31,6 +31,7 @@ class InfoQuestionData extends QuestionData {
         mainButtonAction,
         secondaryButtonAction,
         dependencies,
+        dependencyLogic,
       ];
 
   const InfoQuestionData({
@@ -45,6 +46,7 @@ class InfoQuestionData extends QuestionData {
     super.secondaryButtonAction,
     super.content,
     super.dependencies,
+    super.dependencyLogic,
   });
 
   /// Creates a common instance of [InfoQuestionData].
@@ -87,6 +89,7 @@ class InfoQuestionData extends QuestionData {
     bool clearMainAction = false,
     bool clearSecondaryAction = false,
     List<QuestionDependency>? dependencies,
+    DependencyLogic? dependencyLogic,
   }) {
     return InfoQuestionData(
       index: index ?? this.index,
@@ -104,6 +107,7 @@ class InfoQuestionData extends QuestionData {
           ? secondaryButtonAction
           : secondaryButtonAction ?? this.secondaryButtonAction,
       dependencies: dependencies ?? this.dependencies,
+      dependencyLogic: dependencyLogic ?? this.dependencyLogic,
     );
   }
 }

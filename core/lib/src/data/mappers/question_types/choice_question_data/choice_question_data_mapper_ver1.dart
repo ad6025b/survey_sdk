@@ -22,6 +22,7 @@ abstract class _Fields {
   static const String primaryButtonAction = 'primaryButtonAction';
   static const String secondaryButtonAction = 'secondaryButtonAction';
   static const String dependencies = 'dependencies';
+  static const String dependencyLogic = 'dependencyLogic';
 }
 
 class ChoiceQuestionDataMapperVer1
@@ -35,6 +36,8 @@ class ChoiceQuestionDataMapperVer1
             ?.map((e) => QuestionDependency.fromJson(e))
             .toList() ??
         [];
+
+    final dependencyLogic = json[_Fields.dependencyLogic] as DependencyLogic;
 
     return ChoiceQuestionData(
       index: json[_Fields.index],
@@ -61,6 +64,7 @@ class ChoiceQuestionDataMapperVer1
         json[_Fields.secondaryButtonAction],
       ),
       dependencies: dependencies,
+      dependencyLogic: dependencyLogic,
       //dependencies: json[_Fields.dependencies],
     );
   }

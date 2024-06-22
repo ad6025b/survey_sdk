@@ -65,6 +65,7 @@ class ChoiceQuestionData extends QuestionData<ChoiceQuestionTheme> {
         mainButtonAction,
         secondaryButtonAction,
         dependencies,
+        dependencyLogic,
       ];
 
   const ChoiceQuestionData({
@@ -84,6 +85,7 @@ class ChoiceQuestionData extends QuestionData<ChoiceQuestionTheme> {
     super.content,
     this.selectedByDefault,
     super.dependencies,
+    super.dependencyLogic,
   }) : assert(
           selectedByDefault == null ||
               (!isMultipleChoice && selectedByDefault.length == 1) ||
@@ -144,6 +146,7 @@ class ChoiceQuestionData extends QuestionData<ChoiceQuestionTheme> {
     bool clearMainAction = false,
     bool clearSecondaryAction = false,
     List<QuestionDependency>? dependencies,
+    DependencyLogic? dependencyLogic,
   }) {
     return ChoiceQuestionData(
       isMultipleChoice: isMultipleChoice ?? this.isMultipleChoice,
@@ -168,6 +171,7 @@ class ChoiceQuestionData extends QuestionData<ChoiceQuestionTheme> {
           ? secondaryButtonAction
           : secondaryButtonAction ?? this.secondaryButtonAction,
       dependencies: dependencies ?? this.dependencies,
+      dependencyLogic: dependencyLogic ?? this.dependencyLogic,
     );
   }
 }

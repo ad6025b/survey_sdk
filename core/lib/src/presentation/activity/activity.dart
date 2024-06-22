@@ -214,28 +214,50 @@ class _ActivityState extends State<Activity> {
     // If mode is buildMode (not Previewmode), then return true for all dependencies (short-circuit)
     if (widget.saveAnswer == false) return true;
 
-    for (final dependency in question.dependencies) {
-      final parentAnswer = answers[dependency.parentQuestionIndex];
+    if (question.dependencyLogic == DependencyLogic.and) {
+      for (final dependency in question.dependencies) {
+        final parentAnswer = answers[dependency.parentQuestionIndex];
 
-      if (parentAnswer == null) {
-        return false;
+        if (parentAnswer == null) {
+          return false;
+        }
+
+        final answer = parentAnswer.answer;
+        bool isDependencyMet;
+
+        if (answer is List) {
+          isDependencyMet =
+              answer.isNotEmpty && answer.first == dependency.requiredValue;
+        } else {
+          isDependencyMet = answer == dependency.requiredValue;
+        }
+
+        if (!isDependencyMet) {
+          return false;
+        }
       }
+      return true;
+    } else {
+      for (final dependency in question.dependencies) {
+        final parentAnswer = answers[dependency.parentQuestionIndex];
 
-      final answer = parentAnswer.answer;
-      bool isDependencyMet;
+        if (parentAnswer != null) {
+          final answer = parentAnswer.answer;
+          bool isDependencyMet;
 
-      if (answer is List) {
-        isDependencyMet =
-            answer.isNotEmpty && answer.first == dependency.requiredValue;
-      } else {
-        isDependencyMet = answer == dependency.requiredValue;
+          if (answer is List) {
+            isDependencyMet =
+                answer.isNotEmpty && answer.first == dependency.requiredValue;
+          } else {
+            isDependencyMet = answer == dependency.requiredValue;
+          }
+
+          if (isDependencyMet) {
+            return true;
+          }
+        }
       }
-
-      if (!isDependencyMet) {
-        return false;
-      }
+      return false;
     }
-
-    return true;
   }
 }

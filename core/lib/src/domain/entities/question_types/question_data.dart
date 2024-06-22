@@ -7,6 +7,12 @@ import 'package:activity_builder/src/domain/entities/constants/question_types.da
 import 'package:activity_builder/src/domain/entities/question_types/question_dependency.dart';
 import 'package:equatable/equatable.dart';
 
+// Enum representing the dependency logic for a question.
+enum DependencyLogic {
+  and,
+  or,
+}
+
 abstract class _Fields {
   static const String type = 'type';
 }
@@ -57,6 +63,9 @@ abstract class QuestionData<T> extends Equatable {
   /// Subclasses must provide an implementation for this property.
   String get type;
 
+  /// Determines if all dependencies must be met (AND) or if any can be met (OR).
+  final DependencyLogic dependencyLogic;
+
   const QuestionData({
     required this.index,
     required this.title,
@@ -68,6 +77,7 @@ abstract class QuestionData<T> extends Equatable {
     this.secondaryButtonAction,
     this.content,
     this.dependencies = const [],
+    this.dependencyLogic = DependencyLogic.and, // Default to AND logic
   });
 
   QuestionData copyWith({
@@ -79,6 +89,7 @@ abstract class QuestionData<T> extends Equatable {
     String? secondaryButtonText,
     String? primaryButtonText,
     ActivityAction? mainButtonAction,
+    DependencyLogic? dependencyLogic,
   });
 
   /// Converts a JSON map to a [QuestionData] instance based on the question's

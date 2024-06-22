@@ -107,6 +107,7 @@ class _BadQuestionData extends QuestionData {
     String? secondaryButtonText,
     String? primaryButtonText,
     ActivityAction? mainButtonAction,
+    DependencyLogic? dependencyLogic,
   }) {
     throw UnimplementedError();
   }

@@ -4,14 +4,25 @@ import 'package:survey_admin/presentation/app/localization/app_localizations_ext
 import 'package:survey_admin/presentation/widgets/customization_items/customization_widgets/customization_text_field.dart';
 import 'package:survey_admin/presentation/widgets/customization_items/dropdown_customization_button.dart';
 
-class DependencyCustomizationItem extends StatefulWidget {
+class DependencyInfo {
+  final DependencyLogic dependencyLogic;
   final List<QuestionDependency> dependencies;
+
+  DependencyInfo({
+    required this.dependencyLogic,
+    required this.dependencies,
+  });
+}
+
+class DependencyCustomizationItem extends StatefulWidget {
+  final DependencyInfo dependencyInfo;
   final int questionIndex; // Index of the current question being edited
   final List<QuestionData> questions; // List of all questions in the activity
-  final ValueChanged<List<QuestionDependency>> onChanged;
+  //final ValueChanged<List<QuestionDependency>> onChanged;
+  final ValueChanged<DependencyInfo> onChanged;
 
   const DependencyCustomizationItem({
-    required this.dependencies,
+    required this.dependencyInfo,
     required this.questionIndex,
     required this.questions,
     required this.onChanged,
@@ -26,12 +37,15 @@ class DependencyCustomizationItem extends StatefulWidget {
 class _DependencyCustomizationItemState
     extends State<DependencyCustomizationItem> {
   List<QuestionDependency> _dependencies = [];
+  DependencyLogic _selectedDependencyLogic =
+      DependencyLogic.and; // Default to AND
 
   @override
   void initState() {
     super.initState();
     //_dependencies = widget.dependencies;  (this copies an unmodifiable list)
-    _dependencies = List.from(widget.dependencies);
+    _dependencies = List.from(widget.dependencyInfo.dependencies);
+    _selectedDependencyLogic = widget.dependencyInfo.dependencyLogic;
   }
 
   void _addDependency(questionIndex) {
@@ -53,20 +67,58 @@ class _DependencyCustomizationItemState
         );
       }
     });
-    widget.onChanged(_dependencies);
+    widget.onChanged(
+      DependencyInfo(
+        dependencyLogic: _selectedDependencyLogic,
+        dependencies: _dependencies,
+      ),
+    );
   }
 
   void _removeDependency(int index) {
     setState(() {
       _dependencies.removeAt(index);
     });
-    widget.onChanged(_dependencies);
+    widget.onChanged(
+      DependencyInfo(
+        dependencyLogic: _selectedDependencyLogic,
+        dependencies: _dependencies,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Add a dropdown for dependency logic
+        DropdownButton<DependencyLogic>(
+          value: _selectedDependencyLogic,
+          onChanged: (newValue) {
+            if (newValue != null) {
+              setState(() {
+                _selectedDependencyLogic = newValue;
+              });
+              // Update the question's dependencyLogic
+              final updatedQuestion = widget.questions
+                  .firstWhere((q) => q.index == widget.questionIndex)
+                  .copyWith(dependencyLogic: newValue);
+              // Call onChanged to update the parent (e.g., BuilderCubit)
+              widget.onChanged(
+                DependencyInfo(
+                  dependencyLogic: updatedQuestion.dependencyLogic,
+                  dependencies: updatedQuestion.dependencies,
+                ),
+              );
+            }
+          },
+          items: DependencyLogic.values
+              .map((logic) => DropdownMenuItem(
+                    value: logic,
+                    child: Text(logic.name.toUpperCase()),
+                  ))
+              .toList(),
+        ),
         for (int i = 0; i < _dependencies.length; i++)
           _DependencyRow(
             dependency: _dependencies[i],
@@ -76,7 +128,12 @@ class _DependencyCustomizationItemState
               setState(() {
                 _dependencies[i] = updatedDependency;
               });
-              widget.onChanged(_dependencies);
+              widget.onChanged(
+                DependencyInfo(
+                  dependencyLogic: _selectedDependencyLogic,
+                  dependencies: _dependencies,
+                ),
+              );
             },
             onRemoveDependency: () => _removeDependency(i),
           ),

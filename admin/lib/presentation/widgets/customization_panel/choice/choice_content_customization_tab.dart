@@ -194,11 +194,17 @@ class ChoiceContentCustomizationTab extends CustomizationTab {
           children: [
             // Add the DependencyCustomizationItem here
             DependencyCustomizationItem(
-              dependencies: editable.dependencies,
+              dependencyInfo: DependencyInfo(
+                dependencyLogic: editable.dependencyLogic,
+                dependencies: editable.dependencies,
+              ),
               questionIndex: editable.index,
               questions: activityData.questions,
-              onChanged: (newDependencies) => onChange(
-                editable.copyWith(dependencies: newDependencies),
+              onChanged: (dependencyInfo) => onChange(
+                editable.copyWith(
+                  dependencies: dependencyInfo.dependencies,
+                  dependencyLogic: dependencyInfo.dependencyLogic,
+                ),
               ),
             ),
           ],
